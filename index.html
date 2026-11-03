@@ -1383,7 +1383,7 @@ function frontMask(det,src){
       if(nb>200){const m=[bg[0]/nb,bg[1]/nb,bg[2]/nb],g=(m[0]+m[1]+m[2])/3||1;tint=m.map((v)=>clamp(1+(v/g-1)*.35,.95,1.04))}
       const mx=Math.max(...tint);light=tint.map((v)=>v/mx*k)}}
   const cat=partsAt(det.parts,W,H);
-  return {cat,skinM:cat&&partMask(cat,W,H,(v)=>v===2),keepM:cat&&partMask(cat,W,H,(v)=>v===1||v===2||v===3),person,src,tone,light,hands:det.hands||null,head:nose?{y:nose.y,x:nose.x,e:eyes.length===2?Math.abs(eyes[0].x-eyes[1].x):W*.03}:null,cache:new Map()}}
+  return {id:Math.random().toString(36).slice(2),cat,skinM:cat&&partMask(cat,W,H,(v)=>v===2),keepM:cat&&partMask(cat,W,H,(v)=>v===1||v===2||v===3),person,src,tone,light,hands:det.hands||null,head:nose?{y:nose.y,x:nose.x,e:eyes.length===2?Math.abs(eyes[0].x-eyes[1].x):W*.03}:null,cache:new Map()}}
 function edt(mask,w,h){const D=new Float32Array(w*h),INF=1e9;for(let i=0;i<w*h;i++)D[i]=mask[i]?INF:0;
   for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=y*w+x;if(!D[i])continue;let m=D[i];if(x)m=Math.min(m,D[i-1]+1);if(y)m=Math.min(m,D[i-w]+1);if(x&&y)m=Math.min(m,D[i-w-1]+1.414);if(y&&x<w-1)m=Math.min(m,D[i-w+1]+1.414);D[i]=m}
   for(let y=h-1;y>=0;y--)for(let x=w-1;x>=0;x--){const i=y*w+x;if(!D[i])continue;let m=D[i];if(x<w-1)m=Math.min(m,D[i+1]+1);if(y<h-1)m=Math.min(m,D[i+w]+1);if(x<w-1&&y<h-1)m=Math.min(m,D[i+w+1]+1.414);if(y<h-1&&x)m=Math.min(m,D[i+w-1]+1.414);D[i]=m}
@@ -1506,7 +1506,7 @@ function chestFix(P,W,H){
     // only the old clothes: skin in shadow (same hue, darker) and hair stay exactly as photographed
     const lum0=(tn[0]+tn[1]+tn[2])/3,dark=(i)=>(o[i*4]+o[i*4+1]+o[i*4+2])/3<lum0*.5;
     const cat=Fr.cat;for(let i=0;i<N;i++)if(R[i*4+3]>100&&(cat?(cat[i]===4||cat[i]===5||(cat[i]===2&&dark(i))):(pm[i*4+3]>60&&!hair[i]&&!L.isSkin(i*4)&&(dark(i)||!skinish(i))))){hole0[i]=1;n++}
-    if(n<30){Fr.fix={c:null};return}
+    if(n<30||n>Sj*Sj*.55){Fr.fix={c:null};return}   // a big area of old top: MI-GAN smears it; leave it, it reads as a layer underneath
     const D=edt(hole0.map((v)=>1-v),W,H),grow=Math.max(3,W*.0075),hole=new Uint8Array(N);for(let i=0;i<N;i++)if(D[i]<=grow&&!hair[i]){hole[i]=1;const x=i%W,y=(i/W)|0;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y}
     const mx=(x1-x0)*.25+Sj*.15,my=(y1-y0)*.25+Sj*.15;x0=Math.max(0,Math.floor(x0-mx));y0=Math.max(0,Math.floor(y0-my));x1=Math.min(W-1,Math.ceil(x1+mx));y1=Math.min(H-1,Math.ceil(y1+my));
     const cw=x1-x0+1,ch=y1-y0+1,k=Math.min(1,640/Math.max(cw,ch)),w=Math.max(16,Math.round(cw*k)),h=Math.max(16,Math.round(ch*k));
@@ -1521,6 +1521,24 @@ function chestFix(P,W,H){
     const hm=cv(W,H),hx=hm.getContext('2d'),hd=hx.createImageData(W,H);for(let i=0;i<N;i++)hd.data[i*4+3]=hole[i]?255:0;hx.putImageData(hd,0,0);const hs=cv(W,H),hsx=hs.getContext('2d');hsx.filter=`blur(${Math.max(1,W*.0018)}px)`;hsx.drawImage(hm,0,0);
     fx.globalCompositeOperation='destination-in';fx.drawImage(hs,0,0);Fr.fix={c:full}})();
   Fr.fixP.then(()=>{if(Q.front===Fr&&Fr.fix&&Fr.fix.c)renderFit()}).catch((e)=>{console.warn('chest inpaint unavailable',e);Fr.fix={c:null}});return null}
+function drawLeftovers(ctx,P,W,H,union){
+  const Fr=Q.front,cat=Fr.cat,N=W*H,Sj=Math.hypot(P.shR[0]-P.shL[0],P.shR[1]-P.shL[1]);
+  const ua=union.getContext('2d',{willReadFrequently:true}).getImageData(0,0,W,H).data,hole=new Uint8Array(N);
+  // clothes only (not a phone, a bag or jewellery), and nothing at the feet: shoes stay
+  const yFeet=Math.min(P.anL[1],P.anR[1])-Sj*.08;
+  for(let i=0;i<N;i++)if(cat[i]===4&&ua[i*4+3]<60&&i/W<yFeet)hole[i]=1;
+  // keep only small pieces (a sleeve end, a strap, a peeking hem); a big one is a garment worn underneath and stays
+  const lab=new Int32Array(N),st=new Int32Array(N),keep=new Uint8Array(N);let id=0,tot=0;
+  for(let s0=0;s0<N;s0++){if(!hole[s0]||lab[s0])continue;id++;let top=0,mem=[];st[top++]=s0;lab[s0]=id;
+    while(top){const i=st[--top];mem.push(i);const x=i%W;for(const j of [x>0?i-1:-1,x<W-1?i+1:-1,i-W,i+W])if(j>=0&&j<N&&hole[j]&&!lab[j]){lab[j]=id;st[top++]=j}}
+    if(mem.length>=8&&mem.length<Sj*Sj*.35){for(const i of mem)keep[i]=1;tot+=mem.length}}
+  if(!tot)return;
+  // grow a little so the old edge goes too, but never into the new garment
+  const D=edt(keep.map((v)=>1-v),W,H),g=Math.max(2,W*.004);for(let i=0;i<N;i++)if(D[i]<=g&&ua[i*4+3]<60)keep[i]=1;
+  let h=0;for(let i=0;i<N;i+=97)h=(h*31+keep[i])|0;const ip=inpainted('left:'+Fr.id+':'+h,Fr.src,keep,W,H);if(!ip)return;
+  const m=cv(W,H),mx=m.getContext('2d'),md=mx.createImageData(W,H);for(let i=0;i<N;i++)md.data[i*4+3]=keep[i]?255:0;mx.putImageData(md,0,0);
+  const s=cv(W,H),sx=s.getContext('2d');sx.filter=`blur(${Math.max(.8,W*.0012)}px)`;sx.drawImage(m,0,0);sx.filter='none';sx.globalCompositeOperation='source-in';sx.drawImage(ip,0,0);
+  sx.globalCompositeOperation='destination-out';sx.drawImage(union,0,0);ctx.drawImage(s,0,0)}
 /* an open neckline (V, scoop) shows the chest: skin where the old top showed and the new one leaves open */
 function drawChest(ctx,P,W,H,garmentLayer){
   const Fr=Q.front,L=Fr&&Fr.last;if(!L||!Fr.tone)return;
@@ -1627,8 +1645,8 @@ function renderFit(withHandles=true,fine=true){
   const P=adjustedP(W,H),P0=Object.fromEntries(KP_KEYS.map((k)=>[k,[Q.kp[k][0]*W,Q.kp[k][1]*H]])),moved=!!(Q.off[0]||Q.off[1]),still=!Q.dragKind&&(!moved||Q.free);
   if(Q.front&&still){
     const vts=Q.pieces.map((p)=>FIT_TYPE[p.it.type]),arms=vts.some((x)=>x==='tee'||x==='dress'),legs=vts.some((x)=>x==='dress'||x==='skirt'||x==='jeans');
-    const cb=cleanBase({arms,legs,paintLegs:!vts.includes('jeans'),lowWaist:vts.includes('jeans')||vts.includes('skirt')},P0,W,H);if(cb)qctx.drawImage(cb,0,0)}
-  let topLayer=null;const late=[];
+    const cb=Q.front.cat?null:cleanBase({arms,legs,paintLegs:!vts.includes('jeans'),lowWaist:vts.includes('jeans')||vts.includes('skirt')},P0,W,H);if(cb)qctx.drawImage(cb,0,0)}
+  let topLayer=null;const late=[];let unionL=null;
   for(const pc of Q.pieces){if(!pc.spec)continue;const img=pc.img,IW=img.width,IH=img.height,map=makeMapper(placeSpec(pc,P,IH/IW),P,IH/IW);
     const layer=cv(W,H),lx=layer.getContext('2d');const NX0=fine?36:14,NY=fine?48:18,pts=[];
     // grid columns; with legs, two columns hug the split so no cell ever bridges the gap between the legs
@@ -1667,8 +1685,10 @@ function renderFit(withHandles=true,fine=true){
       scx.globalCompositeOperation='destination-out';scx.drawImage(layer,0,0);scx.globalCompositeOperation='destination-in';scx.drawImage(Q.front.person,0,0);qctx.drawImage(sc,0,0)}
     else{qctx.save();qctx.shadowColor='rgba(0,0,0,.2)';qctx.shadowBlur=W*.01;qctx.shadowOffsetY=W*.003;qctx.drawImage(layer,0,0);qctx.restore()}
     if(Q.front)qctx.drawImage(layer,0,0);
+    if(Q.front&&still)(unionL||(unionL=cv(W,H))).getContext('2d').drawImage(layer,0,0);
     if(TYPES[pc.it.type].vton!=='bottoms'){const sl=pc.spec.sleeves,ends={};if(sl)for(const sd of ['L','R'])if(sl[sd]){const q=map(sl[sd].end[0],sl[sd].end[1]);ends[sd]=[q[0],q[1]]}topLayer={layer,type:FIT_TYPE[pc.it.type],ends,outer:pc.it.type==='jacket'||pc.it.outer===true}}}
   // a jacket is worn over clothes: what the person has on shows in its opening, it is not replaced by skin
+  if(Q.front&&still&&!moved&&unionL&&Q.front.cat)drawLeftovers(qctx,P0,W,H,unionL);
   if(Q.front&&still&&!moved&&topLayer&&!topLayer.outer&&['tee','shirt','dress'].includes(topLayer.type))drawChest(qctx,P0,W,H,topLayer.layer);
   if(Q.front&&still)drawFront(qctx,P0,W,H,null,null,'head');   // head, neck and hands in front, as in the studio version
   drawHandles(withHandles)}
