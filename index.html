@@ -456,7 +456,7 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
     </div>
     <div class="gen" id="gen" hidden><span><i class="spin"></i><b id="genT"></b></span></div>
     <div class="pd-tools">
-      <div class="seg" role="group" hidden><button type="button" id="vProd" aria-pressed="true" data-t="product">מוצר</button><button type="button" id="vModel" aria-pressed="false" data-t="onModel">על דוגמנית</button></div>
+      <div class="seg" role="group" style="display:none"><button type="button" id="vProd" aria-pressed="true" data-t="product">מוצר</button><button type="button" id="vModel" aria-pressed="false" data-t="onModel">על דוגמנית</button></div>
       <div class="seg" role="group" id="sides"><button type="button" id="sFront" aria-pressed="true" data-t="front">חזית</button><button type="button" id="sBack" aria-pressed="false" data-t="back">גב</button></div>
     </div>
     <div class="pd-nav"><button class="round flipx" id="pdPrev" type="button" aria-label="הקודם"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button><button class="round flipx" id="pdNext" type="button" aria-label="הבא"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button></div>
@@ -563,6 +563,7 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
           <div class="drop" id="dropF"><span class="tg" data-t="front">חזית</span><span id="dropFT" data-t="dropFront">תמונת חזית של הבגד (חובה). הרקע מוסר אוטומטית.</span><img id="prevF" alt="" hidden><span class="st" id="stF" hidden></span><input type="file" id="aFront" accept="image/jpeg,image/png,image/webp" aria-label="חזית"></div>
           <div class="drop" id="dropB"><span class="tg" data-t="back">גב</span><span id="dropBT" data-t="dropBack">תמונת גב (לא חובה). בלי תמונה נוצר גב חלק באותו צבע.</span><img id="prevB" alt="" hidden><span class="st" id="stB" hidden></span><input type="file" id="aBack" accept="image/jpeg,image/png,image/webp" aria-label="גב"></div>
         </div>
+        <label class="f" id="splitBox" hidden><span data-t="splitL">איפה הבגד נגמר (בתמונה על אדם)</span><input type="range" id="aSplit" min="-0.35" max="0.35" step="0.01" value="0"></label>
         <div class="markbox" id="markBox" hidden>
           <b data-t="markH">סימון הפנים של הבגד</b>
           <p class="note" data-t="markT">בתמונת מוצר רואים דרך הצוואר את הגב של הבגד מבפנים: הבטנה, התווית, הצווארון האחורי. על הגוף המקום הזה מוסתר. לוחצים נקודה אחרי נקודה מסביב לאזור, והוא ייחתך במדידה. לא חובה.</p>
@@ -608,8 +609,8 @@ const T={
   foot:'כל הפריטים נקנים בחנות שלנו בטיק טוק.',manage:'ניהול החנות',product:'מוצר',onModel:'על דוגמנית',front:'חזית',back:'גב',color:'צבע',size:'מידה',buy:'לקנייה בחנות בטיק טוק',buyShort:'לקנייה',
   tryMe:'מדידה על התמונה שלי',buyNote:'הקנייה נעשית בחנות בטיק טוק. בחרי שם את אותה מידה ואותו צבע.',details:'פרטים',sizeGuide:'מדריך מידות',like:'אהבתי',savedLike:'נשמר באהבתי',removedLike:'הוסר מאהבתי',
   pickSize:'בחרי מידה',s1:'התמונה שלך',upload:'העלאת תמונה',useModel:'דוגמנית לדוגמה',consent:'אני מסכימה שהתמונה תישלח לשרת המדידה לעיבוד. היא לא נשמרת בחנות.',s2:'מה למדוד',s2n:'עליון ותחתון יחד, או שמלה אחת.',
-  s3:'התאמה',photoTip:'מלפנים, בעמידה, כל הגוף בפריים. לפי הגובה, הגוף והמידות של הבגד נקבעים לבד האורך והרוחב. הזיהוי נעשה כאן בדפדפן.',height:'הגובה שלך (ס״מ)',recFor:'המידה שמתאימה לגוף שלך: %s (מסומנת). הבגד מולבש בה.',lenCm:'אורך הבגד, ס״מ (מידה M): מהכתף עד המכפלת, או מהמותן למטה',flat:'רוחב הבגד בשטוח, ס״מ (מידה M): חזה, או מותן במכנסיים וחצאיות',width:'כוונון רוחב',lengthAdj:'כוונון אורך',points:'כיוון נקודות',reset:'איפוס',dragTip:'אפשר לגרור את הבגד. כשהוא נעול לגוף, הוא חוזר למקום. בלחיצה על "שחרור" הוא נשאר איפה שמשאירים אותו.',locked:'שחרור נעילה',unlocked:'נעילה חזרה לגוף',demoTag:'פריט לדוגמה',pk1:'מדידה על התמונה שלך',pk1s:'כל בגד, כל מידה',pk2:'המלצת מידה',pk2s:'לפי הגוף שלך',pk3:'קונים בטיק טוק',pk3s:'תשלום ומשלוח מאובטחים',pk4:'שאלות? כתבי לנו',pk4s:'בוואטסאפ או בליין',byCat:'קונים לפי קטגוריה',sizeSub:'מידות הגוף בס״מ שכל מידה מתאימה להן. בכל פריט יש גם את המידות שלו עצמו.',sgTops:'חולצות, ז׳קטים ושמלות',sgBottoms:'מכנסיים וחצאיות',unsureH:'לא בטוחה במידה?',unsureP:'מכניסים חזה, מותן וירכיים פעם אחת, ומקבלים את המידה שמתאימה לך.',mChest:'חזה',mWaist:'מותן',mHips:'ירכיים',calcBtn:'מה המידה שלי?',calcRes:'עליונים ושמלות: {t} · מכנסיים וחצאיות: {b}',calcNeed:'מלאי לפחות חזה או מותן',fShop:'חנות',fHelp:'עזרה',adminIn:'כניסה למנהל',colSize:'מידה',colChest:'חזה',colLen:'אורך',colWaist:'מותן',colHips:'ירכיים',tryCard:'מדידה',aTabItems:'הפריטים',aTabAdd:'הוספת בגד',aTabShop:'פרטי החנות',pieces:'פריטים',askQ:'שאלה על הפריט? כתבו לנו',mixDone:'מוכן. העליון עם AI, התחתון עם ההלבשה המיידית (שרת ה-AI עמוס).',instantDone:'שרתי ה-AI עמוסים כרגע, אז הולבש עם ההלבשה המיידית.',refining:'משפרים את הדיוק ברקע…',pcTitle:'בדיקת התמונה',pcGood:'התמונה מצוינת למדידה.',pcRetake:'צילום חדש',pcFeet:'כפות הרגליים לא נכנסו לתמונה. צלמי מרחוק יותר, כך שכל הגוף ייכנס מהראש ועד הרגליים. בלי זה האורך של מכנסיים ושמלות פחות מדויק.',pcHead:'הראש לא נכנס לתמונה. השאירי קצת מקום מעל הראש.',pcSmall:'את קטנה מדי בתמונה. התקרבי או צלמי בזום, כך שהגוף ימלא את רוב גובה התמונה.',pcSide:'נראה שאת עומדת בצד. עמדי עם הפנים והכתפיים ישר למצלמה.',pcTilt:'התמונה עקומה. החזיקי את הטלפון ישר, בגובה המותן.',pcArmsUp:'הידיים מורמות. השאירי אותן למטה, קצת רחוק מהגוף.',pcArmsIn:'הידיים מסתירות את הגוף. השאירי אותן לצדדים, קצת רחוק מהגוף.',pcDark:'התמונה חשוכה. צלמי ליד חלון או באור חזק.',pcBright:'התמונה בהירה מדי. התרחקי מאור ישיר.',pcBlur:'התמונה מטושטשת. החזיקי את הטלפון יציב או בקשי ממישהו לצלם.',pcBusy:'הרקע עמוס. קיר חלק מאחורייך יעזור להפריד בין הגוף לרקע.',fitTitle:'איך זה יושב עלייך',fChest:'חזה',fWaist:'מותן',fLen:'אורך',fSleeve:'שרוול',fit0:'צמוד מאוד',fit1:'צמוד',fit2:'מדויק',fit3:'נוח',fit4:'אוברסייז',lt0:'קרופ, בטן חשופה',lt1:'עד המותן',lt2:'עד הירך',lt3:'מכסה את הישבן',lt4:'ארוך, כמו מעיל',ll0:'מיני',ll1:'מעל הברך',ll2:'בגובה הברך',ll3:'מידי, מתחת לברך',ll4:'עד הקרסול',ll5:'עד הרצפה',cmpLong:'ארוך מ־%s% מה%c בתמונות של אנשים אמיתיים',cmpShort:'קצר מ־%s% מה%c בתמונות של אנשים אמיתיים',cTop:'חולצות',cShirt:'חולצות מכופתרות',cSweater:'סוודרים',cJacket:'ז׳קטים',cDress:'שמלות',cPants:'מכנסיים',cSkirt:'חצאיות',zoomIn:'הגדלה',zoomOut:'הקטנה',zoomFit:'חזרה לגודל מלא',s4:'מדידה מציאותית (AI)',aiNote:'מלביש מחדש עם בינה מלאכותית: קפלים, אור וידיים אמיתיים. לוקח בערך 30 שניות לבגד.',goAi:'מדידה מציאותית',backQuick:'חזרה להלבשה המיידית',aiOff:'בקישור הזה של claude.ai הדפדפן חוסם את החיבור לשרת ה-AI, ולכן הכפתור כבוי. באתר החנות עצמו (כתובת רגילה) הוא עובד. ההלבשה המיידית למטה עובדת בכל מקום.',loadingModel:'טוען את זיהוי הגוף…',detecting:'מזהה את הגוף ומלביש…',detected:'הבגד הולבש. אפשר לגרור אותו, והוא יחזור לשבת על הגוף.',pickPiece:'בוחרים בגד מהרשימה, והוא מולבש מיד.',noPerson:'לא מצאתי גוף ברור. גררי את הנקודות למקום: כתפיים, מרפקים, מותן, ירכיים, קרסוליים.',modelFail:'זיהוי הגוף לא נטען במכשיר הזה. גררי את הנקודות למקום.',adjustHint:'גררי כל נקודה למקום שלה: כתפיים, מרפקים, מותן, ירכיים, קרסוליים.',go:'להלביש עליי',save:'שמירת התמונה',before:'לפני',after:'אחרי',likesNote:'הרשימה נשמרת בדפדפן הזה. לכל פריט יש קישור לקנייה בחנות בטיק טוק.',likesEmpty:'עוד לא שמרת פריטים. לחצי על הלב ליד פריט כדי לשמור אותו כאן.',
-  remove:'הסרה',all:'הכול',tops:'עליונים',outer:'ז׳קטים',dresses:'שמלות',bottoms:'מכנסיים וחצאיות',items:'פריטים',demo:'דוגמה',
+  s3:'התאמה',photoTip:'מלפנים, בעמידה, כל הגוף בפריים. לפי הגובה, הגוף והמידות של הבגד נקבעים לבד האורך והרוחב. הזיהוי נעשה כאן בדפדפן.',height:'הגובה שלך (ס״מ)',recFor:'המידה שמתאימה לגוף שלך: %s (מסומנת). הבגד מולבש בה.',lenCm:'אורך הבגד, ס״מ (מידה M): מהכתף עד המכפלת, או מהמותן למטה',flat:'רוחב הבגד בשטוח, ס״מ (מידה M): חזה, או מותן במכנסיים וחצאיות',width:'כוונון רוחב',lengthAdj:'כוונון אורך',points:'כיוון נקודות',reset:'איפוס',dragTip:'אפשר לגרור את הבגד. כשהוא נעול לגוף, הוא חוזר למקום. בלחיצה על "שחרור" הוא נשאר איפה שמשאירים אותו.',locked:'שחרור נעילה',unlocked:'נעילה חזרה לגוף',splitL:'איפה הבגד נגמר (כשהבגד צולם על אדם)',cutPerson:'הבגד צולם על אדם: השארנו רק את הבגד. בחרי למטה איזה בגד זה, והחיתוך יתעדכן. מקום שהיד מכסה בבגד יישאר חסר, צילום על קולב או משטח נותן חיתוך מלא.',demoTag:'פריט לדוגמה',pk1:'מדידה על התמונה שלך',pk1s:'כל בגד, כל מידה',pk2:'המלצת מידה',pk2s:'לפי הגוף שלך',pk3:'קונים בטיק טוק',pk3s:'תשלום ומשלוח מאובטחים',pk4:'שאלות? כתבי לנו',pk4s:'בוואטסאפ או בליין',byCat:'קונים לפי קטגוריה',sizeSub:'מידות הגוף בס״מ שכל מידה מתאימה להן. בכל פריט יש גם את המידות שלו עצמו.',sgTops:'חולצות, ז׳קטים ושמלות',sgBottoms:'מכנסיים וחצאיות',unsureH:'לא בטוחה במידה?',unsureP:'מכניסים חזה, מותן וירכיים פעם אחת, ומקבלים את המידה שמתאימה לך.',mChest:'חזה',mWaist:'מותן',mHips:'ירכיים',calcBtn:'מה המידה שלי?',calcRes:'עליונים ושמלות: {t} · מכנסיים וחצאיות: {b}',calcNeed:'מלאי לפחות חזה או מותן',fShop:'חנות',fHelp:'עזרה',adminIn:'כניסה למנהל',colSize:'מידה',colChest:'חזה',colLen:'אורך',colWaist:'מותן',colHips:'ירכיים',tryCard:'מדידה',aTabItems:'הפריטים',aTabAdd:'הוספת בגד',aTabShop:'פרטי החנות',pieces:'פריטים',askQ:'שאלה על הפריט? כתבו לנו',mixDone:'מוכן. העליון עם AI, התחתון עם ההלבשה המיידית (שרת ה-AI עמוס).',instantDone:'שרתי ה-AI עמוסים כרגע, אז הולבש עם ההלבשה המיידית.',refining:'משפרים את הדיוק ברקע…',pcTitle:'בדיקת התמונה',pcGood:'התמונה מצוינת למדידה.',pcRetake:'צילום חדש',pcFeet:'כפות הרגליים לא נכנסו לתמונה. צלמי מרחוק יותר, כך שכל הגוף ייכנס מהראש ועד הרגליים. בלי זה האורך של מכנסיים ושמלות פחות מדויק.',pcHead:'הראש לא נכנס לתמונה. השאירי קצת מקום מעל הראש.',pcSmall:'את קטנה מדי בתמונה. התקרבי או צלמי בזום, כך שהגוף ימלא את רוב גובה התמונה.',pcSide:'נראה שאת עומדת בצד. עמדי עם הפנים והכתפיים ישר למצלמה.',pcTilt:'התמונה עקומה. החזיקי את הטלפון ישר, בגובה המותן.',pcArmsUp:'הידיים מורמות. השאירי אותן למטה, קצת רחוק מהגוף.',pcArmsIn:'הידיים מסתירות את הגוף. השאירי אותן לצדדים, קצת רחוק מהגוף.',pcDark:'התמונה חשוכה. צלמי ליד חלון או באור חזק.',pcBright:'התמונה בהירה מדי. התרחקי מאור ישיר.',pcBlur:'התמונה מטושטשת. החזיקי את הטלפון יציב או בקשי ממישהו לצלם.',pcBusy:'הרקע עמוס. קיר חלק מאחורייך יעזור להפריד בין הגוף לרקע.',fitTitle:'איך זה יושב עלייך',fChest:'חזה',fWaist:'מותן',fLen:'אורך',fSleeve:'שרוול',fit0:'צמוד מאוד',fit1:'צמוד',fit2:'מדויק',fit3:'נוח',fit4:'אוברסייז',lt0:'קרופ, בטן חשופה',lt1:'עד המותן',lt2:'עד הירך',lt3:'מכסה את הישבן',lt4:'ארוך, כמו מעיל',ll0:'מיני',ll1:'מעל הברך',ll2:'בגובה הברך',ll3:'מידי, מתחת לברך',ll4:'עד הקרסול',ll5:'עד הרצפה',cmpLong:'ארוך מ־%s% מה%c בתמונות של אנשים אמיתיים',cmpShort:'קצר מ־%s% מה%c בתמונות של אנשים אמיתיים',cTop:'חולצות',cShirt:'חולצות מכופתרות',cSweater:'סוודרים',cJacket:'ז׳קטים',cDress:'שמלות',cPants:'מכנסיים',cSkirt:'חצאיות',zoomIn:'הגדלה',zoomOut:'הקטנה',zoomFit:'חזרה לגודל מלא',s4:'מדידה מציאותית (AI)',aiNote:'מלביש מחדש עם בינה מלאכותית: קפלים, אור וידיים אמיתיים. לוקח בערך 30 שניות לבגד.',goAi:'מדידה מציאותית',backQuick:'חזרה להלבשה המיידית',aiOff:'בקישור הזה של claude.ai הדפדפן חוסם את החיבור לשרת ה-AI, ולכן הכפתור כבוי. באתר החנות עצמו (כתובת רגילה) הוא עובד. ההלבשה המיידית למטה עובדת בכל מקום.',loadingModel:'טוען את זיהוי הגוף…',detecting:'מזהה את הגוף ומלביש…',detected:'הבגד הולבש. אפשר לגרור אותו, והוא יחזור לשבת על הגוף.',pickPiece:'בוחרים בגד מהרשימה, והוא מולבש מיד.',noPerson:'לא מצאתי גוף ברור. גררי את הנקודות למקום: כתפיים, מרפקים, מותן, ירכיים, קרסוליים.',modelFail:'זיהוי הגוף לא נטען במכשיר הזה. גררי את הנקודות למקום.',adjustHint:'גררי כל נקודה למקום שלה: כתפיים, מרפקים, מותן, ירכיים, קרסוליים.',go:'להלביש עליי',save:'שמירת התמונה',before:'לפני',after:'אחרי',likesNote:'הרשימה נשמרת בדפדפן הזה. לכל פריט יש קישור לקנייה בחנות בטיק טוק.',likesEmpty:'עוד לא שמרת פריטים. לחצי על הלב ליד פריט כדי לשמור אותו כאן.',
+  remove:'הסרה',all:'הכול',tops:'עליונים',outer:'ז׳קטים',dresses:'שמלות',bottoms:'מכנסיים וחצאיות',pants:'מכנסיים',skirts:'חצאיות',sets:'סטים',set:'סט',items:'פריטים',demo:'דוגמה',
   needConsent:'כדי למדוד צריך לאשר את שליחת התמונה.',needPhoto:'קודם מעלים תמונה, או בוחרים דוגמנית לדוגמה.',needPick:'בוחרים לפחות בגד אחד.',
   dressing:'מלבישים',step:'שלב',of:'מתוך',usual:'בדרך כלל 20 עד 40 שניות לכל בגד.',done:'מוכן. גררי את הפס כדי להשוות לפני ואחרי.',
   quota:'שני שרתי ה-AI החינמיים עמוסים או שהמכסה היומית נגמרה. ההלבשה המיידית למטה ממשיכה לעבוד. אפשר לנסות שוב בעוד כמה דקות, או להוסיף מפתח חינמי של Hugging Face ולקבל עוד מדידות.',quotaTok:'גם המכסה של המפתח נגמרה להיום. נסי שוב מאוחר יותר.',more:'עוד מדידות ביום (לא חובה)',moreT:'פותחים חשבון חינמי ב-Hugging Face, יוצרים מפתח מסוג Read ומדביקים כאן. המפתח נשמר רק בדפדפן הזה.',tokSave:'שמירה',tokSaved:'המפתח נשמר',tokBad:'המפתח צריך להתחיל ב-hf_',queue:'בתור',sec:'שנ׳',netFail:'לא הצלחתי להגיע לשרת המדידה. בדקי חיבור ונסי שוב.',failed:'המדידה לא הצליחה. נסי תמונה אחרת: מלפנים, בעמידה, באור טוב.',
@@ -627,8 +628,8 @@ const T={
   foot:'ทุกชิ้นสั่งซื้อได้ที่ร้านของเราใน TikTok',manage:'จัดการร้าน',product:'สินค้า',onModel:'บนนางแบบ',front:'ด้านหน้า',back:'ด้านหลัง',color:'สี',size:'ไซซ์',buy:'ซื้อที่ร้าน TikTok',buyShort:'ซื้อ',
   tryMe:'ลองบนรูปของฉัน',buyNote:'ชำระเงินที่ร้านใน TikTok เลือกไซซ์และสีเดียวกันที่นั่น',details:'รายละเอียด',sizeGuide:'ตารางไซซ์',like:'ถูกใจ',savedLike:'บันทึกในรายการที่ถูกใจแล้ว',removedLike:'นำออกจากรายการที่ถูกใจแล้ว',
   pickSize:'เลือกไซซ์',s1:'รูปของคุณ',upload:'อัปโหลดรูป',useModel:'ใช้นางแบบตัวอย่าง',consent:'ฉันยินยอมให้ส่งรูปไปยังเซิร์ฟเวอร์ลองชุดเพื่อประมวลผล ร้านไม่เก็บรูปไว้',s2:'เลือกชุด',s2n:'เสื้อกับกางเกงพร้อมกัน หรือเดรสหนึ่งชุด',
-  s3:'ปรับให้พอดี',photoTip:'ถ่ายด้านหน้า ยืนตรง เห็นเต็มตัว ความยาวและความกว้างคำนวณจากส่วนสูง รูปร่าง และขนาดของชุดโดยอัตโนมัติ',height:'ส่วนสูงของคุณ (ซม.)',recFor:'ไซซ์ที่เหมาะกับคุณ: %s (มีกรอบ) ชุดถูกสวมในไซซ์นี้',lenCm:'ความยาว ซม. (ไซซ์ M): จากไหล่ถึงชายเสื้อ หรือจากเอวลงไป',flat:'ความกว้างวางราบ ซม. (ไซซ์ M): รอบอก หรือเอวสำหรับกางเกงและกระโปรง',width:'ปรับความกว้าง',lengthAdj:'ปรับความยาว',points:'ปรับด้วยจุด',reset:'รีเซ็ต',dragTip:'ลากชุดได้ ถ้าล็อกกับตัว ชุดจะกลับที่เดิม ถ้าปลดล็อก ชุดจะอยู่ตรงที่วาง',locked:'ปลดล็อก',unlocked:'ล็อกกลับเข้าตัว',demoTag:'ตัวอย่าง',pk1:'ลองบนรูปของคุณ',pk1s:'ทุกชิ้น ทุกไซซ์',pk2:'แนะนำไซซ์',pk2s:'ตามรูปร่างของคุณ',pk3:'ซื้อใน TikTok',pk3s:'ชำระและจัดส่งปลอดภัย',pk4:'มีคำถาม? ทักเรา',pk4s:'ทาง WhatsApp หรือ LINE',byCat:'เลือกตามหมวด',sizeSub:'สัดส่วนร่างกาย (ซม.) ที่แต่ละไซซ์เหมาะ แต่ละชิ้นมีขนาดของตัวเองด้วย',sgTops:'เสื้อ แจ็กเก็ต และเดรส',sgBottoms:'กางเกงและกระโปรง',unsureH:'ไม่แน่ใจไซซ์?',unsureP:'ใส่รอบอก เอว สะโพก แล้วรับไซซ์ที่เหมาะกับคุณ',mChest:'รอบอก',mWaist:'รอบเอว',mHips:'รอบสะโพก',calcBtn:'ไซซ์ของฉันคือ?',calcRes:'เสื้อและเดรส: {t} · กางเกงและกระโปรง: {b}',calcNeed:'กรอกอย่างน้อยรอบอกหรือรอบเอว',fShop:'ร้าน',fHelp:'ช่วยเหลือ',adminIn:'เข้าสู่ระบบผู้ดูแล',colSize:'ไซซ์',colChest:'รอบอก',colLen:'ความยาว',colWaist:'รอบเอว',colHips:'รอบสะโพก',tryCard:'ลอง',aTabItems:'สินค้า',aTabAdd:'เพิ่มสินค้า',aTabShop:'ข้อมูลร้าน',pieces:'ชิ้น',askQ:'มีคำถามเกี่ยวกับชิ้นนี้? ทักเราได้',mixDone:'เสร็จแล้ว ส่วนบนด้วย AI ส่วนล่างด้วยการสวมทันที',instantDone:'เซิร์ฟเวอร์ AI ไม่ว่าง จึงใช้การสวมทันที',refining:'กำลังปรับความแม่นยำ…',pcTitle:'ตรวจรูปถ่าย',pcGood:'รูปนี้เหมาะกับการลองชุดมาก',pcRetake:'ถ่ายใหม่',pcFeet:'เท้าไม่อยู่ในภาพ ถอยห่างอีกนิดให้เห็นทั้งตัวตั้งแต่หัวจรดเท้า ไม่อย่างนั้นความยาวกางเกงและเดรสจะคลาดเคลื่อน',pcHead:'หัวไม่อยู่ในภาพ เว้นที่เหนือหัวอีกนิด',pcSmall:'ตัวเล็กเกินไปในภาพ เข้าใกล้อีกหน่อยให้ตัวเต็มความสูงของภาพ',pcSide:'ดูเหมือนยืนเอียงข้าง หันหน้าและไหล่ตรงเข้ากล้อง',pcTilt:'ภาพเอียง ถือโทรศัพท์ให้ตรง ระดับเอว',pcArmsUp:'ยกแขนอยู่ ปล่อยแขนลงข้างตัว ห่างตัวเล็กน้อย',pcArmsIn:'แขนบังตัว ปล่อยแขนไว้ข้างตัว ห่างตัวเล็กน้อย',pcDark:'ภาพมืด ถ่ายใกล้หน้าต่างหรือในที่สว่าง',pcBright:'ภาพสว่างเกินไป หลีกเลี่ยงแสงส่องตรง',pcBlur:'ภาพเบลอ ถือโทรศัพท์นิ่งๆ หรือให้คนอื่นถ่ายให้',pcBusy:'ฉากหลังรก ผนังเรียบๆ ช่วยแยกตัวออกจากฉากหลัง',fitTitle:'ใส่แล้วเป็นอย่างไร',fChest:'อก',fWaist:'เอว',fLen:'ความยาว',fSleeve:'แขนเสื้อ',fit0:'แน่นมาก',fit1:'พอดีตัว',fit2:'พอดี',fit3:'หลวมสบาย',fit4:'โอเวอร์ไซซ์',lt0:'ครอป เห็นหน้าท้อง',lt1:'ถึงเอว',lt2:'ถึงสะโพก',lt3:'คลุมก้น',lt4:'ยาวแบบโค้ท',ll0:'มินิ',ll1:'เหนือเข่า',ll2:'ระดับเข่า',ll3:'มิดี้ ใต้เข่า',ll4:'ถึงข้อเท้า',ll5:'ยาวถึงพื้น',cmpLong:'ยาวกว่า %s% ของ%cในภาพคนจริง',cmpShort:'สั้นกว่า %s% ของ%cในภาพคนจริง',cTop:'เสื้อ',cShirt:'เชิ้ต',cSweater:'สเวตเตอร์',cJacket:'แจ็กเก็ต',cDress:'เดรส',cPants:'กางเกง',cSkirt:'กระโปรง',zoomIn:'ซูมเข้า',zoomOut:'ซูมออก',zoomFit:'กลับขนาดเต็ม',s4:'ลองชุดสมจริง (AI)',aiNote:'สวมชุดใหม่ด้วย AI พร้อมรอยพับ แสง และมือจริง ใช้เวลาประมาณ 30 วินาทีต่อชิ้น',goAi:'ลองชุดสมจริง',backQuick:'กลับไปที่การสวมแบบทันที',aiOff:'การลองชุดสมจริงใช้ไม่ได้ในหน้านี้ การสวมแบบทันทียังใช้ได้',loadingModel:'กำลังโหลดการหาร่างกาย…',detecting:'กำลังหาร่างกายและสวมชุด…',detected:'สวมชุดแล้ว ลากชุดได้ ปล่อยแล้วจะกลับมาพอดีตัว',pickPiece:'เลือกชุดจากรายการ แล้วจะสวมให้ทันที',noPerson:'ไม่พบร่างกายชัดเจน ลากจุดไปที่ไหล่ ศอก เอว สะโพก และข้อเท้า',modelFail:'โหลดการหาร่างกายบนเครื่องนี้ไม่ได้ ลากจุดไปวางเอง',adjustHint:'ลากแต่ละจุดไปที่ไหล่ ศอก เอว สะโพก และข้อเท้า',go:'สวมบนตัวฉัน',save:'บันทึกรูป',before:'ก่อน',after:'หลัง',likesNote:'รายการนี้บันทึกในเบราว์เซอร์นี้ ทุกชิ้นมีลิงก์ไปซื้อที่ร้าน TikTok',likesEmpty:'ยังไม่มีชิ้นที่ถูกใจ แตะหัวใจที่สินค้าเพื่อบันทึกไว้ที่นี่',
-  remove:'ลบ',all:'ทั้งหมด',tops:'เสื้อ',outer:'แจ็กเก็ต',dresses:'เดรส',bottoms:'กางเกงและกระโปรง',items:'ชิ้น',demo:'ตัวอย่าง',
+  s3:'ปรับให้พอดี',photoTip:'ถ่ายด้านหน้า ยืนตรง เห็นเต็มตัว ความยาวและความกว้างคำนวณจากส่วนสูง รูปร่าง และขนาดของชุดโดยอัตโนมัติ',height:'ส่วนสูงของคุณ (ซม.)',recFor:'ไซซ์ที่เหมาะกับคุณ: %s (มีกรอบ) ชุดถูกสวมในไซซ์นี้',lenCm:'ความยาว ซม. (ไซซ์ M): จากไหล่ถึงชายเสื้อ หรือจากเอวลงไป',flat:'ความกว้างวางราบ ซม. (ไซซ์ M): รอบอก หรือเอวสำหรับกางเกงและกระโปรง',width:'ปรับความกว้าง',lengthAdj:'ปรับความยาว',points:'ปรับด้วยจุด',reset:'รีเซ็ต',dragTip:'ลากชุดได้ ถ้าล็อกกับตัว ชุดจะกลับที่เดิม ถ้าปลดล็อก ชุดจะอยู่ตรงที่วาง',locked:'ปลดล็อก',unlocked:'ล็อกกลับเข้าตัว',splitL:'ชุดจบตรงไหน (เมื่อถ่ายบนตัวคน)',cutPerson:'ถ่ายบนตัวคน: เก็บไว้เฉพาะชุด เลือกประเภทด้านล่างเพื่ออัปเดตการตัด',demoTag:'ตัวอย่าง',pk1:'ลองบนรูปของคุณ',pk1s:'ทุกชิ้น ทุกไซซ์',pk2:'แนะนำไซซ์',pk2s:'ตามรูปร่างของคุณ',pk3:'ซื้อใน TikTok',pk3s:'ชำระและจัดส่งปลอดภัย',pk4:'มีคำถาม? ทักเรา',pk4s:'ทาง WhatsApp หรือ LINE',byCat:'เลือกตามหมวด',sizeSub:'สัดส่วนร่างกาย (ซม.) ที่แต่ละไซซ์เหมาะ แต่ละชิ้นมีขนาดของตัวเองด้วย',sgTops:'เสื้อ แจ็กเก็ต และเดรส',sgBottoms:'กางเกงและกระโปรง',unsureH:'ไม่แน่ใจไซซ์?',unsureP:'ใส่รอบอก เอว สะโพก แล้วรับไซซ์ที่เหมาะกับคุณ',mChest:'รอบอก',mWaist:'รอบเอว',mHips:'รอบสะโพก',calcBtn:'ไซซ์ของฉันคือ?',calcRes:'เสื้อและเดรส: {t} · กางเกงและกระโปรง: {b}',calcNeed:'กรอกอย่างน้อยรอบอกหรือรอบเอว',fShop:'ร้าน',fHelp:'ช่วยเหลือ',adminIn:'เข้าสู่ระบบผู้ดูแล',colSize:'ไซซ์',colChest:'รอบอก',colLen:'ความยาว',colWaist:'รอบเอว',colHips:'รอบสะโพก',tryCard:'ลอง',aTabItems:'สินค้า',aTabAdd:'เพิ่มสินค้า',aTabShop:'ข้อมูลร้าน',pieces:'ชิ้น',askQ:'มีคำถามเกี่ยวกับชิ้นนี้? ทักเราได้',mixDone:'เสร็จแล้ว ส่วนบนด้วย AI ส่วนล่างด้วยการสวมทันที',instantDone:'เซิร์ฟเวอร์ AI ไม่ว่าง จึงใช้การสวมทันที',refining:'กำลังปรับความแม่นยำ…',pcTitle:'ตรวจรูปถ่าย',pcGood:'รูปนี้เหมาะกับการลองชุดมาก',pcRetake:'ถ่ายใหม่',pcFeet:'เท้าไม่อยู่ในภาพ ถอยห่างอีกนิดให้เห็นทั้งตัวตั้งแต่หัวจรดเท้า ไม่อย่างนั้นความยาวกางเกงและเดรสจะคลาดเคลื่อน',pcHead:'หัวไม่อยู่ในภาพ เว้นที่เหนือหัวอีกนิด',pcSmall:'ตัวเล็กเกินไปในภาพ เข้าใกล้อีกหน่อยให้ตัวเต็มความสูงของภาพ',pcSide:'ดูเหมือนยืนเอียงข้าง หันหน้าและไหล่ตรงเข้ากล้อง',pcTilt:'ภาพเอียง ถือโทรศัพท์ให้ตรง ระดับเอว',pcArmsUp:'ยกแขนอยู่ ปล่อยแขนลงข้างตัว ห่างตัวเล็กน้อย',pcArmsIn:'แขนบังตัว ปล่อยแขนไว้ข้างตัว ห่างตัวเล็กน้อย',pcDark:'ภาพมืด ถ่ายใกล้หน้าต่างหรือในที่สว่าง',pcBright:'ภาพสว่างเกินไป หลีกเลี่ยงแสงส่องตรง',pcBlur:'ภาพเบลอ ถือโทรศัพท์นิ่งๆ หรือให้คนอื่นถ่ายให้',pcBusy:'ฉากหลังรก ผนังเรียบๆ ช่วยแยกตัวออกจากฉากหลัง',fitTitle:'ใส่แล้วเป็นอย่างไร',fChest:'อก',fWaist:'เอว',fLen:'ความยาว',fSleeve:'แขนเสื้อ',fit0:'แน่นมาก',fit1:'พอดีตัว',fit2:'พอดี',fit3:'หลวมสบาย',fit4:'โอเวอร์ไซซ์',lt0:'ครอป เห็นหน้าท้อง',lt1:'ถึงเอว',lt2:'ถึงสะโพก',lt3:'คลุมก้น',lt4:'ยาวแบบโค้ท',ll0:'มินิ',ll1:'เหนือเข่า',ll2:'ระดับเข่า',ll3:'มิดี้ ใต้เข่า',ll4:'ถึงข้อเท้า',ll5:'ยาวถึงพื้น',cmpLong:'ยาวกว่า %s% ของ%cในภาพคนจริง',cmpShort:'สั้นกว่า %s% ของ%cในภาพคนจริง',cTop:'เสื้อ',cShirt:'เชิ้ต',cSweater:'สเวตเตอร์',cJacket:'แจ็กเก็ต',cDress:'เดรส',cPants:'กางเกง',cSkirt:'กระโปรง',zoomIn:'ซูมเข้า',zoomOut:'ซูมออก',zoomFit:'กลับขนาดเต็ม',s4:'ลองชุดสมจริง (AI)',aiNote:'สวมชุดใหม่ด้วย AI พร้อมรอยพับ แสง และมือจริง ใช้เวลาประมาณ 30 วินาทีต่อชิ้น',goAi:'ลองชุดสมจริง',backQuick:'กลับไปที่การสวมแบบทันที',aiOff:'การลองชุดสมจริงใช้ไม่ได้ในหน้านี้ การสวมแบบทันทียังใช้ได้',loadingModel:'กำลังโหลดการหาร่างกาย…',detecting:'กำลังหาร่างกายและสวมชุด…',detected:'สวมชุดแล้ว ลากชุดได้ ปล่อยแล้วจะกลับมาพอดีตัว',pickPiece:'เลือกชุดจากรายการ แล้วจะสวมให้ทันที',noPerson:'ไม่พบร่างกายชัดเจน ลากจุดไปที่ไหล่ ศอก เอว สะโพก และข้อเท้า',modelFail:'โหลดการหาร่างกายบนเครื่องนี้ไม่ได้ ลากจุดไปวางเอง',adjustHint:'ลากแต่ละจุดไปที่ไหล่ ศอก เอว สะโพก และข้อเท้า',go:'สวมบนตัวฉัน',save:'บันทึกรูป',before:'ก่อน',after:'หลัง',likesNote:'รายการนี้บันทึกในเบราว์เซอร์นี้ ทุกชิ้นมีลิงก์ไปซื้อที่ร้าน TikTok',likesEmpty:'ยังไม่มีชิ้นที่ถูกใจ แตะหัวใจที่สินค้าเพื่อบันทึกไว้ที่นี่',
+  remove:'ลบ',all:'ทั้งหมด',tops:'เสื้อ',outer:'แจ็กเก็ต',dresses:'เดรส',bottoms:'กางเกงและกระโปรง',pants:'กางเกง',skirts:'กระโปรง',sets:'เซ็ต',set:'เซ็ต',items:'ชิ้น',demo:'ตัวอย่าง',
   needConsent:'กรุณายินยอมการส่งรูปก่อนลองชุด',needPhoto:'อัปโหลดรูปก่อน หรือเลือกนางแบบตัวอย่าง',needPick:'เลือกอย่างน้อยหนึ่งชิ้น',
   dressing:'กำลังสวมชุด',step:'ขั้นที่',of:'จาก',usual:'ปกติใช้เวลา 20–40 วินาทีต่อชิ้น',done:'เสร็จแล้ว ลากเส้นเพื่อเทียบก่อนและหลัง',
   quota:'สิทธิ์ลองชุดฟรีของเครือข่ายนี้หมดชั่วคราว รอสักครู่ หรือเพิ่มคีย์ Hugging Face ฟรีด้านล่างเพื่อลองได้มากขึ้น',quotaTok:'โควตาของคีย์นี้หมดแล้วสำหรับวันนี้ ลองใหม่ภายหลัง',more:'ลองได้มากขึ้นต่อวัน (ไม่บังคับ)',moreT:'สมัคร Hugging Face ฟรี สร้างคีย์แบบ Read แล้ววางที่นี่ คีย์จะถูกเก็บในเบราว์เซอร์นี้เท่านั้น',tokSave:'บันทึก',tokSaved:'บันทึกคีย์แล้ว',tokBad:'คีย์ต้องขึ้นต้นด้วย hf_',queue:'คิว',sec:'วิ',netFail:'เชื่อมต่อเซิร์ฟเวอร์ลองชุดไม่ได้ ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่',failed:'ลองชุดไม่สำเร็จ ลองรูปอื่นที่ถ่ายด้านหน้า ยืนตรง แสงดี',
@@ -661,10 +662,11 @@ const TYPES={
  hoodie:{cat:'tops',vton:'tops',h:.47,sizes:['XS','S','M','L','XL'],dims:'top'},
  jacket:{cat:'outer',vton:'tops',h:.49,sizes:['XS','S','M','L','XL'],dims:'top'},
  dress:{cat:'dresses',vton:'one-pieces',h:.62,sizes:['XS','S','M','L'],dims:'top'},
- pants:{cat:'bottoms',vton:'bottoms',h:.60,sizes:['26','27','28','29','30','31','32'],dims:'bottom'},
- skirt:{cat:'bottoms',vton:'bottoms',h:.56,sizes:['XS','S','M','L'],dims:'bottom'},
+ pants:{cat:'pants',vton:'bottoms',h:.60,sizes:['26','27','28','29','30','31','32'],dims:'bottom'},
+ skirt:{cat:'skirts',vton:'bottoms',h:.56,sizes:['XS','S','M','L'],dims:'bottom'},
+ set:{cat:'sets',vton:'one-pieces',h:.6,sizes:['XS','S','M','L','XL'],dims:'top'},
 };
-const CATS=['all','tops','outer','dresses','bottoms'];
+const CATS=['all','tops','outer','dresses','pants','skirts','sets'];
 const DIMS={top:{XS:[84,58],S:[88,60],M:[94,62],L:[100,64],XL:[106,66]},bottom:{XS:[62,88,100],S:[66,92,101],M:[70,96,102],L:[76,102,103],XL:[82,108,104],'26':[66,90,102],'27':[68,92,102],'28':[71,95,103],'29':[73,97,103],'30':[76,100,104],'31':[78,102,104],'32':[81,105,105]}};
 const v=(c,he,th,front,back)=>({c,n:{he,th},front,back:back||null,model:null});
 const DEMO=[
@@ -705,20 +707,20 @@ function loadImg(url){if(!imgCache.has(url))imgCache.set(url,new Promise((res,re
 const cv=(w,h)=>{const c=document.createElement('canvas');c.width=Math.max(1,Math.round(w));c.height=Math.max(1,Math.round(h));return c};
 // where the clothespins grip: first opaque row at 30% / 70% of the garment width
 const gripCache=new Map();
-async function grips(url){
-  if(gripCache.has(url))return gripCache.get(url);
+async function grips(url,type){
+  const ck=url+'|'+(type||'');if(gripCache.has(ck))return gripCache.get(ck);
   const p=loadImg(url).then((im)=>{const W=320,H=Math.round(320*im.naturalHeight/im.naturalWidth),c=cv(W,H),x=c.getContext('2d');x.drawImage(im,0,0,W,H);const d=x.getImageData(0,0,W,H).data;
     let l=W,r=0;for(let y=0;y<H;y++)for(let xx=0;xx<W;xx++)if(d[(y*W+xx)*4+3]>140){if(xx<l)l=xx;if(xx>r)r=xx}
     const col=(u)=>{const xx=Math.round(l+(r-l)*u);for(let y=0;y<H;y++){for(let k=-2;k<=2;k++){const q=Math.min(W-1,Math.max(0,xx+k));if(d[(y*W+q)*4+3]>140)return y/H}}return 0};
     // pin where the garment really hangs from: the highest point on each side (the shoulders, the straps of a dress, the corners of a waistband)
     const top=(x)=>{for(let y=0;y<H;y++)if(d[(y*W+x)*4+3]>90)return y;return H};
     const hang=(a0,a1,pref)=>{let best=null;for(let u=a0;u<=a1;u+=.005){const x=Math.round(l+(r-l)*u),y=top(x);if(!best||y<best.y-1||(Math.abs(y-best.y)<=1&&Math.abs(u-pref)<Math.abs(best.u-pref)))best={u,y}}return best};
-    let L=hang(.06,.46,.28),R=hang(.54,.94,.72);
+    let L=type==='hoodie'?hang(.06,.3,.2):hang(.06,.46,.28),R=type==='hoodie'?hang(.7,.94,.8):hang(.54,.94,.72);
     // the two pins sit symmetrically about the garment's own middle, so it hangs straight and centred (a flat waistband: same height everywhere)
     const m=(L.u+R.u)/2;if(Math.abs(L.y-R.y)<=H*.012){const hw=Math.min(m-.04,.96-m,(R.u-L.u)/2);L={u:.5-hw,y:L.y};R={u:.5+hw,y:R.y}}
     const ix=(u)=>(l+(r-l)*u)/W;   // fractions of the whole picture, which is what the layout uses
     return {ar:im.naturalWidth/im.naturalHeight,u1:ix(L.u),u2:ix(R.u),y1:L.y/H,y2:R.y/H,bc:(l+r)/2/W}}).catch(()=>({ar:.7,u1:.28,u2:.72,y1:0,y2:0,bc:.5}));
-  gripCache.set(url,p);return p;
+  gripCache.set(ck,p);return p;
 }
 
 /* ====================== sky ====================== */
@@ -768,11 +770,11 @@ function slotX(s){const {W}=geom;const phone=W<700;const g=phone?W*.50:Math.min(
   const d=a<1?a*g:g+(a-1)*g*.78;return W/2+(isRtl()?-1:1)*sg*d}
 function buildLine(){
   line.innerHTML='';pegs=[];const list=vis();
-  list.forEach((it,i)=>{const b=document.createElement('button');b.type='button';b.className='peg';b.setAttribute('aria-label',txt(it.name));
+  list.forEach((it,i)=>{const b=document.createElement('button');b.type='button';b.className='peg';b.style.visibility='hidden';b.style.width=b.style.height='0px';b.setAttribute('aria-label',txt(it.name));
     const im=document.createElement('img');im.alt='';im.draggable=false;const url=it.variants[colorOf(it)].front;im.src=url;b.appendChild(im);
     const p1=document.createElement('i'),p2=document.createElement('i');p1.className=p2.className='pin';b.append(p1,p2);
     const peg={it,i,el:b,img:im,p1,p2,g:null,ang:0,angV:0,swing:0,swingV:0,phase:Math.random()*6.28};
-    grips(url).then((g)=>{peg.g=g});
+    grips(url,it.type).then((g)=>{peg.g=g});
     b.addEventListener('click',()=>{if(dragMoved>6)return;if(i===Math.round(posF)%list.length||nearest()===i)openDetail(it.id);else go(i)});
     b.addEventListener('pointerenter',(e)=>{peg.swingV+=(e.movementX||2)*.004*(isRtl()?-1:1)+.02});
     b.addEventListener('pointermove',(e)=>{peg.swingV+=Math.max(-.02,Math.min(.02,(e.movementX||0)*.0016))});
@@ -832,7 +834,7 @@ function stepLine(dt){
     p.el.style.transformOrigin=`50% ${(top+h*.018)/h*100}%`;
     p.el.style.transform=`translate3d(${cx-w/2}px,${y}px,0) rotate(${(tilt+p.swing)}rad)`;
     p.el.style.zIndex=String(100-Math.round(a*10));
-    p.el.style.opacity=a>2.7?'0':'1';p.el.style.visibility=a>3.2?'hidden':'visible';
+    p.el.style.opacity=a>2.7?'0':'1';p.el.style.visibility=a>3.2?'hidden':'visible';if(!p.shown){p.shown=true;p.el.animate&&!reduce&&p.el.animate([{opacity:0,translate:'0 -18px'},{opacity:1,translate:'0 0'}],{duration:520,easing:'cubic-bezier(.22,.8,.2,1)'})}
     p.el.style.filter=a>.6?`saturate(${1-Math.min(.25,a*.1)})`:'none';
     const ps=Math.max(.65,sc);
     for(const [pin,u,yy] of [[p.p1,g.u1,g.y1],[p.p2,g.u2,g.y2]]){pin.style.left=(u*100)+'%';pin.style.top=(yy*h-11*ps+h*.018)+'px';pin.style.transform=`scale(${ps})`}
@@ -908,7 +910,7 @@ function renderDetail(){
   $('pdColor').textContent=txt(vv.n);
   const sw=$('pdSw');sw.innerHTML='';
   it.variants.forEach((x,k)=>{const bt=document.createElement('button');bt.type='button';bt.style.background=x.c;bt.setAttribute('aria-label',txt(x.n));bt.title=txt(x.n);bt.setAttribute('aria-pressed',String(k===ci));
-    bt.addEventListener('click',()=>{S.ci[it.id]=k;renderDetail();renderGrid();const p=pegs.find((q)=>q.it.id===it.id);if(p){p.img.src=x.front;grips(x.front).then((g)=>{p.g=g})}});sw.appendChild(bt)});
+    bt.addEventListener('click',()=>{S.ci[it.id]=k;renderDetail();renderGrid();const p=pegs.find((q)=>q.it.id===it.id);if(p){p.img.src=x.front;grips(x.front,it.type).then((g)=>{p.g=g})}});sw.appendChild(bt)});
   sw.parentElement.hidden=false;
   const sz=$('pdSizes');sz.innerHTML='';sz.classList.remove('need');
   (it.sizes||[]).forEach((s)=>{const bt=document.createElement('button');bt.type='button';bt.textContent=s;bt.setAttribute('aria-pressed',String(S.size[it.id]===s));bt.addEventListener('click',()=>{S.size[it.id]=s;renderDetail()});sz.appendChild(bt)});
@@ -1113,7 +1115,7 @@ async function onModelShot(it,ci){
    The inside of the garment seen through the neckline (inner back, label) is cut away, so the body shows there. */
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const smooth=(a,b,x)=>{const k=clamp((x-a)/(b-a),0,1);return k*k*(3-2*k)};
-const FIT_TYPE={tee:'tee',shirt:'shirt',hoodie:'hoodie',jacket:'shirt',dress:'dress',pants:'jeans',skirt:'skirt'};
+const FIT_TYPE={tee:'tee',shirt:'shirt',hoodie:'hoodie',jacket:'shirt',dress:'dress',pants:'jeans',skirt:'skirt',set:'dress'};
 const SLEEVE_STYLE={tee:{long:false,reach:.55,vMax:.97},shirt:{long:true,vMax:.97},hoodie:{long:true,vMax:.97},dress:{long:false,reach:.3,vMax:.45}};
 const KP_KEYS=['neck','shL','shR','elL','elR','wrL','wrR','waL','waR','hiL','hiR','hjL','hjR','knL','knR','anL','anR'];
 const HANDLE_KEYS=KP_KEYS.filter((k)=>k!=='neck');
@@ -1394,12 +1396,12 @@ function makeMapper(spec,P,aspect){
    The person's scale (px per cm) comes from their height; the garment's real size from its flat width and length in cm, per size.
    The photo only gives the shape, so a stretched product photo still lands at the right length. A piece is never narrower than the body under it.
    Seen from the front, a garment that wraps the body shows about 80% of its flat width. */
-const SIZE_CM={tee:[46,62],shirt:[47,58],hoodie:[58,66],jacket:[52,66],dress:[36,118],pants:[37,104],skirt:[35,88]};
+const SIZE_CM={tee:[46,62],shirt:[47,58],hoodie:[58,66],jacket:[52,66],dress:[36,118],pants:[37,104],skirt:[35,88],set:[38,90]};
 const LEN_K={XS:.97,S:.985,M:1,L:1.015,XL:1.03,XXL:1.045};
 const garmentCm=(it)=>{const d=SIZE_CM[it.type]||[46,62],sz=S.size[it.id]||'M';return [(+it.flat||d[0])*sizeOf(it),(+it.len||d[1])*(LEN_K[sz]||1)]};
 const VIS=.8;
 // average body, half-circumference in cm for a size M: chest, waist; the garment's flat width over it is its ease
-const BODY_REF={tee:44,shirt:44,hoodie:44,jacket:44,dress:35,pants:35,skirt:35};
+const BODY_REF={tee:44,shirt:44,hoodie:44,jacket:44,dress:35,pants:35,skirt:35,set:36};
 const easeOf=(it,max)=>clamp(garmentCm(it)[0]/(BODY_REF[it.type]||44)-1,.02,max)*Q.w+(Q.w-1);
 function bodyScale(P){const shY=(P.shL[1]+P.shR[1])/2,anY=(P.anL[1]+P.anR[1])/2,hiY=(P.hiL[1]+P.hiR[1])/2,shW=Math.hypot(P.shR[0]-P.shL[0],P.shR[1]-P.shL[1]);
   const hCm=clamp(+Q.height||163,130,200);
@@ -1838,7 +1840,7 @@ function recSize(it){
    Each garment's box was matched to the body joints found by RTMW. Tops: 0 = shoulders, 1 = hip joints. Bottoms and dresses: 0 = hip joints, 1 = ankles. Sleeves: 0 = shoulder, 1 = wrist.
    Values: 10th, 25th, 50th, 75th and 90th percentile, and the number of garments measured. */
 const CAL={"top":[0.512,0.664,0.872,1.031,1.146,397],"shirt":[0.335,0.685,0.96,1.103,1.185,88],"sweater":[0.769,0.84,1.008,1.182,1.248,19],"jacket":[0.891,0.996,1.091,1.156,1.252,153],"coat":[1.207,1.371,1.583,1.827,2.155,86],"dress":[0.38,0.751,1.087,1.206,1.273,149],"pants":[0.963,1.033,1.084,1.141,1.212,230],"skirt":[0.72,0.749,0.984,1.149,1.24,39],"sleeve":[0.309,0.624,1.016,1.105,1.174,1026],"knee":[0.493,0.508,0.526,0.545,0.572,1397]};
-const CAL_OF={tee:['top','cTop'],shirt:['shirt','cShirt'],hoodie:['sweater','cSweater'],jacket:['jacket','cJacket'],dress:['dress','cDress'],pants:['pants','cPants'],skirt:['skirt','cSkirt']};
+const CAL_OF={tee:['top','cTop'],shirt:['shirt','cShirt'],hoodie:['sweater','cSweater'],jacket:['jacket','cJacket'],dress:['dress','cDress'],pants:['pants','cPants'],skirt:['skirt','cSkirt'],set:['dress','cDress']};
 const pctOf=(q,v)=>{const xs=[q[0],q[1],q[2],q[3],q[4]],ps=[10,25,50,75,90];if(v<=xs[0])return Math.max(2,10*v/xs[0]);if(v>=xs[4])return Math.min(98,90+8*(v-xs[4])/((xs[4]-xs[3])||.1));for(let i=0;i<4;i++)if(v<=xs[i+1])return ps[i]+(ps[i+1]-ps[i])*(v-xs[i])/((xs[i+1]-xs[i])||1);return 50};
 // how the chosen size sits on this body: room at chest or waist, and where the hem lands
 function fitReport(it){
@@ -1963,6 +1965,30 @@ function floodCut(src){
   const m=cv(W,H),mx=m.getContext('2d'),mi=mx.createImageData(W,H);for(let i=0;i<W*H;i++)mi.data[i*4+3]=seen[i]?0:255;mx.putImageData(mi,0,0);
   const sm=cv(W,H),sx=sm.getContext('2d');sx.filter='blur(1px)';sx.drawImage(m,0,0);const md=sx.getImageData(0,0,W,H).data;for(let i=0;i<W*H;i++)d[i*4+3]=md[i*4+3];
   const o=cv(W,H);o.getContext('2d').putImageData(im,0,0);return o}
+/* A garment photographed on a person: the background remover keeps the whole person. The body-parts map finds the clothes
+   (not skin, hair or face), and the garment is split from the rest of the outfit where the colour changes between top and bottom. */
+async function withPerson(r){
+  try{const W=r.src.width,H=r.src.height,pr=await bodyParts(r.src),cat=partsAt(pr,W,H);let face=0,clo=0;for(let i=0;i<W*H;i+=3){if(cat[i]===3)face++;else if(cat[i]===4)clo++}
+    if(face<W*H*.0004||clo<W*H*.004)return r;   // no person in the photo: the cutout is the garment
+    let hip=null;try{const pts=await rtmwPoints(r.src,[0,0,W,H]);if(pts[5][2]>.3&&pts[6][2]>.3){const sh=(pts[5][1]+pts[6][1])/2,sw=Math.abs(pts[5][0]-pts[6][0]),est=sh+sw*1.2;let y=(pts[11][1]+pts[12][1])/2;
+      // a cropped photo (no legs) makes the hip guess wander: keep it near the usual torso length
+      if(!(pts[11][2]>.45&&pts[12][2]>.45)||Math.abs(y-est)>sw*.45)y=est;hip={y,sh}}}catch{}
+    r.person={cat,W,H,hip};return {...r,canvas:isolateGarment(r,A.type)||r.canvas}}catch(e){console.warn('person check',e);return r}}
+function isolateGarment(r,type,adj){const P=r.person;if(!P)return null;const {cat,W,H}=P,N=W*H,src=r.src.getContext('2d',{willReadFrequently:true}).getImageData(0,0,W,H).data,full=r.full.getContext('2d',{willReadFrequently:true}).getImageData(0,0,W,H).data;
+  const vt=type&&TYPES[type]?TYPES[type].vton:null;let y0=0,y1=H;
+  if(vt==='tops'||vt==='bottoms'){let ys=[];for(let y=0;y<H;y++){let n=0;for(let x=0;x<W;x+=2)if(cat[y*W+x]===4)n++;if(n)ys.push(y)}const top=ys[0]||0,bot=ys[ys.length-1]||H;
+    const sh=P.hip?P.hip.sh:top,hp=P.hip?P.hip.y:top+(bot-top)*.42,T=Math.max(10,hp-sh);
+    // where the colour changes most between the rows just above and just below: the line between top and bottom
+    const rowCol=(y)=>{let r0=0,g0=0,b0=0,n=0;for(let x=0;x<W;x+=2){const i=y*W+x;if(cat[i]!==4)continue;r0+=src[i*4];g0+=src[i*4+1];b0+=src[i*4+2];n++}return n>4?[r0/n,g0/n,b0/n]:null};
+    const band=Math.max(4,Math.round(T*.06));let best=hp,bs=0;for(let y=Math.round(sh+T*.35);y<Math.min(H-band,Math.round(hp+T*.5));y++){let a=[0,0,0],b=[0,0,0],na=0,nb=0;
+      for(let k=1;k<=band;k++){const c1=rowCol(y-k),c2=rowCol(y+k);if(c1){a=a.map((v,q)=>v+c1[q]);na++}if(c2){b=b.map((v,q)=>v+c2[q]);nb++}}if(!na||!nb)continue;
+      // plus a hem: a horizontal edge running across the clothes (same colour top and bottom still have one)
+      const d=Math.hypot(...a.map((v,q)=>v/na-b[q]/nb));if(d>bs){bs=d;best=y}}
+    let split=bs>28?best:hp;P.split=split;P.T=T;if(adj)split+=adj*T;if(vt==='tops')y1=split+Math.round(T*.02);else y0=split-Math.round(T*.02)}
+  const o=cv(W,H),ox=o.getContext('2d'),id=ox.createImageData(W,H),d=id.data;let n=0;
+  for(let y=y0;y<y1;y++)for(let x=0;x<W;x++){const i=y*W+x;if(cat[i]!==4||full[i*4+3]<40)continue;const p=i*4;d[p]=src[p];d[p+1]=src[p+1];d[p+2]=src[p+2];d[p+3]=full[p+3];n++}
+  if(n<N*.003)return null;ox.putImageData(id,0,0);
+  const sm=cv(W,H),sx=sm.getContext('2d');sx.filter='blur(.6px)';sx.drawImage(o,0,0);const tr=trim(sm);return tr?defringe(tr):null}
 /* holes the cutter missed: background left between the legs, inside a strap or under an arm.
    Islands of the photo's own background colour, smooth, not too big, and unlike the garment itself */
 function cutHoles(orig,cut){
@@ -1996,8 +2022,8 @@ async function cutout(file,onMsg){
   if(alphaShare(c)>.02){const tr=trim(c);return {canvas:defringe(tr),how:'png'}}
   onMsg&&onMsg(t('cutting'));
   try{const out=await gradio(RMBG,'run',[],[[await toBlob(c,'image/jpeg',.95),'garment.jpg']]);const u=fileUrl(RMBG,out[1]||out[0]);const png=await (await fetch(u)).blob();
-    const bm2=await createImageBitmap(png);const c2=cv(c.width,c.height);c2.getContext('2d').drawImage(bm2,0,0,c.width,c.height);try{cutHoles(c,c2)}catch(e){console.warn(e)}const tr=trim(c2);if(tr)return {canvas:defringe(tr),how:'ml'}}catch(e){console.warn('rmbg',e)}
-  const f=floodCut(c);if(!f)throw err('cut');try{cutHoles(c,f)}catch(e){console.warn(e)}const tr=trim(f);if(!tr)throw err('cut');return {canvas:defringe(tr),how:'flood'}}
+    const bm2=await createImageBitmap(png);const c2=cv(c.width,c.height);c2.getContext('2d').drawImage(bm2,0,0,c.width,c.height);try{cutHoles(c,c2)}catch(e){console.warn(e)}const tr=trim(c2);if(tr)return withPerson({canvas:defringe(tr),how:'ml',full:c2,src:c})}catch(e){console.warn('rmbg',e)}
+  const f=floodCut(c);if(!f)throw err('cut');try{cutHoles(c,f)}catch(e){console.warn(e)}const tr=trim(f);if(!tr)throw err('cut');return withPerson({canvas:defringe(tr),how:'flood',full:f,src:c})}
 // plain back: the front's own outline, mirrored, with prints, buttons and pockets smoothed away; soft folds and the fabric grain are kept
 function plainBack(im,color){
   const W0=im.naturalWidth||im.width,H0=im.naturalHeight||im.height,s=Math.min(1,900/Math.max(W0,H0)),W=Math.round(W0*s),H=Math.round(H0*s);
@@ -2039,7 +2065,7 @@ function renderAdmin(){
   $('aShopName').value=S.shop.name||'';$('aShopLink').value=S.shop.tiktok||'';$('aWa').value=S.shop.wa||'';$('aLine').value=S.shop.line||'';
   if(document.activeElement!==$('aFaqHe'))$('aFaqHe').value=faqText((S.shop.faq&&S.shop.faq.he&&S.shop.faq.he.length?S.shop.faq.he:FAQ_DEF.he));if(document.activeElement!==$('aFaqTh'))$('aFaqTh').value=faqText((S.shop.faq&&S.shop.faq.th&&S.shop.faq.th.length?S.shop.faq.th:FAQ_DEF.th));$('aHideDemo').checked=!!S.shop.hideDemo;
   const ty=$('aTypes');ty.innerHTML='';Object.keys(TYPES).forEach((k)=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t(k);b.setAttribute('aria-pressed',String(A.type===k));
-    b.addEventListener('click',()=>{if(A.type!==k){A.type=k;A.sizes=[...TYPES[k].sizes]}renderAdmin()});ty.appendChild(b)});
+    b.addEventListener('click',()=>{if(A.type!==k){A.type=k;A.sizes=[...TYPES[k].sizes];if(A.frontRaw&&A.frontRaw.person){const g=isolateGarment(A.frontRaw,k,+$('aSplit').value);if(g){A.front=g;A.avg=avgColor(g);$('prevF').src=g.toDataURL('image/png');A.inside=[];drawMark()}}}renderAdmin()});ty.appendChild(b)});
   const sz=$('aSizes');sz.innerHTML='';const all=A.type?[...new Set([...TYPES[A.type].sizes,'XXL','One size'])]:[];
   all.forEach((s)=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=s;b.setAttribute('aria-pressed',String(A.sizes.includes(s)));
     b.addEventListener('click',()=>{A.sizes=A.sizes.includes(s)?A.sizes.filter((x)=>x!==s):[...A.sizes,s];renderAdmin()});sz.appendChild(b)});
@@ -2059,7 +2085,7 @@ function renderAdmin(){
     const del=d.querySelector('.d');del.textContent=A.armed===it.id?t('sure'):t('del');del.addEventListener('click',async()=>{if(A.armed!==it.id){A.armed=it.id;renderAdmin();return}A.armed=null;try{await S.db.collection('items').doc(it.id).delete();toast(t('deleted'))}catch{toast(t('saveFail'))}});
     list.appendChild(d)});
 }
-function resetForm(){A.inside=[];$('markBox').hidden=true;A.front=A.back=null;A.backAuto=true;A.type=null;A.sizes=[];A.vars=[];A.edit=null;for(const f of ['aName','aPrice','aColor','aLink','aDesc','aFlat','aLen'])$(f).value='';
+function resetForm(){A.inside=[];A.frontRaw=null;$('splitBox').hidden=true;$('markBox').hidden=true;A.front=A.back=null;A.backAuto=true;A.type=null;A.sizes=[];A.vars=[];A.edit=null;for(const f of ['aName','aPrice','aColor','aLink','aDesc','aFlat','aLen'])$(f).value='';
   $('prevF').hidden=$('prevB').hidden=$('stF').hidden=$('stB').hidden=true;$('dropFT').hidden=$('dropBT').hidden=false}
 function startEdit(it){resetForm();A.edit=it.id;A.type=it.type;A.sizes=[...(it.sizes||[])];A.vars=it.variants.map((x)=>({...x}));$('aName').value=txt(it.name);$('aPrice').value=it.price||'';$('aLink').value=it.tiktok||'';$('aDesc').value=txt(it.desc);$('aFlat').value=it.flat||'';$('aLen').value=it.len||'';renderAdmin();adminTab('add')}
 $('aCancel').addEventListener('click',()=>{resetForm();renderAdmin();adminTab('items')});
@@ -2067,11 +2093,12 @@ $('aNew').addEventListener('click',()=>{resetForm();renderAdmin();adminTab('add'
 async function onPhoto(which,file){
   if(!file)return;const st=which==='front'?$('stF'):$('stB'),pv=which==='front'?$('prevF'):$('prevB'),tx=which==='front'?$('dropFT'):$('dropBT');
   A.busy=true;renderAdmin();st.hidden=false;st.textContent=t('cutting');
-  try{const r=await cutout(file,(m)=>{st.textContent=m});A[which]=r.canvas;if(which==='front'){A.avg=avgColor(r.canvas);if(!A.back)$('dropBT').textContent=t('autoBack')}else A.backAuto=false;
+  try{const r=await cutout(file,(m)=>{st.textContent=m});A[which]=r.canvas;if(which==='front'){A.frontRaw=r;$('aSplit').value=0;$('splitBox').hidden=!r.person}if(which==='front'){A.avg=avgColor(r.canvas);if(!A.back)$('dropBT').textContent=t('autoBack')}else A.backAuto=false;
     if(which==='front'){A.inside=[];$('markBox').hidden=false;drawMark()}
-    pv.src=r.canvas.toDataURL('image/png');pv.hidden=false;tx.hidden=true;st.textContent=r.how==='flood'?t('cutLocal'):t('cutDone')}
+    pv.src=r.canvas.toDataURL('image/png');pv.hidden=false;tx.hidden=true;st.textContent=r.person?t('cutPerson'):r.how==='flood'?t('cutLocal'):t('cutDone')}
   catch(e){console.warn(e);st.textContent=t('cutFail')}
   finally{A.busy=false;renderAdmin()}}
+$('aSplit').addEventListener('input',()=>{const r=A.frontRaw;if(!r||!r.person||!A.type)return;const g=isolateGarment(r,A.type,+$('aSplit').value);if(g){A.front=g;A.avg=avgColor(g);$('prevF').src=g.toDataURL('image/png');A.inside=[];drawMark()}});
 $('aFront').addEventListener('change',(e)=>{onPhoto('front',e.target.files[0]);e.target.value=''});
 $('aBack').addEventListener('change',(e)=>{onPhoto('back',e.target.files[0]);e.target.value=''});
 for(const id of ['dropF','dropB']){const el=$(id);el.addEventListener('dragover',(e)=>e.preventDefault());el.addEventListener('drop',(e)=>{e.preventDefault();onPhoto(id==='dropF'?'front':'back',e.dataTransfer.files[0])})}
@@ -2151,6 +2178,6 @@ applyLang();layoutRope();
     db.doc('settings/shop').onSnapshot((d)=>{if(d.exists){S.shop={...S.shop,...d.data()};rebuild()}},(e)=>console.warn('shop',e));
   }
 })();
-window.__kolav={INP,photoCheck,fitReport,cutHoles,S,F,Q,recSize,byId,refreshPieces,renderFit,setPerson,adjustedP,dress,cutout,plainBack,defringe,floodCut,loadImg,go,openDetail,openFit,gradio,makeMapper,placeSpec,KP_KEYS};
+window.__kolav={isolateGarment,INP,photoCheck,fitReport,cutHoles,S,F,Q,recSize,byId,refreshPieces,renderFit,setPerson,adjustedP,dress,cutout,plainBack,defringe,floodCut,loadImg,go,openDetail,openFit,gradio,makeMapper,placeSpec,KP_KEYS};
 </script>
 </body></html>
