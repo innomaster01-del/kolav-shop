@@ -89,8 +89,11 @@ html[lang="th"] .brand .tl{letter-spacing:.06em}
 .now{display:flex;align-items:baseline;gap:14px;min-width:0}
 .now .num{font-family:var(--f-display);font-weight:500;font-size:3rem;line-height:.9;font-variant-numeric:tabular-nums}
 .now .meta{min-width:0;line-height:1.25}
-.now .meta b{display:block;font-size:1.05rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.now .meta span{font-size:.9rem;opacity:.8;font-variant-numeric:tabular-nums}
+.now .meta b{display:block;font:600 clamp(1.15rem,1.9vw,1.55rem)/1.15 var(--f-display);letter-spacing:-.015em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(46vw,420px)}
+.now .meta .pr{display:flex;align-items:center;gap:8px;margin-top:3px;font-weight:600}.now .meta .pr .tg-new,.now .meta .pr .tg-sold{margin:0}
+.now .meta small{display:block;margin-top:4px;font-size:.8rem;opacity:.7}
+.now .meta b,.now .meta .pr{transition:opacity .35s var(--ease),transform .35s var(--ease)}.now.swap .meta b,.now.swap .meta .pr{opacity:0;transform:translateY(6px)}
+.now .meta span{font-size:.9rem;font-variant-numeric:tabular-nums}
 .dots{display:flex;gap:7px;justify-content:center;padding-bottom:10px;flex-wrap:wrap;max-width:50vw}
 .dots button{width:7px;height:7px;border-radius:50%;border:0;padding:0;background:currentColor;opacity:.3;cursor:pointer;position:relative}
 .dots button::after{content:"";position:absolute;inset:-9px}
@@ -286,7 +289,7 @@ html[lang="th"] .fit-head h2{font-family:var(--f-thai-d);font-size:1.3rem}
 .qf-fit .chip.t0,.qf-fit .chip.t4{background:color-mix(in srgb,#d23a55 13%,transparent)}.qf-fit .chip.t2{background:color-mix(in srgb,#2f9e6a 15%,transparent)}.qf-fit small{font-size:12px;opacity:.7;display:block}
 .qf-scan{position:absolute;z-index:3;pointer-events:none;overflow:hidden;border-radius:16px}
 .qf-scan .gr{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px);background-size:22px 22px;mix-blend-mode:overlay}
-.qf-scan .ln{position:absolute;left:0;right:0;height:90px;top:-90px;background:linear-gradient(180deg,transparent,rgba(120,200,255,.0) 20%,rgba(120,200,255,.35) 85%,rgba(200,240,255,.95) 98%,transparent);box-shadow:0 2px 14px rgba(120,200,255,.8);animation:scanY 2.1s cubic-bezier(.45,.05,.55,.95) infinite}
+.qf-scan .ln{position:absolute;left:0;right:0;height:90px;top:-90px;background:linear-gradient(180deg,transparent,rgba(165,130,245,0) 20%,rgba(165,130,245,.35) 85%,rgba(236,190,240,.95) 98%,transparent);box-shadow:0 2px 16px rgba(190,140,240,.85);animation:scanY 2.1s cubic-bezier(.45,.05,.55,.95) infinite}
 @keyframes scanY{0%{transform:translateY(0)}100%{transform:translateY(calc(var(--h,600px) + 90px))}}
 @media (prefers-reduced-motion:reduce){.qf-scan .ln{animation:none;top:0;height:100%;opacity:.25}}
 .qf-refine{position:absolute;top:12px;inset-inline-start:12px;z-index:4;font-size:12px;padding:5px 10px;border-radius:999px;background:color-mix(in srgb,var(--card) 86%,transparent);backdrop-filter:blur(8px);pointer-events:none}
@@ -496,6 +499,10 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
   .hero .line{animation:fs-heroout linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
   @keyframes fs-heroout{to{opacity:.15;transform:translateY(-8%) scale(.97)}}}}
 @media(max-width:700px){.tools a.ico[href="#info"]{display:none}.tools .ico{width:36px;height:36px;border-radius:11px}.tools .ico.txt{width:auto;padding:0 9px}.tools{gap:6px}.tools .fcta .go{width:32px;height:32px}}
+.qf-scan.ai-run::after{content:"";position:absolute;inset:0;background:radial-gradient(40% 30% at var(--sx,30%) var(--sy,30%),rgba(236,190,240,.28),transparent 70%);animation:fs-spark 3.2s ease-in-out infinite alternate}
+@keyframes fs-spark{0%{--sx:25%;--sy:20%}50%{--sx:70%;--sy:45%}100%{--sx:35%;--sy:80%}}
+@property --sx{syntax:"<percentage>";inherits:false;initial-value:30%}@property --sy{syntax:"<percentage>";inherits:false;initial-value:30%}
+.busy .bar i{background:var(--brand-grad)!important}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="fsG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5b3fd0"/><stop offset=".55" stop-color="#8a62e8"/><stop offset="1" stop-color="#cf77d8"/></linearGradient><linearGradient id="fsW" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6c4ee0"/><stop offset="1" stop-color="#c26ad6"/></linearGradient></defs></svg>
@@ -514,10 +521,10 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
     </div>
   </div>
   <div class="line" id="line"></div>
-  <div class="label" id="label"><b id="labelName"></b><span id="labelPrice"></span><span id="labelTag"></span></div>
+  <div class="label" id="label" hidden></div>
   <div class="hint" id="hint" data-t="hint">Drag the line · tap a garment to open it</div>
   <div class="hero-foot gut">
-    <div class="now"><span class="num" id="num">01</span><div class="meta"><b id="curCat"></b><span id="count"></span></div></div>
+    <div class="now"><span class="num" id="num">01</span><div class="meta"><b id="labelName"></b><span class="pr"><span id="labelPrice"></span><span id="labelTag"></span></span><small><span id="curCat"></span> · <span id="count"></span></small></div></div>
     <div class="dots" id="dots"></div>
     <div class="arrows"><button class="round flipx" id="prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button><button class="round flipx" id="next" type="button" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button></div>
   </div>
@@ -927,7 +934,7 @@ S.target=0;
 function updateFoot(){const list=vis(),n=list.length,cur=list[S.pos];
   $('num').textContent=pad(n?S.pos+1:0);$('count').textContent=n?`${pad(n)} ${t(n===1?'piece':'items')}`:'';
   $('curCat').textContent=t(S.cat);
-  $('labelName').textContent=cur?txt(cur.name):'';$('labelPrice').textContent=cur?fmt(cur.price):'';tagsInto($('labelTag'),cur);
+  {const nm=cur?txt(cur.name):'',el=$('labelName'),nw=$('labelName').closest('.now');const put=()=>{el.textContent=nm;$('labelPrice').textContent=cur?fmt(cur.price):'';tagsInto($('labelTag'),cur);nw.classList.remove('swap')};if(el.textContent&&el.textContent!==nm&&!reduce){nw.classList.add('swap');clearTimeout(nw._t);nw._t=setTimeout(put,180)}else put()}
   $('dots').querySelectorAll('button').forEach((d,i)=>d.setAttribute('aria-current',String(i===S.pos)));
   pegs.forEach((p)=>{p.el.tabIndex=p.i===S.pos?0:-1});
 }
@@ -974,7 +981,7 @@ function stepLine(dt){
     const mx=(gx1+gx2)/2;for(const [pin,u] of [[p.p1,g.u1],[p.p2,g.u2]]){const gx=cx-w/2+w*u,dy=(ropeY(gx)-ry-(gx-mx)*Math.tan(tilt))*Math.cos(tilt);pin.style.left=(u*100)+'%';pin.style.top=(top+fold+dy-23*ps)+'px';pin.style.transform=`skewX(${-sk}rad) scale(${ps})`}
   }
   // label under the centre piece
-  const cur=pegs[S.pos];if(cur&&cur.g){const h=H*TYPES[cur.it.type].h*(phone?.9:1);$('label').style.top=Math.min(H-(phone?150:120),ropeY(geom.W/2)+h+14)+'px'}
+  const cur=pegs[S.pos];
 }
 let dragMoved=0;
 hero.addEventListener('pointerdown',(e)=>{if(e.button||e.target.closest('.top,.hero-foot'))return;drag={x:e.clientX,p:posF,lx:e.clientX,lt:performance.now(),v:0};dragMoved=0});
@@ -1357,7 +1364,9 @@ function loadOrt(){if(!ortP)ortP=(async()=>{
   o.env.wasm.wasmBinary=await cachedBytes('models/ort.wasm');o.env.logLevel='error';return o})();
   ortP.catch(()=>{ortP=null});return ortP}
 const ONNX_PARTS={rtmw:5,depth:2,migan:2};
-async function cachedBytes(path){const u=new URL(path,location.href).href;let c=null;try{c=await caches.open('kolav-models-v1');const hit=await c.match(u);if(hit)return new Uint8Array(await hit.arrayBuffer())}catch{}
+const bytesInFlight=new Map();
+function cachedBytes(path){const u=new URL(path,location.href).href;if(!bytesInFlight.has(u)){const p=cachedBytes0(u);bytesInFlight.set(u,p);p.then(()=>bytesInFlight.delete(u),()=>bytesInFlight.delete(u))}return bytesInFlight.get(u)}
+async function cachedBytes0(u){let c=null;try{c=await caches.open('kolav-models-v1');const hit=await c.match(u);if(hit)return new Uint8Array(await hit.arrayBuffer())}catch{}
   const r=await fetch(u);if(!r.ok)throw err('net');const b=await r.arrayBuffer();try{c&&await c.put(u,new Response(b.slice(0),{headers:{'Content-Type':'application/octet-stream'}}))}catch{}return new Uint8Array(b)}
 function onnxSession(name){if(!onnxS[name])onnxS[name]=(async()=>{const o=await loadOrt();
   const parts=await Promise.all([...Array(ONNX_PARTS[name]).keys()].map((i)=>cachedBytes(`models/${name}-${i}.wasm`)));
@@ -1422,7 +1431,11 @@ const lowEnd=()=>{try{return (navigator.deviceMemory&&navigator.deviceMemory<=4)
 function setStatus2(k){const el=$('qfRefine');if(!el)return;el.hidden=!k;if(k)el.textContent=t(k)}
 /* second pass, in the background: whole-body points (hands, feet) and the body-parts map. The garment is already on; it just sits more precisely when these arrive. */
 // on a phone using mobile data, the big whole-body model (~73 MB) loads only when a long-sleeved piece needs the hands, and the depth shading is skipped
-const lightNet=()=>{try{const c=navigator.connection;if(c&&(c.saveData||/2g|3g/.test(c.effectiveType||'')))return true;if(c&&c.type==='wifi'||c&&c.type==='ethernet')return false;if(c&&c.type==='cellular')return true;return matchMedia('(pointer:coarse)').matches}catch{return false}};
+// only when the visitor has turned on data saver (or is on a very slow 2G line) do the big models wait until they are really needed
+const lightNet=()=>{try{const c=navigator.connection;return !!(c&&(c.saveData||/2g/.test(c.effectiveType||'')))}catch{return false}};
+// the models download in the background, in the order they are used, from the moment the visitor taps "Upload photo" (while she is still picking a photo)
+let prefetchP=null;function prefetchModels(){if(prefetchP||lightNet())return;prefetchP=(async()=>{try{await loadHuman()}catch{}try{await loadParts()}catch{}
+  for(const n of ['rtmw','depth']){if(n==='depth'&&lowEnd())break;try{await Promise.all([...Array(ONNX_PARTS[n]).keys()].map((i)=>cachedBytes(`models/${n}-${i}.wasm`)))}catch{}}})()}
 const SLEEVES=new Set(['shirt','hoodie','jacket']);
 async function rtmwRefine(det,src,out){try{const whole=await rtmwPoints(src,det.box);const bodyC=whole.slice(0,17).reduce((a,p)=>a+p[2],0)/17;
     if(bodyC>.35){const kp={};COCO.forEach((n,i)=>{const p=whole[i];kp[n]={x:p[0],y:p[1],s:Math.min(1,p[2])}});out.kp=kp;
@@ -1880,7 +1893,7 @@ const Q={height:+(store.get('kolav-height',163))||163,base:null,src:null,kp:null
 const F={src:null,picks:[],result:null,busy:false};
 const qf=$('qf'),qctx=qf.getContext('2d');
 function scanOn(on){const sc=$('qfScan');if(!sc)return;sc.hidden=!on;if(on){const r=qf.getBoundingClientRect(),p=$('fitStage').getBoundingClientRect();Object.assign(sc.style,{left:(r.left-p.left)+'px',top:(r.top-p.top)+'px',width:r.width+'px',height:r.height+'px'});sc.style.setProperty('--h',r.height+'px')}}
-let stT=0;function setStatus(key){Q.status=key;scanOn(key==='loadingModel'||key==='detecting');$('qfStatus').hidden=!key;if(key)$('qfStatusT').textContent=t(key);clearTimeout(stT);if(key==='detected')stT=setTimeout(()=>{if(Q.status==='detected')$('qfStatus').hidden=true},4500)}
+let stT=0;function setStatus(key){Q.status=key;scanOn(key==='loadingModel'||key==='detecting'||F.busy);$('qfStatus').hidden=!key;if(key)$('qfStatusT').textContent=t(key);clearTimeout(stT);if(key==='detected')stT=setTimeout(()=>{if(Q.status==='detected')$('qfStatus').hidden=true},4500)}
 // the garment picture with the inside of the neckline cut away (inner back, label)
 async function garmentImg(it,ci){
   const vv=it.variants[ci],key=vv.front+'|'+JSON.stringify(vv.inside||it.inside||null);if(Q.imgs.has(key))return Q.imgs.get(key);
@@ -2005,7 +2018,7 @@ async function setPerson(src){
     renderFit()}
   catch(e){console.warn(e);Q.busy=false;setStatus('badFile')}}
 function defaultKp(){const P={neck:[.5,.16],shL:[.36,.2],shR:[.64,.2],elL:[.33,.36],elR:[.67,.36],wrL:[.32,.5],wrR:[.68,.5],waL:[.4,.42],waR:[.6,.42],hiL:[.38,.52],hiR:[.62,.52],hjL:[.43,.53],hjR:[.57,.53],knL:[.44,.72],knR:[.56,.72],anL:[.45,.93],anR:[.55,.93]};return P}
-function openFit(ids){track('fit',{once:true});if(ids)F.picks=ids.slice();$('fit').hidden=false;document.body.style.overflow='hidden';
+function openFit(ids){track('fit',{once:true});setTimeout(()=>{try{loadHuman()}catch{}},1500);if(ids)F.picks=ids.slice();$('fit').hidden=false;document.body.style.overflow='hidden';
   $('consent').checked=store.get('kolav-consent',false);try{$('tokIn').value=localStorage.getItem('kolav-hf')||''}catch{}
   renderPicks();renderQfSizes();if(!Q.base)setPerson(F.src);else{renderFit()}refreshPieces();aiCheck();$('fitClose').focus()}
 function closeFit(){if(F.busy)return;$('fit').hidden=true;if($('pd').hidden)document.body.style.overflow=''}
@@ -2118,7 +2131,7 @@ $('goFit').addEventListener('click',async()=>{track('ai');
   if(F.src&&!$('consent').checked){er.textContent=t('needConsent');er.hidden=false;return}
   if(!F.picks.length){er.textContent=t('needPick');er.hidden=false;return}
   const pieces=F.picks.map((id)=>{const it=byId(id);return {url:it.variants[colorOf(it)].front,type:it.type}});
-  F.busy=true;$('goFit').disabled=true;$('busy').hidden=false;
+  F.busy=true;$('goFit').disabled=true;$('busy').hidden=false;scanOn(true);$('qfScan').classList.add('ai-run');$('qfStatus').hidden=true;
   const t0=performance.now();let per=30;const tick=setInterval(()=>{const s=(performance.now()-t0)/1000;$('busyS').textContent=`${Math.round(s)}″ · ${t('usual')}`;$('busyBar').style.width=Math.min(96,s/(per*pieces.length)*100)+'%'},500);
   const ck2=Q.token+'|'+F.picks.map((id)=>id+':'+colorOf(byId(id))).join(',');F.cache=F.cache||new Map();
   const instant=async(pc,k)=>{const keep=Q.pieces;const want=pieces.slice(0,k+1).map((x)=>x.url);Q.pieces=keep.filter((p)=>want.includes(p.it.variants[colorOf(p.it)].front));
@@ -2126,7 +2139,7 @@ $('goFit').addEventListener('click',async()=>{track('ai');
   try{const out=F.cache.get(ck2)||await dress(F.src||MODEL_IMG,pieces,({step,of,fast,q})=>{per=fast?14:30;const qs=q&&q.msg==='estimation'&&q.rank>0?` · ${t('queue')} ${q.rank}`:'';$('busyT').textContent=`${t('dressing')}… ${of>1?`${t('step')} ${step} ${t('of')} ${of}`:''}${qs}`},instant);
     F.cache.set(ck2,out);$('busyBar').style.width='100%';showAfter(out);const us=dress.used||new Set();toast(us.has('instant')?t(us.size>1?'mixDone':'instantDone'):t('done'))}
   catch(e){console.warn(e);er.textContent=errText(e);er.hidden=false}
-  finally{clearInterval(tick);F.busy=false;$('goFit').disabled=false;$('busy').hidden=true}});
+  finally{clearInterval(tick);F.busy=false;$('goFit').disabled=false;$('busy').hidden=true;$('qfScan').classList.remove('ai-run');scanOn(false)}});
 $('tokSave').addEventListener('click',()=>{const vv=$('tokIn').value.trim();if(vv&&!/^hf_\w{10,}$/.test(vv)){toast(t('tokBad'));return}try{vv?localStorage.setItem('kolav-hf',vv):localStorage.removeItem('kolav-hf')}catch{}toast(t('tokSaved'))});
 $('fitBtn').addEventListener('click',()=>openFit());$('howFit').addEventListener('click',()=>openFit());$('fitClose').addEventListener('click',closeFit);
 
@@ -2464,7 +2477,7 @@ function ghRuntime(cfg){
 /* ====================== boot ====================== */
 applyLang();layoutRope();
 (window.requestIdleCallback||((f)=>setTimeout(f,2500)))(()=>{setTimeout(()=>{try{loadImg(MODEL_IMG).then((im)=>{const sc=Math.min(1,1100/im.naturalHeight);modelBundle(cv(im.naturalWidth*sc,im.naturalHeight*sc))}).catch(()=>{})}catch{}},1200)});
-['pointerdown','focusin'].forEach((ev)=>document.querySelector('label[for=meIn]').addEventListener(ev,()=>{try{loadHuman()}catch{}},{once:true}));
+['pointerdown','focusin'].forEach((ev)=>document.querySelector('label[for=meIn]').addEventListener(ev,()=>{try{loadHuman();prefetchModels()}catch{}},{once:true}));
 (async()=>{
   const use=window.claude?.use?.bind(window.claude);let db,user,assets,downloads;
   if(use)[db,user,assets,downloads]=await Promise.all(['db','user','assets','downloads'].map((n)=>use(n).catch(()=>null)));
