@@ -2,7 +2,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Assistant:wght@400;500;600;700&family=Prompt:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=DM+Sans:opsz,wght@9..40,400..700&family=Noto+Serif+Thai:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
 <style>
 /* Layout: a sky with a clothesline across it; the collection hangs on the line, a piece opens into a floating card beside it. */
 :root{
@@ -10,9 +10,9 @@
   --accent:#111317; --accent-ink:#ffffff; --like:#d23a55; --glass:rgba(255,255,255,.72); --glass-line:rgba(255,255,255,.6);
   --scrim:rgba(14,18,26,.45); --rope:#e9dcc4; --rope-dark:#a9977a; --wood:#d8b98a; --wood-dark:#a87f52; --sky-ink:#16202e;
   --ok:#2f7d4f;
-  --f-display:"Karantina","Prompt","Assistant",system-ui,sans-serif;
-  --f-body:"Assistant","Prompt",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  --f-thai:"Prompt","Assistant",system-ui,sans-serif;
+  --f-display:"Bodoni Moda","Noto Serif Thai",Didot,Georgia,serif;
+  --f-body:"DM Sans","IBM Plex Sans Thai",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-thai:"IBM Plex Sans Thai","DM Sans",system-ui,sans-serif;--f-thai-d:"Noto Serif Thai","Bodoni Moda",Georgia,serif;
   --ease:cubic-bezier(.22,.8,.2,1);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -52,7 +52,7 @@ a{color:inherit}
 #rope{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .top{position:absolute;inset:0 0 auto;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding-top:calc(16px + env(safe-area-inset-top,0px))}
 .brand{justify-self:center;text-align:center;line-height:.8;text-decoration:none}
-.brand b{display:block;font-family:var(--f-display);font-weight:700;font-size:clamp(2.6rem,5vw,3.6rem);letter-spacing:.02em}
+.brand b{display:block;font-family:var(--f-display);font-weight:600;font-size:clamp(2.1rem,3.6vw,2.9rem);letter-spacing:0;line-height:1}
 .brand span{display:block;font-size:.66rem;letter-spacing:.42em;font-weight:700;margin-top:12px;opacity:.8;direction:ltr}
 .cats{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
 .cats button{white-space:nowrap;border:0;background:none;padding:6px 0;min-height:32px;cursor:pointer;font-weight:600;font-size:.8rem;letter-spacing:.04em;opacity:.62;position:relative;transition:opacity .2s}
@@ -74,7 +74,7 @@ a{color:inherit}
 .hero-foot{position:absolute;inset:auto 0 0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:12px;padding-bottom:calc(22px + env(safe-area-inset-bottom,0px));pointer-events:none}
 .hero-foot>*{pointer-events:auto}
 .now{display:flex;align-items:baseline;gap:14px;min-width:0}
-.now .num{font-family:var(--f-display);font-size:3.4rem;line-height:.75;font-variant-numeric:tabular-nums}
+.now .num{font-family:var(--f-display);font-weight:500;font-size:3rem;line-height:.9;font-variant-numeric:tabular-nums}
 .now .meta{min-width:0;line-height:1.25}
 .now .meta b{display:block;font-size:1.05rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .now .meta span{font-size:.9rem;opacity:.8;font-variant-numeric:tabular-nums}
@@ -86,9 +86,9 @@ a{color:inherit}
 .tag-cta{justify-self:center;display:flex;gap:8px}
 .hint{position:absolute;z-index:4;left:0;right:0;bottom:calc(64px + env(safe-area-inset-bottom,0px));text-align:center;font-size:.86rem;opacity:.75;pointer-events:none;transition:opacity .5s}
 .label{position:absolute;z-index:4;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;white-space:nowrap}
-.label b{font-family:var(--f-display);font-weight:700;font-size:clamp(2rem,3.4vw,2.8rem);line-height:.9;display:block}
+.label b{font-family:var(--f-display);font-weight:600;font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.05;display:block}
 .label span{font-size:.92rem;opacity:.85;font-variant-numeric:tabular-nums}
-html[lang="th"] .label b{font-family:var(--f-thai);font-weight:600;font-size:1.5rem}
+html[lang="th"] .label b{font-family:var(--f-thai-d);font-weight:600;font-size:1.5rem}
 @media (max-width:760px){
   .top{grid-template-columns:1fr auto;row-gap:2px}.brand{grid-column:1;justify-self:start;text-align:start}
   .cats{grid-column:1/-1;grid-row:2;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.cats::-webkit-scrollbar{display:none}
@@ -101,8 +101,8 @@ html[lang="th"] .label b{font-family:var(--f-thai);font-weight:600;font-size:1.5
 /* ---------- collection ---------- */
 .sec{padding-block:clamp(48px,7vw,88px) 0}
 .sec-h{display:flex;justify-content:space-between;align-items:end;gap:14px 24px;flex-wrap:wrap;margin-bottom:22px}
-.sec-h h2{font-family:var(--f-display);font-weight:700;font-size:clamp(2.6rem,5vw,3.8rem);line-height:.85;margin:0}
-html[lang="th"] .sec-h h2{font-family:var(--f-thai);font-weight:600;font-size:2rem;line-height:1.2}
+.sec-h h2{font-family:var(--f-display);font-weight:600;font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.05;margin:0}
+html[lang="th"] .sec-h h2{font-family:var(--f-thai-d);font-weight:600;font-size:2rem;line-height:1.2}
 .sec-h p{margin:8px 0 0;color:var(--muted);max-width:52ch}
 .tabs{display:flex;gap:18px;flex-wrap:wrap}
 .tabs button{border:0;background:none;padding:4px 0;cursor:pointer;font-weight:600;font-size:.82rem;letter-spacing:.03em;color:var(--muted);border-bottom:1.5px solid transparent}
@@ -117,6 +117,11 @@ html[lang="th"] .sec-h h2{font-family:var(--f-thai);font-weight:600;font-size:2r
 .card:hover .ph img.prod{transform:scale(1.04)}
 .card.has-on:hover .ph img.on{opacity:1}
 .card .ph:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.card .tags{position:absolute;top:12px;inset-inline-start:12px;display:flex;gap:6px;z-index:2}.tg-new,.tg-sold{font:600 .7rem/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}.tg-sold{background:var(--ink);color:var(--paper)}
+.card.sold .ph img.prod{opacity:.5}.label .tg-new,.label .tg-sold{display:inline-block;margin-inline-start:8px;vertical-align:middle}.pd-tags{display:inline-flex;gap:6px;margin-inline-start:8px;vertical-align:middle}
+#pdBuy.off{background:var(--line);color:var(--muted);border-color:transparent;pointer-events:none}#pdBuy.off svg{display:none}@media(min-width:900px){.pd-head{padding-inline-end:44px}}
+.ctl{margin-top:18px;display:grid;gap:10px}.ctl h3{margin:0;font:600 1.15rem/1.2 var(--f-display)}html[lang="th"] .ctl h3{font-family:var(--f-thai-d)}.ctl-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.ctl-it{display:grid;gap:6px;min-width:0}.ctl-it .ph{all:unset;cursor:pointer;aspect-ratio:4/5;border-radius:12px;background:var(--tile);display:grid;place-items:center;overflow:hidden}.ctl-it .ph img{width:76%;height:84%;object-fit:contain}.ctl-it .nm{font-size:.8rem;font-weight:600;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ctl-it .pr{font-size:.78rem;color:var(--muted)}.ctl-it button.tb{font:600 .76rem var(--f-body);border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 8px;cursor:pointer;color:var(--ink)}.ctl-it button.tb:hover{border-color:var(--ink)}
+.ai .flags{display:flex;gap:6px;flex-basis:100%}.ai .flags button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .card .badge{position:absolute;top:12px;inset-inline-start:12px;background:var(--card);font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:999px}
 .card .meta{display:grid;gap:2px;min-width:0}
 .card .nm{font-weight:600;line-height:1.3}
@@ -152,7 +157,7 @@ html[lang="th"] .sec-h h2{font-family:var(--f-thai);font-weight:600;font-size:2r
 .sg .dims th,.sg .dims td{padding:10px 14px;text-align:start;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}.sg .dims th{background:var(--tile);font-size:.8rem;color:var(--muted);font-weight:600}
 .sg .dims tr:last-child td{border-bottom:0}.sg .dims td:first-child{font-weight:700}
 .unsure{margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:18px;align-items:center;background:color-mix(in srgb,var(--like) 10%,var(--card));border-radius:24px;padding:clamp(20px,3vw,32px)}
-.unsure h3{font-family:var(--f-display);font-size:2.2rem;line-height:.9;margin:0 0 6px}.unsure p{margin:0;color:var(--muted)}
+.unsure h3{font-family:var(--f-display);font-weight:600;font-size:1.7rem;line-height:1.1;margin:0 0 6px}.unsure p{margin:0;color:var(--muted)}
 .calc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:10px;align-items:end}.calc output{grid-column:1/-1;font-weight:700;min-height:1.4em}
 .rv{opacity:1}
 @media (prefers-reduced-motion:no-preference){.js-rv .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.js-rv .rv.in{opacity:1;transform:none}
@@ -163,7 +168,7 @@ html[lang="th"] .sec-h h2{font-family:var(--f-thai);font-weight:600;font-size:2r
 .how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:0}
 .how li{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;gap:6px;align-content:start}
 .how b{font-size:1.06rem}.how span{color:var(--muted)}
-.how i{font-style:normal;font-family:var(--f-display);font-size:2.4rem;line-height:.8}
+.how i{font-style:italic;font-family:var(--f-display);font-size:2.2rem;line-height:1}
 @media (max-width:760px){.how{grid-template-columns:1fr}}
 .info .faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
 @media (max-width:760px){.info .faq{grid-template-columns:1fr}}
@@ -182,7 +187,7 @@ html[lang="th"] .sec-h h2{font-family:var(--f-thai);font-weight:600;font-size:2r
 .float a svg{width:24px;height:24px}
 .ask{font-size:.86rem;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .foot{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:24px;align-items:start;color:var(--muted);font-size:.88rem;padding-block:48px 32px;margin-top:64px;border-top:1px solid var(--line)}
-.foot b{font-family:var(--f-display);font-size:2rem;color:var(--ink);font-weight:700}
+.foot b{font-family:var(--f-display);font-size:1.7rem;color:var(--ink);font-weight:600}
 .fcol{display:grid;gap:8px;justify-items:start}.fcol a,.fcol .linkbtn{color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem}.fcol a:hover,.fcol .linkbtn:hover{text-decoration:underline}
 @media (max-width:600px){.foot{grid-template-columns:1fr 1fr}.fbrand{grid-column:1/-1}}
 .linkbtn{background:none;border:0;padding:4px 0;cursor:pointer;font-weight:600;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
@@ -207,8 +212,8 @@ html[lang="th"] .sec-h h2{font-family:var(--f-thai);font-weight:600;font-size:2r
 .pd-card{background:var(--card);border-radius:24px;box-shadow:0 30px 80px rgba(16,22,34,.22),0 2px 8px rgba(16,22,34,.08);padding:26px 24px 22px;display:grid;gap:18px;align-content:start;max-height:calc(100svh - 48px);overflow:auto;min-width:0}
 .pd-head{display:flex;justify-content:space-between;align-items:start;gap:10px}
 .pd-head>.eyebrow{white-space:nowrap;font-variant-numeric:tabular-nums}
-.pd-name{font-family:var(--f-display);font-weight:700;font-size:clamp(2.6rem,4vw,3.4rem);line-height:.86;margin:4px 0 0;text-wrap:balance}
-html[lang="th"] .pd-name{font-family:var(--f-thai);font-weight:600;font-size:1.8rem;line-height:1.15}
+.pd-name{font-family:var(--f-display);font-weight:600;font-size:clamp(2rem,3vw,2.6rem);line-height:1.05;margin:4px 0 0;text-wrap:balance}
+html[lang="th"] .pd-name{font-family:var(--f-thai-d);font-weight:600;font-size:1.8rem;line-height:1.15}
 .pd-price{font-size:1.3rem;font-weight:700;font-variant-numeric:tabular-nums}
 .opt{display:grid;gap:9px}
 .opt-h{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
@@ -254,8 +259,8 @@ details.acc p{margin:8px 0 0;color:var(--muted);font-size:.92rem}
 .fit{position:fixed;inset:0;z-index:40;background:var(--scrim);display:grid;place-items:center;padding:max(12px,env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) max(12px,env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
 .fit-box{background:var(--card);border-radius:24px;width:min(1140px,100%);height:min(880px,100%);display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.3)}
 .fit-head{display:flex;align-items:center;gap:12px;padding:12px 16px 12px 20px;border-bottom:1px solid var(--line)}
-.fit-head h2{font-family:var(--f-display);font-weight:700;font-size:2.2rem;line-height:1;margin:0;flex:1}
-html[lang="th"] .fit-head h2{font-family:var(--f-thai);font-size:1.3rem}
+.fit-head h2{font-family:var(--f-display);font-weight:600;font-size:1.7rem;line-height:1;margin:0;flex:1}
+html[lang="th"] .fit-head h2{font-family:var(--f-thai-d);font-size:1.3rem}
 .fit-body{display:grid;grid-template-columns:minmax(0,1fr) 360px;min-height:0}
 .fit-stage{position:relative;background:var(--tile);display:grid;place-items:center;min-height:0;overflow:hidden}
 #qf{position:absolute;inset:0;margin:auto;max-width:calc(100% - 24px);max-height:calc(100% - 24px);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.14);touch-action:none;background:var(--card)}
@@ -327,8 +332,8 @@ html[dir="rtl"] .ba-bar{left:auto;right:var(--cut,0%);transform:translateX(1px)}
 html[dir="ltr"] .drawer{justify-content:flex-end}
 .drawer-box{width:min(420px,100%);height:100%;background:var(--card);display:grid;grid-template-rows:auto 1fr auto;box-shadow:0 0 60px rgba(0,0,0,.25)}
 .dh{display:flex;align-items:center;gap:12px;padding:calc(16px + env(safe-area-inset-top,0px)) 20px 12px;border-bottom:1px solid var(--line)}
-.dh h2{font-family:var(--f-display);font-weight:700;font-size:2.4rem;line-height:1;margin:0;flex:1}
-html[lang="th"] .dh h2{font-family:var(--f-thai);font-size:1.4rem}
+.dh h2{font-family:var(--f-display);font-weight:600;font-size:1.8rem;line-height:1;margin:0;flex:1}
+html[lang="th"] .dh h2{font-family:var(--f-thai-d);font-size:1.4rem}
 .wl{overflow:auto;padding:6px 20px;display:grid;align-content:start}
 .wr{display:grid;grid-template-columns:76px minmax(0,1fr);gap:14px;padding-block:14px;border-bottom:1px solid var(--line)}
 .wr .pic{background:var(--tile);border-radius:12px;height:92px;display:grid;place-items:center;cursor:pointer;border:0;padding:6px}
@@ -344,8 +349,8 @@ html[lang="th"] .dh h2{font-family:var(--f-thai);font-size:1.4rem}
 .admin{position:fixed;inset:0;z-index:45;background:var(--scrim);display:grid;place-items:center;padding:12px}
 .admin-box{background:var(--card);border-radius:24px;width:min(1000px,100%);max-height:100%;overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.3)}
 .ah{position:sticky;top:0;z-index:2;background:var(--card);display:flex;gap:12px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line)}
-.ah h2{font-family:var(--f-display);font-weight:700;font-size:2.2rem;margin:0;flex:1;line-height:1}
-html[lang="th"] .ah h2{font-family:var(--f-thai);font-size:1.3rem}
+.ah h2{font-family:var(--f-display);font-weight:600;font-size:1.7rem;margin:0;flex:1;line-height:1}
+html[lang="th"] .ah h2{font-family:var(--f-thai-d);font-size:1.3rem}
 .as{padding:18px 20px 6px;display:grid;gap:12px}
 .atabs{display:flex;gap:6px;padding:4px 20px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card);z-index:2}
 .atabs button{border:0;background:none;padding:12px 6px;margin-bottom:-1px;font:600 .92rem var(--f-body);color:var(--muted);cursor:pointer;border-bottom:2px solid transparent}
@@ -375,10 +380,11 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
 .ai{border:1px solid var(--line);border-radius:14px;padding:10px;display:grid;gap:6px;background:var(--paper)}
 .ai img{width:100%;height:110px;object-fit:contain}
 .ai .n{font-size:.9rem;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ai .r{display:flex;gap:6px}
+.ai .r{display:flex;gap:6px;flex-wrap:wrap}
 .ai .r button{flex:1;min-height:34px;border-radius:10px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:.82rem}
 .lock{padding:28px 22px;display:grid;gap:10px;text-align:center;justify-items:center}
-.lock h3{font-family:var(--f-display);font-size:2rem;margin:0}
+.login{display:grid;gap:12px;margin-top:14px;text-align:start;width:100%;max-width:400px}.lock .setup{width:100%;max-width:400px}.lock .setup{margin-top:18px;text-align:start}.steps{margin:0;padding-inline-start:18px;display:grid;gap:4px}.mig{margin:0 0 12px}
+.lock h3{font-family:var(--f-display);font-weight:600;font-size:1.6rem;margin:0}
 .lock p{margin:0;color:var(--muted);max-width:44ch}
 @media (max-width:640px){.drops{grid-template-columns:1fr}.admin{padding:0}.admin-box{border-radius:0;height:100%}}
 
@@ -401,7 +407,7 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
     </div>
   </div>
   <div class="line" id="line"></div>
-  <div class="label" id="label"><b id="labelName"></b><span id="labelPrice"></span></div>
+  <div class="label" id="label"><b id="labelName"></b><span id="labelPrice"></span><span id="labelTag"></span></div>
   <div class="hint" id="hint" data-t="hint">Drag the line · tap a garment to open it</div>
   <div class="hero-foot gut">
     <div class="now"><span class="num" id="num">01</span><div class="meta"><b id="curCat"></b><span id="count"></span></div></div>
@@ -468,7 +474,7 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
     <div class="pd-nav"><button class="round flipx" id="pdPrev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button><button class="round flipx" id="pdNext" type="button" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button></div>
   </div>
   <div class="pd-card">
-    <div class="pd-head"><div><span class="eyebrow" id="pdCat"></span><h2 class="pd-name" id="pdName"></h2></div><span class="eyebrow" id="pdNum"></span></div>
+    <div class="pd-head"><div><span class="eyebrow" id="pdCat"></span><span class="pd-tags" id="pdTags"></span><h2 class="pd-name" id="pdName"></h2></div><span class="eyebrow" id="pdNum"></span></div>
     <div class="pd-price" id="pdPrice"></div>
     <div class="opt"><div class="opt-h"><span class="eyebrow" data-t="color">Colour</span><em id="pdColor"></em></div><div class="swatches" id="pdSw" role="group"></div></div>
     <div class="opt"><div class="opt-h"><span class="eyebrow" data-t="size">Size</span><em id="pdSizeHint"></em></div><div class="sizes" id="pdSizes" role="group"></div></div>
@@ -481,6 +487,7 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
     <p class="note" data-t="buyNote">Checkout happens in our TikTok Shop. Pick the same size and colour there.</p>
     <details class="acc" id="accDesc"><summary data-t="details">Details</summary><p id="pdDesc"></p></details>
     <details class="acc"><summary data-t="sizeGuide">Size guide</summary><table class="dims" id="pdDims"></table></details>
+    <section class="ctl" id="ctl" hidden><h3 data-t="ctlH">Complete the look</h3><div class="ctl-row" id="ctlRow"></div></section>
   </div>
   <button class="round pd-close" id="pdClose" type="button" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button>
 </section>
@@ -596,10 +603,29 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
         <div class="row2"><button class="btn solid" id="aSave" type="button" data-t="addToShop" disabled>Add to collection</button><button class="btn" id="aCancel" type="button" hidden data-t="cancelEdit">Cancel editing</button></div>
         <p class="note" id="aMsg" aria-live="polite"></p>
       </div>
-      <div class="as" data-pane="items" style="padding-bottom:22px"><div class="arow"><h3 data-t="items">items</h3><button class="btn solid sm" type="button" id="aNew">+ <span data-t="aTabAdd">Add garment</span></button></div><div class="alist" id="aList"></div></div>
+      <div class="as" data-pane="items" style="padding-bottom:22px"><div class="mig" id="migBox" hidden><button class="btn sm" type="button" id="migBtn"></button></div><div class="arow"><h3 data-t="aTabItems">items</h3><button class="btn solid sm" type="button" id="aNew">+ <span data-t="aTabAdd">Add garment</span></button></div><div class="alist" id="aList"></div></div>
     </div>
     <p class="note" id="localNote" hidden style="padding:0 20px 18px" data-t="localNote">On this site the catalogue is saved in this browser only, for testing. In the full shop it's saved on the server and everyone sees it.</p>
-    <div class="lock" id="adminLock" hidden><h3 data-t="manage">Manage shop</h3><p data-t="ownerOnly">Only the shop owner can manage the catalogue.</p></div>
+    <div class="lock" id="adminLock" hidden><h3 data-t="manage">Manage shop</h3><p id="lockMsg" data-t="ownerOnly">Only the shop owner can manage the catalogue.</p>
+      <form class="login" id="loginF" hidden>
+        <label class="f"><span data-t="pwL">Password</span><input class="field" id="lgPw" type="password" autocomplete="current-password" required></label>
+        <label class="consent"><input type="checkbox" id="lgKeep"><span data-t="keepIn">Keep me signed in on this device</span></label>
+        <button class="btn solid" type="submit" id="lgGo" data-t="signIn">Sign in</button>
+        <p class="err" id="lgErr" hidden></p>
+      </form>
+      <details class="acc setup" id="setupBox" hidden><summary data-t="setupH">First time: connect the shop</summary>
+        <form class="login" id="setupF">
+          <p class="note" data-t="setupT">The catalogue is saved in the shop's GitHub repository. Paste a GitHub key that can edit it once, and choose a password. From then on you sign in with the password only, on any device.</p>
+          <ol class="note steps" id="setupSteps"></ol>
+          <label class="f"><span data-t="tokL">GitHub key</span><input class="field" id="suTok" type="password" autocomplete="off" dir="ltr" placeholder="github_pat_…" required></label>
+          <label class="f"><span data-t="newPw">New password (at least 8 characters)</span><input class="field" id="suPw" type="password" autocomplete="new-password" minlength="8" required></label>
+          <label class="f"><span data-t="newPw2">Password again</span><input class="field" id="suPw2" type="password" autocomplete="new-password" minlength="8" required></label>
+          <button class="btn solid" type="submit" id="suGo" data-t="setupBtn">Save and sign in</button>
+          <p class="err" id="suErr" hidden></p>
+        </form>
+      </details>
+    </div>
+    <div class="arow" id="signedRow" hidden style="padding:0 20px 18px"><span class="note" data-t="signedIn">Signed in. Changes are saved for everyone.</span><button class="btn sm" type="button" id="lgOut" data-t="signOut">Sign out</button></div>
   </div>
 </div>
 
@@ -612,8 +638,8 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
 <script type="module">
 /* ====================== copy ====================== */
 const T={
- en:{"other": "ไทย", "liked": "Saved", "infoTitle": "Info & questions", "infoShort": "Info", "infoSub": "Everything to know before you order. Can't find an answer? Message us.", "ask": "Ask about this item ↗", "askMsg": "Hi, I have a question about {n} {c} {s}", "waNum": "WhatsApp number (with country code)", "lineId": "LINE: ID (@...) or link", "faqEdit": "Q&A in English: question on the first line, answer below it, and a blank line between questions", "faqEditTh": "Q&A in Thai, same format", "fitRoom": "Fitting room", "hint": "Drag the line · tap a garment to open it", "collection": "The collection", "collectionSub": "Try any piece on your own photo, then buy it in our TikTok Shop.", "howTitle": "Try before you buy", "openFit": "Open the fitting room", "how1": "Upload a photo", "how1s": "Front-facing, standing, full body in frame, good light.", "how2": "Pick a garment", "how2s": "Combine a top and a bottom. It's dressed onto your photo with its folds and light.", "how3": "Buy on TikTok", "how3s": "Love it? The button opens the item in our TikTok Shop.", "foot": "All items are sold through our TikTok Shop.", "manage": "Manage shop", "product": "Product", "onModel": "On model", "front": "Front", "back": "Back", "color": "Colour", "size": "Size", "buy": "Buy on TikTok Shop", "buyShort": "Buy", "tryMe": "Try it on my photo", "buyNote": "Checkout happens in our TikTok Shop. Pick the same size and colour there.", "details": "Details", "sizeGuide": "Size guide", "like": "Save", "savedLike": "Saved to favourites", "removedLike": "Removed from favourites", "pickSize": "Pick a size", "s1": "Your photo", "upload": "Upload photo", "useModel": "Sample model", "consent": "I agree the photo is sent to the try-on server for processing. The shop doesn't store it.", "s2": "What to try", "s2n": "A top and a bottom together, or one dress.", "s3": "Fit", "photoTip": "Front-facing, standing, full body in frame. Length and width are set automatically from your height, body and the garment's measurements. Detection runs right here in your browser.", "height": "Your height (cm)", "recFor": "The size that fits your body: %s (selected). The garment is dressed in it.", "lenCm": "Garment length, cm (size M): shoulder to hem, or waist down", "flat": "Garment flat width, cm (size M): chest, or waist for pants and skirts", "width": "Adjust width", "lengthAdj": "Adjust length", "points": "Adjust points", "reset": "Reset", "dragTip": "You can drag the garment. While locked to the body it snaps back. Tap \"Unlock\" and it stays where you leave it.", "locked": "Unlock", "unlocked": "Lock back to body", "askMore": "Questions & more details", "splitL": "Where the garment ends (when photographed on a person)", "cutPerson": "This garment was photographed on a person, so we kept only the garment. Pick its type below and the cutout updates. Areas covered by a hand stay missing; a photo on a hanger or flat surface gives a full cutout.", "demoTag": "Sample item", "pk1": "Try on your photo", "pk1s": "Any garment, any size", "pk2": "Size recommendation", "pk2s": "Based on your body", "pk3": "Buy on TikTok", "pk3s": "Secure payment & shipping", "pk4": "Questions? Message us", "pk4s": "On WhatsApp or LINE", "byCat": "Shop by category", "sizeSub": "Body measurements in cm that each size fits. Every item also lists its own measurements.", "sgTops": "Tops, jackets & dresses", "sgBottoms": "Pants & skirts", "unsureH": "Not sure about your size?", "unsureP": "Enter your chest, waist and hips once and get the size that fits you.", "mChest": "Chest", "mWaist": "Waist", "mHips": "Hips", "calcBtn": "What's my size?", "calcRes": "Tops & dresses: {t} · Pants & skirts: {b}", "calcNeed": "Enter at least chest or waist", "fShop": "Shop", "fHelp": "Help", "adminIn": "Admin login", "colSize": "Size", "colChest": "Chest", "colLen": "Length", "colWaist": "Waist", "colHips": "Hips", "tryCard": "Try on", "aTabItems": "Items", "aTabAdd": "Add garment", "aTabShop": "Shop details", "pieces": "items", "askQ": "Question about this item? Message us", "mixDone": "Done. The top with AI, the bottom with the instant fit (the AI server is busy).", "instantDone": "The AI servers are busy right now, so we used the instant fit.", "refining": "Refining accuracy in the background…", "pcTitle": "Photo check", "pcGood": "Great photo for trying on.", "pcRetake": "Retake", "pcFeet": "Your feet are out of the frame. Step back so your whole body fits, head to toe. Without that, pants and dress lengths are less accurate.", "pcHead": "Your head is out of the frame. Leave a little space above it.", "pcSmall": "You're too small in the photo. Move closer or zoom so your body fills most of the frame height.", "pcSide": "Looks like you're standing sideways. Face the camera with your shoulders square.", "pcTilt": "The photo is tilted. Hold the phone straight, at waist height.", "pcArmsUp": "Your arms are raised. Keep them down, a little away from your body.", "pcArmsIn": "Your arms are covering your body. Keep them at your sides, a little away from your body.", "pcDark": "The photo is dark. Shoot near a window or in strong light.", "pcBright": "The photo is too bright. Move away from direct light.", "pcBlur": "The photo is blurry. Hold the phone steady or ask someone to take it.", "pcBusy": "The background is busy. A plain wall behind you helps separate you from it.", "fitTitle": "How it fits you", "fChest": "Chest", "fWaist": "Waist", "fLen": "Length", "fSleeve": "Sleeve", "fit0": "Very tight", "fit1": "Snug", "fit2": "True to size", "fit3": "Relaxed", "fit4": "Oversized", "lt0": "Cropped, midriff showing", "lt1": "To the waist", "lt2": "To the hip", "lt3": "Covers the seat", "lt4": "Long, coat-like", "ll0": "Mini", "ll1": "Above the knee", "ll2": "Knee length", "ll3": "Midi, below the knee", "ll4": "Ankle length", "ll5": "Floor length", "cmpLong": "Longer than %s% of %c in photos of real people", "cmpShort": "Shorter than %s% of %c in photos of real people", "cTop": "tops", "cShirt": "button-up shirts", "cSweater": "sweaters", "cJacket": "jackets", "cDress": "dresses", "cPants": "pants", "cSkirt": "skirts", "zoomIn": "Zoom in", "zoomOut": "Zoom out", "zoomFit": "Back to full size", "s4": "Realistic try-on (AI)", "aiNote": "Re-dresses you with AI: real folds, light and hands. Takes about 30 seconds per garment.", "goAi": "Realistic try-on (AI)", "backQuick": "Back to the instant fit", "aiOff": "In this claude.ai link the browser blocks the connection to the AI server, so the button is off. On the shop site itself (a normal address) it works. The instant fit below works everywhere.", "loadingModel": "Scanning your body… this takes a few seconds", "detecting": "Finding shoulders, waist and hands… a few more seconds", "detected": "Garment on. You can drag it and it'll snap back onto your body.", "pickPiece": "Pick a garment from the list and it's dressed on right away.", "noPerson": "I couldn't find a clear body. Drag the points into place: shoulders, elbows, waist, hips, ankles.", "modelFail": "Couldn't make an on-model photo right now.", "adjustHint": "Drag each point into place: shoulders, elbows, waist, hips, ankles.", "go": "Dress me", "save": "Save photo", "before": "Before", "after": "After", "likesNote": "Your list is saved in this browser. Every item links to buy in our TikTok Shop.", "likesEmpty": "No saved items yet. Tap the heart on an item to save it here.", "remove": "Remove", "all": "All", "tops": "Tops", "outer": "Jackets", "dresses": "Dresses", "bottoms": "Pants & skirts", "pants": "Pants", "skirts": "Skirts", "sets": "Sets", "set": "Set", "items": "items", "demo": "Sample", "needConsent": "To try on, please agree to send the photo.", "needPhoto": "First upload a photo, or pick the sample model.", "needPick": "Pick at least one garment.", "dressing": "Dressing", "step": "Step", "of": "of", "usual": "Usually 20 to 40 seconds per garment.", "done": "Done. Drag the bar to compare before and after.", "quota": "Both free AI servers are busy or the daily quota ran out. The instant fit below keeps working. Try again in a few minutes, or add a free Hugging Face key for more try-ons.", "quotaTok": "Your key's quota is also used up for today. Try again later.", "more": "More try-ons per day (optional)", "moreT": "Create a free Hugging Face account, make a Read key and paste it here. The key is stored only in this browser.", "tokSave": "Save", "tokSaved": "Key saved", "tokBad": "The key must start with hf_", "queue": "In queue", "sec": "s", "netFail": "Couldn't reach the try-on server. Check your connection and try again.", "failed": "The try-on didn't work. Try another photo: front-facing, standing, good light.", "badFile": "Couldn't open the file. Try a JPG or PNG.", "savedImg": "Photo saved", "saveNo": "Saving wasn't allowed", "engineFree": "Try-on runs on FASHN VTON 1.5 on a free server. It's faster on the full site.", "engineFast": "Try-on runs on the shop's server (FASHN).", "makingModel": "Dressing the garment on a model. The first time takes up to a minute…", "shopInfo": "Shop details", "shopName": "Shop name", "shopLink": "TikTok Shop link", "hideDemo": "Hide the sample items", "saveShop": "Save shop details", "addItem": "Add item", "editItem": "Edit item", "dropFront": "Front photo of the garment (required). The background is removed automatically.", "dropBack": "Back photo (optional). Without it, a plain back in the same colour is made.", "colorName": "Colour name", "addColor": "+ Add as a colour of this item", "whatType": "What kind of garment?", "itemName": "Item name", "itemPrice": "Price (฿)", "itemLink": "TikTok product link", "itemDesc": "Short description & fabric", "addToShop": "Add to collection", "saveItem": "Save changes", "cancelEdit": "Cancel editing", "ownerOnly": "Only the shop owner can manage the catalogue.", "markH": "Mark the garment's inside", "markT": "In a product photo you see the inside back of the garment through the neck: the lining, the label, the back collar. On a body that area is hidden. Click point after point around it and it'll be cut out in the try-on. Optional.", "markUndo": "Undo point", "markClear": "Clear", "localNote": "On this site the catalogue is saved in this browser only, for testing. In the full shop it's saved on the server and everyone sees it.", "cutting": "Removing the background…", "cutDone": "Background removed", "cutLocal": "Background removed (simple method, check the edges)", "cutFail": "Couldn't remove the background. Try a photo on a plain background.", "autoBack": "A plain back will be made automatically", "backMade": "Auto back", "saving": "Saving…", "saved": "Saved. Everyone who opens the shop sees the change.", "saveFail": "Saving failed. Try again.", "noRight": "Only the shop owner can save.", "edit": "Edit", "del": "Delete", "sure": "Sure?", "up": "Move up", "genModel": "On model", "deleted": "Item deleted", "needType": "Pick a garment type", "varAdded": "Colour added. Upload another colour or save.", "chest": "Chest", "length": "Length", "waist": "Waist", "hips": "Hips", "cm": "cm, garment flat", "tee": "Tee", "shirt": "Long-sleeve top", "hoodie": "Hoodie", "jacket": "Jacket", "dress": "Dress", "skirt": "Skirt"},
- th:{other:'English',liked:'ถูกใจ',infoTitle:'ข้อมูลและคำถาม',infoShort:'ข้อมูล',infoSub:'ทุกอย่างที่ควรรู้ก่อนสั่งซื้อ ไม่เจอคำตอบ ทักเราได้เลย',ask:'ถามเกี่ยวกับสินค้านี้ ↗',askMsg:'สวัสดีค่ะ มีคำถามเกี่ยวกับ {n} {c} {s}',waNum:'เบอร์ WhatsApp (มีรหัสประเทศ)',lineId:'LINE: ไอดี (@...) หรือลิงก์',faqEdit:'คำถามภาษาฮีบรู',faqEditTh:'คำถามภาษาไทย: บรรทัดแรกคือคำถาม ตามด้วยคำตอบ เว้นบรรทัดระหว่างคำถาม',fitRoom:'ห้องลองชุด',hint:'ลากราวเพื่อเลื่อน · แตะเสื้อผ้าเพื่อเปิด',collection:'คอลเลกชัน',collectionSub:'ลองทุกชิ้นบนรูปของคุณได้ แล้วสั่งซื้อที่ร้านของเราใน TikTok',
+ en:{"other": "ไทย", "liked": "Saved", "infoTitle": "Info & questions", "infoShort": "Info", "infoSub": "Everything to know before you order. Can't find an answer? Message us.", "ask": "Ask about this item ↗", "askMsg": "Hi, I have a question about {n} {c} {s}", "waNum": "WhatsApp number (with country code)", "lineId": "LINE: ID (@...) or link", "faqEdit": "Q&A in English: question on the first line, answer below it, and a blank line between questions", "faqEditTh": "Q&A in Thai, same format", "fitRoom": "Fitting room", "hint": "Drag the line · tap a garment to open it", "collection": "The collection", "collectionSub": "Try any piece on your own photo, then buy it in our TikTok Shop.", "howTitle": "Try before you buy", "openFit": "Open the fitting room", "how1": "Upload a photo", "how1s": "Front-facing, standing, full body in frame, good light.", "how2": "Pick a garment", "how2s": "Combine a top and a bottom. It's dressed onto your photo with its folds and light.", "how3": "Buy on TikTok", "how3s": "Love it? The button opens the item in our TikTok Shop.", "foot": "All items are sold through our TikTok Shop.", "manage": "Manage shop", "product": "Product", "onModel": "On model", "front": "Front", "back": "Back", "color": "Colour", "size": "Size", "buy": "Buy on TikTok Shop", "buyShort": "Buy", "tryMe": "Try it on my photo", "buyNote": "Checkout happens in our TikTok Shop. Pick the same size and colour there.", "details": "Details", "sizeGuide": "Size guide", "like": "Save", "savedLike": "Saved to favourites", "removedLike": "Removed from favourites", "pickSize": "Pick a size", "s1": "Your photo", "upload": "Upload photo", "useModel": "Sample model", "consent": "I agree the photo is sent to the try-on server for processing. The shop doesn't store it.", "s2": "What to try", "s2n": "A top and a bottom together, or one dress.", "s3": "Fit", "photoTip": "Front-facing, standing, full body in frame. Length and width are set automatically from your height, body and the garment's measurements. Detection runs right here in your browser.", "height": "Your height (cm)", "recFor": "The size that fits your body: %s (selected). The garment is dressed in it.", "lenCm": "Garment length, cm (size M): shoulder to hem, or waist down", "flat": "Garment flat width, cm (size M): chest, or waist for pants and skirts", "width": "Adjust width", "lengthAdj": "Adjust length", "points": "Adjust points", "reset": "Reset", "dragTip": "You can drag the garment. While locked to the body it snaps back. Tap \"Unlock\" and it stays where you leave it.", "locked": "Unlock", "unlocked": "Lock back to body", "askMore": "Questions & more details", "splitL": "Where the garment ends (when photographed on a person)", "cutPerson": "This garment was photographed on a person, so we kept only the garment. Pick its type below and the cutout updates. Areas covered by a hand stay missing; a photo on a hanger or flat surface gives a full cutout.", "demoTag": "Sample item", "pk1": "Try on your photo", "pk1s": "Any garment, any size", "pk2": "Size recommendation", "pk2s": "Based on your body", "pk3": "Buy on TikTok", "pk3s": "Secure payment & shipping", "pk4": "Questions? Message us", "pk4s": "On WhatsApp or LINE", "byCat": "Shop by category", "sizeSub": "Body measurements in cm that each size fits. Every item also lists its own measurements.", "sgTops": "Tops, jackets & dresses", "sgBottoms": "Pants & skirts", "unsureH": "Not sure about your size?", "unsureP": "Enter your chest, waist and hips once and get the size that fits you.", "mChest": "Chest", "mWaist": "Waist", "mHips": "Hips", "calcBtn": "What's my size?", "calcRes": "Tops & dresses: {t} · Pants & skirts: {b}", "calcNeed": "Enter at least chest or waist", "fShop": "Shop", "fHelp": "Help", "adminIn": "Admin login", "colSize": "Size", "colChest": "Chest", "colLen": "Length", "colWaist": "Waist", "colHips": "Hips", "tryCard": "Try on", "aTabItems": "Items", "aTabAdd": "Add garment", "aTabShop": "Shop details", "pieces": "items", "piece": "item", "askQ": "Question about this item? Message us", "mixDone": "Done. The top with AI, the bottom with the instant fit (the AI server is busy).", "instantDone": "The AI servers are busy right now, so we used the instant fit.", "refining": "Refining accuracy in the background…", "pcTitle": "Photo check", "pcGood": "Great photo for trying on.", "pcRetake": "Retake", "pcFeet": "Your feet are out of the frame. Step back so your whole body fits, head to toe. Without that, pants and dress lengths are less accurate.", "pcHead": "Your head is out of the frame. Leave a little space above it.", "pcSmall": "You're too small in the photo. Move closer or zoom so your body fills most of the frame height.", "pcSide": "Looks like you're standing sideways. Face the camera with your shoulders square.", "pcTilt": "The photo is tilted. Hold the phone straight, at waist height.", "pcArmsUp": "Your arms are raised. Keep them down, a little away from your body.", "pcArmsIn": "Your arms are covering your body. Keep them at your sides, a little away from your body.", "pcDark": "The photo is dark. Shoot near a window or in strong light.", "pcBright": "The photo is too bright. Move away from direct light.", "pcBlur": "The photo is blurry. Hold the phone steady or ask someone to take it.", "pcBusy": "The background is busy. A plain wall behind you helps separate you from it.", "fitTitle": "How it fits you", "fChest": "Chest", "fWaist": "Waist", "fLen": "Length", "fSleeve": "Sleeve", "fit0": "Very tight", "fit1": "Snug", "fit2": "True to size", "fit3": "Relaxed", "fit4": "Oversized", "lt0": "Cropped, midriff showing", "lt1": "To the waist", "lt2": "To the hip", "lt3": "Covers the seat", "lt4": "Long, coat-like", "ll0": "Mini", "ll1": "Above the knee", "ll2": "Knee length", "ll3": "Midi, below the knee", "ll4": "Ankle length", "ll5": "Floor length", "cmpLong": "Longer than %s% of %c in photos of real people", "cmpShort": "Shorter than %s% of %c in photos of real people", "cTop": "tops", "cShirt": "button-up shirts", "cSweater": "sweaters", "cJacket": "jackets", "cDress": "dresses", "cPants": "pants", "cSkirt": "skirts", "zoomIn": "Zoom in", "zoomOut": "Zoom out", "zoomFit": "Back to full size", "s4": "Realistic try-on (AI)", "aiNote": "Re-dresses you with AI: real folds, light and hands. Takes about 30 seconds per garment.", "goAi": "Realistic try-on (AI)", "backQuick": "Back to the instant fit", "aiOff": "In this claude.ai link the browser blocks the connection to the AI server, so the button is off. On the shop site itself (a normal address) it works. The instant fit below works everywhere.", "loadingModel": "Scanning your body… this takes a few seconds", "detecting": "Finding shoulders, waist and hands… a few more seconds", "detected": "Garment on. You can drag it and it'll snap back onto your body.", "pickPiece": "Pick a garment from the list and it's dressed on right away.", "noPerson": "I couldn't find a clear body. Drag the points into place: shoulders, elbows, waist, hips, ankles.", "modelFail": "Couldn't make an on-model photo right now.", "adjustHint": "Drag each point into place: shoulders, elbows, waist, hips, ankles.", "go": "Dress me", "save": "Save photo", "before": "Before", "after": "After", "likesNote": "Your list is saved in this browser. Every item links to buy in our TikTok Shop.", "likesEmpty": "No saved items yet. Tap the heart on an item to save it here.", "remove": "Remove", "all": "All", "tops": "Tops", "outer": "Jackets", "dresses": "Dresses", "bottoms": "Pants & skirts", "pants": "Pants", "skirts": "Skirts", "sets": "Sets", "set": "Set", "items": "items", "demo": "Sample", "needConsent": "To try on, please agree to send the photo.", "needPhoto": "First upload a photo, or pick the sample model.", "needPick": "Pick at least one garment.", "dressing": "Dressing", "step": "Step", "of": "of", "usual": "Usually 20 to 40 seconds per garment.", "done": "Done. Drag the bar to compare before and after.", "quota": "Both free AI servers are busy or the daily quota ran out. The instant fit below keeps working. Try again in a few minutes, or add a free Hugging Face key for more try-ons.", "quotaTok": "Your key's quota is also used up for today. Try again later.", "more": "More try-ons per day (optional)", "moreT": "Create a free Hugging Face account, make a Read key and paste it here. The key is stored only in this browser.", "tokSave": "Save", "tokSaved": "Key saved", "tokBad": "The key must start with hf_", "queue": "In queue", "sec": "s", "netFail": "Couldn't reach the try-on server. Check your connection and try again.", "failed": "The try-on didn't work. Try another photo: front-facing, standing, good light.", "badFile": "Couldn't open the file. Try a JPG or PNG.", "savedImg": "Photo saved", "saveNo": "Saving wasn't allowed", "engineFree": "Try-on runs on FASHN VTON 1.5 on a free server. It's faster on the full site.", "engineFast": "Try-on runs on the shop's server (FASHN).", "makingModel": "Dressing the garment on a model. The first time takes up to a minute…", "shopInfo": "Shop details", "shopName": "Shop name", "shopLink": "TikTok Shop link", "hideDemo": "Hide the sample items", "saveShop": "Save shop details", "addItem": "Add item", "editItem": "Edit item", "dropFront": "Front photo of the garment (required). The background is removed automatically.", "dropBack": "Back photo (optional). Without it, a plain back in the same colour is made.", "colorName": "Colour name", "addColor": "+ Add as a colour of this item", "whatType": "What kind of garment?", "itemName": "Item name", "itemPrice": "Price (฿)", "itemLink": "TikTok product link", "itemDesc": "Short description & fabric", "addToShop": "Add to collection", "saveItem": "Save changes", "cancelEdit": "Cancel editing", "ownerOnly": "Only the shop owner can manage the catalogue.", "markH": "Mark the garment's inside", "markT": "In a product photo you see the inside back of the garment through the neck: the lining, the label, the back collar. On a body that area is hidden. Click point after point around it and it'll be cut out in the try-on. Optional.", "markUndo": "Undo point", "markClear": "Clear", "localNote": "On this site the catalogue is saved in this browser only, for testing. In the full shop it's saved on the server and everyone sees it.", "cutting": "Removing the background…", "cutDone": "Background removed", "cutLocal": "Background removed (simple method, check the edges)", "cutFail": "Couldn't remove the background. Try a photo on a plain background.", "autoBack": "A plain back will be made automatically", "backMade": "Auto back", "saving": "Saving…", "saved": "Saved. Everyone sees it within about a minute.", "saveFail": "Saving failed. Try again.", "noRight": "Only the shop owner can save.", "edit": "Edit", "del": "Delete", "sure": "Sure?", "up": "Move up", "genModel": "On model", "deleted": "Item deleted", "needType": "Pick a garment type", "varAdded": "Colour added. Upload another colour or save.", "chest": "Chest", "length": "Length", "waist": "Waist", "hips": "Hips", "cm": "cm, garment flat", "tee": "Tee", "shirt": "Long-sleeve top", "hoodie": "Hoodie", "jacket": "Jacket", "dress": "Dress", "skirt": "Skirt", "pwL": "Password", "keepIn": "Keep me signed in on this device", "signIn": "Sign in", "signOut": "Sign out", "signedIn": "Signed in. Changes are saved for everyone.", "setupH": "First time: connect the shop", "setupT": "The catalogue is saved in the shop's GitHub repository. Paste a GitHub key that can edit it once, and choose a password. From then on you sign in with the password only, on any device.", "su1": "Create a key on GitHub (opens a new tab)", "su2": "Repository access: “Only select repositories” → %r. Repository permissions: Contents → “Read and write”. Pick the longest expiry.", "su3": "Generate the key, copy it and paste it below.", "tokL": "GitHub key", "newPw": "New password (at least 8 characters)", "newPw2": "Password again", "setupBtn": "Save and sign in", "badPw": "Wrong password.", "pwShort": "The password needs at least 8 characters.", "pwMismatch": "The two passwords are different.", "tokNoPush": "This key can't edit the shop's repository, or it expired. Make a new one with Contents: Read and write.", "ghNet": "Couldn't reach GitHub. Check the connection and try again.", "noSetup": "The shop isn't connected yet. Use “First time” below.", "migrate": "Move %n items saved only in this browser into the shop", "migrated": "Done. The items are now in the shop for everyone.", "soldOut": "Sold out", "tagNew": "New", "ctlH": "Complete the look", "ctlTry": "Try together"},
+ th:{soldOut:"สินค้าหมด",tagNew:"ใหม่",ctlH:"จับคู่ให้ครบลุค",ctlTry:"ลองคู่กัน",piece:'ชิ้น',pwL:"รหัสผ่าน",keepIn:"จดจำการเข้าสู่ระบบในเครื่องนี้",signIn:"เข้าสู่ระบบ",signOut:"ออกจากระบบ",signedIn:"เข้าสู่ระบบแล้ว การแก้ไขจะบันทึกให้ทุกคนเห็น",setupH:"ครั้งแรก: เชื่อมต่อร้าน",setupT:"แคตตาล็อกถูกบันทึกในคลัง GitHub ของร้าน วางคีย์ GitHub ที่แก้ไขคลังได้เพียงครั้งเดียว แล้วตั้งรหัสผ่าน หลังจากนั้นเข้าสู่ระบบด้วยรหัสผ่านอย่างเดียวจากทุกเครื่อง",su1:"สร้างคีย์ใน GitHub (เปิดแท็บใหม่)",su2:"Repository access: “Only select repositories” → %r  Repository permissions: Contents → “Read and write” เลือกวันหมดอายุนานที่สุด",su3:"กด Generate คัดลอกคีย์ แล้ววางด้านล่าง",tokL:"คีย์ GitHub",newPw:"รหัสผ่านใหม่ (อย่างน้อย 8 ตัวอักษร)",newPw2:"ยืนยันรหัสผ่าน",setupBtn:"บันทึกและเข้าสู่ระบบ",badPw:"รหัสผ่านไม่ถูกต้อง",pwShort:"รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",pwMismatch:"รหัสผ่านทั้งสองไม่ตรงกัน",tokNoPush:"คีย์นี้แก้ไขคลังของร้านไม่ได้หรือหมดอายุแล้ว สร้างคีย์ใหม่ที่มี Contents: Read and write",ghNet:"เชื่อมต่อ GitHub ไม่ได้ ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่",noSetup:"ร้านยังไม่ได้เชื่อมต่อ ใช้ “ครั้งแรก” ด้านล่าง",migrate:"ย้ายสินค้า %n ชิ้นที่บันทึกไว้ในเบราว์เซอร์นี้เข้าร้าน",migrated:"เรียบร้อย ทุกคนเห็นสินค้าเหล่านี้ในร้านแล้ว",other:'English',liked:'ถูกใจ',infoTitle:'ข้อมูลและคำถาม',infoShort:'ข้อมูล',infoSub:'ทุกอย่างที่ควรรู้ก่อนสั่งซื้อ ไม่เจอคำตอบ ทักเราได้เลย',ask:'ถามเกี่ยวกับสินค้านี้ ↗',askMsg:'สวัสดีค่ะ มีคำถามเกี่ยวกับ {n} {c} {s}',waNum:'เบอร์ WhatsApp (มีรหัสประเทศ)',lineId:'LINE: ไอดี (@...) หรือลิงก์',faqEdit:'คำถามภาษาฮีบรู',faqEditTh:'คำถามภาษาไทย: บรรทัดแรกคือคำถาม ตามด้วยคำตอบ เว้นบรรทัดระหว่างคำถาม',fitRoom:'ห้องลองชุด',hint:'ลากราวเพื่อเลื่อน · แตะเสื้อผ้าเพื่อเปิด',collection:'คอลเลกชัน',collectionSub:'ลองทุกชิ้นบนรูปของคุณได้ แล้วสั่งซื้อที่ร้านของเราใน TikTok',
   howTitle:'ลองก่อนซื้อ',openFit:'ไปห้องลองชุด',how1:'อัปโหลดรูป',how1s:'ถ่ายด้านหน้า ยืนตรง เห็นเต็มตัว แสงดี',how2:'เลือกเสื้อผ้า',how2s:'เลือกเสื้อกับกางเกงพร้อมกันได้ ชุดจะถูกสวมบนรูปของคุณพร้อมรอยพับและแสง',how3:'ซื้อใน TikTok',how3s:'ชอบไหม ปุ่มจะเปิดสินค้าในร้าน TikTok ของเรา',
   foot:'ทุกชิ้นสั่งซื้อได้ที่ร้านของเราใน TikTok',manage:'จัดการร้าน',product:'สินค้า',onModel:'บนนางแบบ',front:'ด้านหน้า',back:'ด้านหลัง',color:'สี',size:'ไซซ์',buy:'ซื้อที่ร้าน TikTok',buyShort:'ซื้อ',
   tryMe:'ลองบนรูปของฉัน',buyNote:'ชำระเงินที่ร้านใน TikTok เลือกไซซ์และสีเดียวกันที่นั่น',details:'รายละเอียด',sizeGuide:'ตารางไซซ์',like:'ถูกใจ',savedLike:'บันทึกในรายการที่ถูกใจแล้ว',removedLike:'นำออกจากรายการที่ถูกใจแล้ว',
@@ -629,7 +655,7 @@ const T={
   dropFront:'รูปด้านหน้าของเสื้อผ้า (จำเป็น) ระบบลบพื้นหลังให้อัตโนมัติ',dropBack:'รูปด้านหลัง (ไม่บังคับ) ถ้าไม่มีจะสร้างด้านหลังเรียบสีเดียวกันให้',colorName:'ชื่อสี',addColor:'+ เพิ่มเป็นสีของสินค้านี้',whatType:'เป็นเสื้อผ้าประเภทไหน',
   itemName:'ชื่อสินค้า',itemPrice:'ราคา (฿)',itemLink:'ลิงก์สินค้าใน TikTok',itemDesc:'คำอธิบายสั้นๆ และเนื้อผ้า',addToShop:'เพิ่มในคอลเลกชัน',saveItem:'บันทึกการแก้ไข',cancelEdit:'ยกเลิกการแก้ไข',
   ownerOnly:'เฉพาะเจ้าของร้านเท่านั้นที่จัดการสินค้าได้',markH:'ทำเครื่องหมายด้านในของเสื้อ',markT:'ในรูปสินค้าจะเห็นด้านในด้านหลังผ่านคอเสื้อ แตะจุดรอบบริเวณนั้นเพื่อตัดออกตอนลองชุด ไม่บังคับ',markUndo:'ลบจุดล่าสุด',markClear:'ล้าง',localNote:'บนเว็บนี้ แคตตาล็อกถูกเก็บในเบราว์เซอร์นี้เท่านั้นเพื่อทดสอบ',cutting:'กำลังลบพื้นหลัง…',cutDone:'ลบพื้นหลังแล้ว',cutLocal:'ลบพื้นหลังแล้ว (วิธีง่าย ตรวจขอบอีกครั้ง)',cutFail:'ลบพื้นหลังไม่ได้ ลองรูปบนพื้นหลังเรียบ',
-  autoBack:'จะสร้างด้านหลังเรียบให้อัตโนมัติ',backMade:'ด้านหลังอัตโนมัติ',saving:'กำลังบันทึก…',saved:'บันทึกแล้ว ทุกคนที่เปิดร้านจะเห็น',saveFail:'บันทึกไม่สำเร็จ ลองใหม่',noRight:'เฉพาะเจ้าของร้านเท่านั้นที่บันทึกได้',
+  autoBack:'จะสร้างด้านหลังเรียบให้อัตโนมัติ',backMade:'ด้านหลังอัตโนมัติ',saving:'กำลังบันทึก…',saved:'บันทึกแล้ว ทุกคนจะเห็นภายในประมาณหนึ่งนาที',saveFail:'บันทึกไม่สำเร็จ ลองใหม่',noRight:'เฉพาะเจ้าของร้านเท่านั้นที่บันทึกได้',
   edit:'แก้ไข',del:'ลบ',sure:'แน่ใจ?',up:'เลื่อนขึ้น',genModel:'บนนางแบบ',deleted:'ลบสินค้าแล้ว',needType:'เลือกประเภทเสื้อผ้า',varAdded:'เพิ่มสีแล้ว อัปโหลดสีอื่นต่อหรือบันทึกได้',
   chest:'รอบอก',length:'ความยาว',waist:'รอบเอว',hips:'สะโพก',cm:'ซม. วัดแบบวางราบ',tee:'เสื้อยืด',shirt:'เสื้อแขนยาว',hoodie:'ฮู้ดดี้',jacket:'แจ็กเก็ต',dress:'เดรส',pants:'กางเกง',skirt:'กระโปรง'}
 };
@@ -663,12 +689,12 @@ const DEMO=[
  {id:'d-hood',len:64,flat:58,inside:[[.39,.06],[.5,.03],[.61,.06],[.6,.13],[.5,.16],[.4,.13]],type:'hoodie',price:890,name:{en:'Oversized hoodie',th:'ฮู้ดดี้โอเวอร์ไซซ์'},desc:{en:'Heavy 380 g cotton, relaxed fit with dropped shoulders, kangaroo pocket.',th:'ผ้าฝ้ายหนา 380 แกรม ทรงหลวม ไหล่ตก กระเป๋าหน้า'},variants:[v('#1d1d1f','Black','ดำ','img/g06.webp'),v('#8e8f90','Grey melange','เทา','img/g06-grey.webp')]},
  {id:'d-tee',len:58,flat:46,inside:[[.265,-.01],[.735,-.01],[.715,.028],[.675,.07],[.63,.115],[.57,.15],[.5,.162],[.43,.15],[.37,.115],[.325,.07],[.285,.028]],type:'tee',price:290,name:{en:'White rib tee',th:'เสื้อยืดผ้าร่องสีขาว'},desc:{en:'Stretch rib cotton, slim fit, crew neck.',th:'ผ้าฝ้ายร่องยืด ทรงพอดีตัว คอกลม'},variants:[v('#f2f1ee','White','ขาว','img/g01.webp')]},
  {id:'d-blazer',len:70,flat:51,inside:[[.335,-.01],[.655,-.01],[.64,.13],[.6,.3],[.56,.42],[.52,.52],[.49,.55],[.45,.45],[.41,.32],[.375,.15],[.35,.06]],type:'jacket',price:1290,name:{en:'Tailored blazer',th:'เบลเซอร์ทรงสวย'},desc:{en:'Lined crepe weave, single button, slit pockets.',th:'ผ้าเครปมีซับใน กระดุมเม็ดเดียว'},variants:[v('#cdbfae','Beige','เบจ','img/g05.webp'),v('#26304a','Navy','กรมท่า','img/g05-navy.webp'),v('#6f7a55','Olive','เขียวมะกอก','img/g05-olive.webp')]},
- {id:'d-slip',len:122,flat:37,type:'dress',price:990,name:{en:'Satin slip dress',th:'เดรสผ้าซาติน'},desc:{en:'Soft silky satin, cowl neck, thin straps, midi length.',th:'ผ้าซาตินนุ่ม คอถ่วง สายเดี่ยว ยาวครึ่งแข้ง'},variants:[v('#b98b87','Dusty rose','ชมพูหม่น','img/g09.webp'),v('#d9c49a','Champagne','แชมเปญ','img/g09-champagne.webp'),v('#1f5a3e','Emerald','เขียวมรกต','img/g09-emerald.webp')]},
+ {id:'d-slip',isNew:true,len:122,flat:37,type:'dress',price:990,name:{en:'Satin slip dress',th:'เดรสผ้าซาติน'},desc:{en:'Soft silky satin, cowl neck, thin straps, midi length.',th:'ผ้าซาตินนุ่ม คอถ่วง สายเดี่ยว ยาวครึ่งแข้ง'},variants:[v('#b98b87','Dusty rose','ชมพูหม่น','img/g09.webp'),v('#d9c49a','Champagne','แชมเปญ','img/g09-champagne.webp'),v('#1f5a3e','Emerald','เขียวมรกต','img/g09-emerald.webp')]},
  {id:'d-jeans',len:106,flat:37,inside:[[.24,.0],[.78,.0],[.775,.013],[.68,.021],[.6,.026],[.5,.031],[.4,.027],[.32,.021],[.255,.014]],type:'pants',price:690,name:{en:'Wide-leg jeans',th:'ยีนส์ขากว้าง'},desc:{en:'100% cotton denim, high waist, wide straight leg.',th:'เดนิมผ้าฝ้าย 100% เอวสูง ขากว้างตรง'},variants:[v('#8fb0d3','Light blue','ฟ้าอ่อน','img/g02.webp')]},
  {id:'d-cardi',len:46,flat:46,inside:[[.27,-.01],[.74,-.01],[.73,.03],[.695,.1],[.635,.19],[.56,.27],[.5,.31],[.445,.27],[.375,.19],[.32,.1],[.285,.03]],type:'shirt',price:650,name:{en:'Rib cardigan',th:'คาร์ดิแกนผ้าร่อง'},desc:{en:'Soft rib knit, V-neck, wooden buttons.',th:'ผ้าถักร่องนุ่ม คอวี กระดุมไม้'},variants:[v('#eeebe4','Cream','ครีม','img/g07.webp')]},
  {id:'d-midi',len:124,flat:35,type:'dress',price:790,name:{en:'Black midi dress',th:'เดรสมิดี้สีดำ'},desc:{en:'Ruched stretch jersey, straps, side slit.',th:'ผ้าเจอร์ซีย์ยืดจับย่น สายเดี่ยว ผ่าข้าง'},variants:[v('#151515','Black','ดำ','img/g04.webp')]},
  {id:'d-skirt',len:92,flat:36,type:'skirt',price:590,name:{en:'Tiered maxi skirt',th:'กระโปรงยาวระบาย'},desc:{en:'Light tiered cotton, elastic waist.',th:'ผ้าฝ้ายบางเป็นชั้น เอวยางยืด'},variants:[v('#e6dccb','Cream','ครีม','img/g03.webp')]},
- {id:'d-denim',len:54,flat:53,inside:[[.36,-.01],[.65,-.01],[.645,.08],[.615,.165],[.56,.195],[.5,.2],[.445,.195],[.405,.165],[.37,.08]],type:'jacket',price:1090,name:{en:'Denim jacket',th:'แจ็กเก็ตยีนส์'},desc:{en:'Washed denim, chest pockets, metal buttons.',th:'เดนิมฟอก กระเป๋าอก กระดุมโลหะ'},variants:[v('#5a7aa3','Washed blue','น้ำเงินฟอก','img/g10.webp')]},
+ {id:'d-denim',isNew:true,len:54,flat:53,inside:[[.36,-.01],[.65,-.01],[.645,.08],[.615,.165],[.56,.195],[.5,.2],[.445,.195],[.405,.165],[.37,.08]],type:'jacket',price:1090,name:{en:'Denim jacket',th:'แจ็กเก็ตยีนส์'},desc:{en:'Washed denim, chest pockets, metal buttons.',th:'เดนิมฟอก กระเป๋าอก กระดุมโลหะ'},variants:[v('#5a7aa3','Washed blue','น้ำเงินฟอก','img/g10.webp')]},
  {id:'d-cargo',len:104,flat:40,inside:[[.28,0],[.69,0],[.665,.012],[.5,.0145],[.335,.012]],type:'pants',price:750,name:{en:'Cargo pants',th:'กางเกงคาร์โก้'},desc:{en:'Cotton twill, side pockets, relaxed fit.',th:'ผ้าทวิลฝ้าย กระเป๋าข้าง ทรงหลวม'},variants:[v('#5e6146','Olive','เขียวมะกอก','img/g08.webp')]},
 ];
 DEMO.forEach((it,i)=>{it.demo=true;it.order=i;it.sizes=TYPES[it.type].sizes});
@@ -788,9 +814,9 @@ function go(i){const n=vis().length;if(!n)return;let target=i;const cur=posF;
   S.pos=((i%n)+n)%n;S.target=target;updateFoot();pegs.forEach((p)=>{p.swingV+=(target>cur?1:-1)*.03*(isRtl()?-1:1)})}
 S.target=0;
 function updateFoot(){const list=vis(),n=list.length,cur=list[S.pos];
-  $('num').textContent=pad(n?S.pos+1:0);$('count').textContent=n?`${pad(n)} ${t('items')}`:'';
+  $('num').textContent=pad(n?S.pos+1:0);$('count').textContent=n?`${pad(n)} ${t(n===1?'piece':'items')}`:'';
   $('curCat').textContent=t(S.cat);
-  $('labelName').textContent=cur?txt(cur.name):'';$('labelPrice').textContent=cur?fmt(cur.price):'';
+  $('labelName').textContent=cur?txt(cur.name):'';$('labelPrice').textContent=cur?fmt(cur.price):'';tagsInto($('labelTag'),cur);
   $('dots').querySelectorAll('button').forEach((d,i)=>d.setAttribute('aria-current',String(i===S.pos)));
   pegs.forEach((p)=>{p.el.tabIndex=p.i===S.pos?0:-1});
 }
@@ -867,7 +893,7 @@ function renderTiles(){const box=$('ctiles');if(!box)return;box.innerHTML='';
   CATS.filter((c)=>c!=='all').forEach((c)=>{const its=S.items.filter((it)=>catOf(it)===c);if(!its.length)return;const b=document.createElement('button');b.type='button';b.className='ctile';b.setAttribute('aria-pressed',String(S.cat===c));
     b.innerHTML='<div class="ring"><img class="a" alt="" loading="lazy"><img class="b" alt="" loading="lazy"></div><b></b><span></span>';
     b.querySelector('.a').src=its[0].variants[colorOf(its[0])].front;const nx=its[1]||its[0];b.querySelector('.b').src=nx.variants[colorOf(nx)].front;
-    b.querySelector('b').textContent=t(c);b.querySelector('span').textContent=its.length+' '+t('pieces');
+    b.querySelector('b').textContent=t(c);b.querySelector('span').textContent=its.length+' '+t(its.length===1?'piece':'pieces');
     b.addEventListener('click',()=>setCat(S.cat===c?'all':c,true));box.appendChild(b)})}
 function renderSizeGuide(){const tp=$('sgTop'),bt=$('sgBot');if(!tp)return;
   tp.innerHTML=`<tr><th>${t('colSize')}</th><th>${t('colChest')}</th><th>${t('colLen')}</th></tr>`+Object.entries(DIMS.top).map(([k,[c,l]])=>`<tr><td>${k}</td><td>${c}</td><td>${l}</td></tr>`).join('');
@@ -881,12 +907,22 @@ function renderTabs(){
   CATS.forEach((c)=>{if(c!=='all'&&!S.items.some((it)=>catOf(it)===c))return;const b=document.createElement('button');b.type='button';b.textContent=t(c);b.setAttribute('aria-pressed',String(S.cat===c));
     b.addEventListener('click',()=>setCat(c));box.appendChild(b)});
 }
+function tagsInto(el,it){el.innerHTML='';if(!it)return;if(it.soldOut){const b=document.createElement('span');b.className='tg-sold';b.textContent=t('soldOut');el.appendChild(b)}else if(it.isNew){const b=document.createElement('span');b.className='tg-new';b.textContent=t('tagNew');el.appendChild(b)}}
+// pieces that make an outfit with this one: a top with a bottom and the other way round. Neutral colours go with everything, so they come first.
+function lookFor(it){const vt=TYPES[it.type].vton;if(vt==='one-pieces')return [];const want=vt==='tops'?'bottoms':'tops';
+  const lum=(h)=>{const n=parseInt(String(h||'#888').slice(1),16);const r=n>>16&255,g=n>>8&255,b=n&255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);return {sat:mx?(mx-mn)/mx:0,l:(r+g+b)/765}};
+  const me=lum(it.variants[colorOf(it)].c);
+  return S.items.filter((x)=>x.id!==it.id&&!x.soldOut&&TYPES[x.type].vton===want).map((x)=>{const o=lum(x.variants[colorOf(x)].c);const score=(1-o.sat)*1.2+(me.sat>.35&&o.sat>.35?-1:0)+Math.abs(o.l-me.l)*.8+(x.isNew?.15:0);return {x,score}}).sort((a,b)=>b.score-a.score).slice(0,3).map((o)=>o.x)}
+function renderLook(it){const row=$('ctlRow'),ls=lookFor(it);$('ctl').hidden=!ls.length;row.innerHTML='';
+  ls.forEach((x)=>{const vv=x.variants[colorOf(x)],d=document.createElement('div');d.className='ctl-it';d.innerHTML='<button class="ph" type="button"><img alt="" loading="lazy"></button><span class="nm"></span><span class="pr"></span><button class="tb" type="button"></button>';
+    d.querySelector('img').src=vv.front;d.querySelector('.ph').setAttribute('aria-label',txt(x.name));d.querySelector('.nm').textContent=txt(x.name);d.querySelector('.pr').textContent=fmt(x.price);
+    d.querySelector('.ph').addEventListener('click',()=>openDetail(x.id));const tb=d.querySelector('.tb');tb.textContent=t('ctlTry');tb.addEventListener('click',()=>openFit([it.id,x.id]));row.appendChild(d)})}
 function renderGrid(){
   const g=$('grid');g.innerHTML='';
-  vis().forEach((it,ix)=>{const vv=it.variants[colorOf(it)],look=null,d=document.createElement('article');d.className='card'+(vv.back?' has-bk':'');d.style.setProperty('--i',String(Math.min(ix,12)));
+  vis().forEach((it,ix)=>{const vv=it.variants[colorOf(it)],look=null,d=document.createElement('article');d.className='card'+(vv.back?' has-bk':'')+(it.soldOut?' sold':'');d.style.setProperty('--i',String(Math.min(ix,12)));
     d.innerHTML=`<button class="ph" type="button"><img class="prod" alt="" loading="lazy"><img class="bk" alt="" loading="lazy"><span class="quick"><span></span></span></button><div class="meta"><span class="nm"></span><span class="pr"></span><span class="sz"></span><div class="sw"></div></div>`;
     d.querySelector('.prod').src=vv.front;if(vv.back)d.querySelector('.bk').src=vv.back;else d.querySelector('.bk').remove();d.querySelector('.quick span').textContent=t('tryCard')+' ↗';d.querySelector('.sz').textContent=(it.sizes||[]).join(' · ');
-    d.querySelector('.quick').addEventListener('click',(e)=>{e.stopPropagation();openFit([it.id])});
+    d.querySelector('.quick').addEventListener('click',(e)=>{e.stopPropagation();openFit([it.id])});{const tg=document.createElement('span');tg.className='tags';tagsInto(tg,it);if(tg.childElementCount)d.querySelector('.ph').appendChild(tg)}
     d.querySelector('.ph').setAttribute('aria-label',txt(it.name));
     d.querySelector('.nm').textContent=txt(it.name);d.querySelector('.pr').textContent=fmt(it.price);
     const sw=d.querySelector('.sw');if(it.variants.length>1)it.variants.forEach((x)=>{const i=document.createElement('i');i.style.background=x.c;sw.appendChild(i)});
@@ -899,7 +935,7 @@ function setRot(r){rot=r;$('flip').style.setProperty('--rot',r+'deg');const back
 function animRot(to,dur=650){cancelAnimationFrame(rotRaf);const from=rot,t0=performance.now();if(reduce)return setRot(to);const st=(now)=>{const k=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-k,3);setRot(from+(to-from)*e);if(k<1)rotRaf=requestAnimationFrame(st)};rotRaf=requestAnimationFrame(st)}
 function renderDetail(){
   const it=byId(S.detail);if(!it)return;const list=vis(),i=Math.max(0,list.findIndex((x)=>x.id===it.id)),ci=colorOf(it),vv=it.variants[ci];
-  $('pdNum').textContent=`${pad(i+1)} / ${pad(list.length)}`;$('pdCat').textContent=t(it.type);
+  $('pdNum').textContent=`${pad(i+1)} / ${pad(list.length)}`;$('pdCat').textContent=t(it.type);tagsInto($('pdTags'),it);
   $('pdName').textContent=txt(it.name);$('pdPrice').textContent=fmt(it.price);
   $('pdDesc').textContent=txt(it.desc);$('accDesc').hidden=!txt(it.desc);
   const f=$('fImg'),b=$('bImg');if(f.dataset.src!==vv.front){f.classList.add('fade');loadImg(vv.front).then((im)=>{f.src=vv.front;f.dataset.src=vv.front;$('flip').style.setProperty('--ar',String(im.naturalWidth/im.naturalHeight));requestAnimationFrame(()=>f.classList.remove('fade'))}).catch(()=>{})}
@@ -912,7 +948,7 @@ function renderDetail(){
   const sz=$('pdSizes');sz.innerHTML='';sz.classList.remove('need');
   (it.sizes||[]).forEach((s)=>{const bt=document.createElement('button');bt.type='button';bt.textContent=s;bt.setAttribute('aria-pressed',String(S.size[it.id]===s));bt.addEventListener('click',()=>{S.size[it.id]=s;renderDetail()});sz.appendChild(bt)});
   $('pdSizeHint').textContent=S.size[it.id]?'':t('pickSize');
-  $('pdBuy').href=tiktokOf(it);renderAsk(it);
+  const so=!!it.soldOut;$('pdBuy').classList.toggle('off',so);$('pdBuy').setAttribute('aria-disabled',String(so));if(so)$('pdBuy').removeAttribute('href');else $('pdBuy').href=tiktokOf(it);$('pdBuy').querySelector('span').textContent=t(so?'soldOut':'buy');renderAsk(it);renderLook(it);
   const liked=S.likes.some((w)=>w.id===it.id);$('pdLike').setAttribute('aria-pressed',String(liked));$('pdLike').setAttribute('aria-label',t('like'));
   const D=DIMS[TYPES[it.type].dims],top=TYPES[it.type].dims==='top';
   $('pdDims').innerHTML=`<thead><tr><th>${t('size')}</th>${top?`<th>${t('chest')}</th><th>${t('length')}</th>`:`<th>${t('waist')}</th><th>${t('hips')}</th><th>${t('length')}</th>`}</tr></thead><tbody>${(it.sizes||[]).filter((s)=>D[s]).map((s)=>`<tr><th>${s}</th>${D[s].map((x)=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody><caption style="caption-side:bottom;text-align:start;color:var(--muted);font-size:.8rem;padding-top:6px">${t('cm')}</caption>`;
@@ -2084,11 +2120,34 @@ function adminTab(k){document.querySelectorAll('.atabs [data-tab]').forEach((b)=
 document.querySelectorAll('.atabs [data-tab]').forEach((b)=>b.addEventListener('click',()=>adminTab(b.dataset.tab)));
 function openAdmin(){renderAdmin();$('admin').hidden=false;document.body.style.overflow='hidden';$('adminClose').focus()}
 function closeAdmin(){$('admin').hidden=true;if($('pd').hidden)document.body.style.overflow=''}
-$('adminBtn').addEventListener('click',openAdmin);$('fFit').addEventListener('click',()=>openFit());
+$('adminBtn').addEventListener('click',openAdmin);$('migBtn').addEventListener('click',migrateLocal);$('fFit').addEventListener('click',()=>openFit());
 // sections slide in as they come into view
 (()=>{if(!('IntersectionObserver' in window))return;document.documentElement.classList.add('js-rv');const io=new IntersectionObserver((es)=>{for(const e of es)if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}},{rootMargin:'0px 0px -8% 0px'});document.querySelectorAll('.rv').forEach((el)=>io.observe(el))})();$('adminClose').addEventListener('click',closeAdmin);
+
+/* sign-in on the shop's own address */
+const GH_KEY_URL=(c)=>'https://github.com/settings/personal-access-tokens/new';
+async function renderLogin(){const g=S.gh;$('loginF').hidden=$('setupBox').hidden=true;$('lockMsg').hidden=false;if(!g)return;
+  $('lockMsg').hidden=true;$('setupSteps').innerHTML='';[t('su1'),t('su2').replace('%r',g.cfg.owner+'/'+g.cfg.repo),t('su3')].forEach((x,i)=>{const li=document.createElement('li');if(i===0){const a=document.createElement('a');a.href=GH_KEY_URL(g.cfg);a.target='_blank';a.rel='noopener';a.textContent=x;li.appendChild(a)}else li.textContent=x;$('setupSteps').appendChild(li)});
+  const has=S.ghHas??(S.ghHas=await g.auth.hasSetup());$('loginF').hidden=!has;$('setupBox').hidden=false;$('setupBox').open=!has;if(has&&!$('admin').hidden)setTimeout(()=>$('lgPw').focus(),50)}
+async function afterSignIn(){S.canEdit=true;S.ghHas=true;$('lgPw').value=$('suTok').value=$('suPw').value=$('suPw2').value='';renderAdmin();rebuild();toast(t('signedIn'))}
+const lgMsg=(el,k)=>{$(el).hidden=!k;if(k)$(el).textContent=t(k)};
+$('loginF').addEventListener('submit',async(e)=>{e.preventDefault();lgMsg('lgErr',null);$('lgGo').disabled=true;
+  try{const r=await S.gh.auth.signIn($('lgPw').value,$('lgKeep').checked);if(r==='ok')await afterSignIn();else lgMsg('lgErr',r)}catch(err){console.warn(err);lgMsg('lgErr','ghNet')}finally{$('lgGo').disabled=false}});
+$('setupF').addEventListener('submit',async(e)=>{e.preventDefault();lgMsg('suErr',null);if($('suPw').value.length<8)return lgMsg('suErr','pwShort');if($('suPw').value!==$('suPw2').value)return lgMsg('suErr','pwMismatch');
+  $('suGo').disabled=true;try{const r=await S.gh.auth.setup($('suTok').value,$('suPw').value,$('lgKeep').checked);if(r==='ok')await afterSignIn();else lgMsg('suErr',r)}catch(err){console.warn(err);lgMsg('suErr','ghNet')}finally{$('suGo').disabled=false}});
+$('lgOut').addEventListener('click',()=>{S.gh&&S.gh.auth.signOut();S.canEdit=false;renderAdmin();rebuild()});
+// items made earlier on this device, before the shop was connected, kept only in this browser: move them into the shop
+async function localLeft(){try{if(!S.gh||!indexedDB.databases)return null;const dbs=await indexedDB.databases();if(!dbs.some((d)=>d.name==='kolav-local'))return null;const R=localRuntime();
+  return await new Promise((res)=>R.db.collection('items').onSnapshot((sn)=>res(sn.docs.length?{R,docs:sn.docs}:null)))}catch{return null}}
+async function renderMigrate(){const box=$('migBox');if(!box)return;box.hidden=true;const lf=await localLeft();if(!lf)return;box.hidden=false;$('migBtn').textContent=t('migrate').replace('%n',lf.docs.length)}
+async function migrateLocal(){const lf=await localLeft();if(!lf)return;$('migBtn').disabled=true;
+  const up=async(v)=>{if(typeof v==='string'&&v.startsWith('blob:')){const b=await (await fetch(v)).blob();return (await S.assets.upload(b,{type:b.type})).url}if(Array.isArray(v)){const o=[];for(const x of v)o.push(await up(x));return o}if(v&&typeof v==='object'){const o={};for(const [k,x] of Object.entries(v))o[k]=await up(x);return o}return v};
+  try{for(const d of lf.docs){const it=await up(d.data());await S.db.collection('items').doc(d.id).set(it)}
+    await new Promise((res)=>{const r=indexedDB.deleteDatabase('kolav-local');r.onsuccess=r.onerror=r.onblocked=()=>res()});toast(t('migrated'));$('migBox').hidden=true}
+  catch(e){console.warn(e);toast(t('saveFail'))}finally{$('migBtn').disabled=false}}
 function renderAdmin(){
-  $('adminBody').hidden=!S.canEdit;$('adminLock').hidden=S.canEdit;$('localNote').hidden=!S.local;if(!S.canEdit)return;
+  $('adminBody').hidden=!S.canEdit;$('adminLock').hidden=S.canEdit;$('localNote').hidden=!S.local;$('signedRow').hidden=!(S.gh&&S.canEdit);
+  if(!S.canEdit){renderLogin();return}renderMigrate();
   $('aShopName').value=S.shop.name||'';$('aShopLink').value=S.shop.tiktok||'';$('aWa').value=S.shop.wa||'';$('aLine').value=S.shop.line||'';
   if(document.activeElement!==$('aFaqHe'))$('aFaqHe').value=faqText((S.shop.faq&&S.shop.faq.en&&S.shop.faq.en.length?S.shop.faq.en:FAQ_DEF.en));if(document.activeElement!==$('aFaqTh'))$('aFaqTh').value=faqText((S.shop.faq&&S.shop.faq.th&&S.shop.faq.th.length?S.shop.faq.th:FAQ_DEF.th));$('aHideDemo').checked=!!S.shop.hideDemo;
   const ty=$('aTypes');ty.innerHTML='';Object.keys(TYPES).forEach((k)=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t(k);b.setAttribute('aria-pressed',String(A.type===k));
@@ -2101,16 +2160,17 @@ function renderAdmin(){
   $('aAddVar').disabled=!A.front||A.busy;$('aSave').disabled=A.busy||!A.type||(!A.front&&!A.vars.length);
   $('formH').textContent=A.edit?t('editItem'):t('addItem');$('aSave').textContent=A.edit?t('saveItem'):t('addToShop');$('aCancel').hidden=!A.edit;
   const list=$('aList');list.innerHTML='';
-  // the sample pieces are listed too (read-only), so the owner sees the whole shop; she can hide them in the shop details
-  if(!S.shop.hideDemo)S.items.filter((x)=>x.demo||String(x.id).startsWith('d-')).forEach((it)=>{const d=document.createElement('div');d.className='ai demo';d.innerHTML='<img alt=""><div class="n"></div><span class="tag"></span>';
-    d.querySelector('img').src=it.variants[0].front;d.querySelector('.n').textContent=txt(it.name);d.querySelector('.tag').textContent=t('demoTag')+' · '+fmt(it.price);list.appendChild(d)});
   (S.dbItems||[]).slice().sort((a,b)=>(a.order??0)-(b.order??0)).forEach((it,i,arr)=>{const d=document.createElement('div');d.className='ai';
-    d.innerHTML=`<img alt=""><div class="n"></div><div class="r"><button type="button" class="e"></button><button type="button" class="u"></button><button type="button" class="d"></button></div>`;
+    d.innerHTML=`<img alt=""><div class="n"></div><div class="r"><span class="flags"><button type="button" class="fn"></button><button type="button" class="fs"></button></span><button type="button" class="e"></button><button type="button" class="u"></button><button type="button" class="d"></button></div>`;
+    for(const [cl,key,lab] of [['.fn','isNew','tagNew'],['.fs','soldOut','soldOut']]){const b=d.querySelector(cl);b.textContent=t(lab);b.setAttribute('aria-pressed',String(!!it[key]));b.addEventListener('click',async()=>{it[key]=!it[key];renderAdmin();try{await saveItem(it,{quiet:true});toast(t('saved'))}catch{it[key]=!it[key];renderAdmin();toast(t('saveFail'))}})}
     d.querySelector('img').src=it.variants[0].front;d.querySelector('.n').textContent=txt(it.name);
     d.querySelector('.e').textContent=t('edit');d.querySelector('.e').addEventListener('click',()=>startEdit(it));
     const u=d.querySelector('.u');u.textContent=t('up');u.disabled=i===0;u.addEventListener('click',async()=>{const prev=arr[i-1];const a=it.order??i,b=prev.order??i-1;it.order=b;prev.order=a;await saveItem(it,{quiet:true});await saveItem(prev,{quiet:true})});
     const del=d.querySelector('.d');del.textContent=A.armed===it.id?t('sure'):t('del');del.addEventListener('click',async()=>{if(A.armed!==it.id){A.armed=it.id;renderAdmin();return}A.armed=null;try{await S.db.collection('items').doc(it.id).delete();toast(t('deleted'))}catch{toast(t('saveFail'))}});
     list.appendChild(d)});
+  // the sample pieces are listed too (read-only), so the owner sees the whole shop; she can hide them in the shop details
+  if(!S.shop.hideDemo)S.items.filter((x)=>x.demo||String(x.id).startsWith('d-')).forEach((it)=>{const d=document.createElement('div');d.className='ai demo';d.innerHTML='<img alt=""><div class="n"></div><span class="tag"></span>';
+    d.querySelector('img').src=it.variants[0].front;d.querySelector('.n').textContent=txt(it.name);d.querySelector('.tag').textContent=t('demoTag')+' · '+fmt(it.price);list.appendChild(d)});
 }
 function resetForm(){A.inside=[];A.frontRaw=null;$('splitBox').hidden=true;$('markBox').hidden=true;A.front=A.back=null;A.backAuto=true;A.type=null;A.sizes=[];A.vars=[];A.edit=null;for(const f of ['aName','aPrice','aColor','aLink','aDesc','aFlat','aLen'])$(f).value='';
   $('prevF').hidden=$('prevB').hidden=$('stF').hidden=$('stB').hidden=true;$('dropFT').hidden=$('dropBT').hidden=false}
@@ -2149,7 +2209,7 @@ $('aSave').addEventListener('click',async()=>{
     const id=A.edit||('i'+Date.now().toString(36));const prev=(S.dbItems||[]).find((x)=>x.id===id);
     const name=$('aName').value.trim(),desc=$('aDesc').value.trim(),link=$('aLink').value.trim();
     const it={id,type:A.type,price:Math.max(0,Math.round(+$('aPrice').value||0)),name:{en:name||T.en[A.type],th:name||T.th[A.type]},desc:{en:desc,th:desc},sizes:A.sizes.length?A.sizes:TYPES[A.type].sizes,
-      flat:(+$('aFlat').value>=20&&+$('aFlat').value<=90)?Math.round(+$('aFlat').value):null,len:(+$('aLen').value>=20&&+$('aLen').value<=170)?Math.round(+$('aLen').value):null,tiktok:/^https:\/\//.test(link)?link:'',order:prev?prev.order:-(Date.now()/1000|0),variants:vars};
+      flat:(+$('aFlat').value>=20&&+$('aFlat').value<=90)?Math.round(+$('aFlat').value):null,len:(+$('aLen').value>=20&&+$('aLen').value<=170)?Math.round(+$('aLen').value):null,tiktok:/^https:\/\//.test(link)?link:'',order:prev?prev.order:-(Date.now()/1000|0),isNew:prev?!!prev.isNew:true,soldOut:prev?!!prev.soldOut:false,variants:vars};
     await saveItem(it);$('aMsg').textContent=t('saved');resetForm();S.cat='all';S.pos=0;S.target=0;setTimeout(()=>adminTab('items'),600)}
   catch(e){console.warn(e);$('aMsg').textContent=e&&e.code==='not_granted'?t('noRight'):t('saveFail')}
   finally{A.busy=false;renderAdmin()}});
@@ -2190,15 +2250,78 @@ function localRuntime(){
   return {db,assets,user:{canEdit:async()=>true},downloads:null,local:true};
 }
 
+/* ====================== shop runtime on GitHub ======================
+   On the shop's own address the catalogue lives in the site's GitHub repository (data/catalog.json, photos in img/u/).
+   Everyone reads it; only someone signed in can save. Signing in = the owner's password, which unlocks a GitHub key
+   that was encrypted with it and stored next to the catalogue (data/admin.json). The key never leaves her browser. */
+const GH_DEFAULT={owner:'innomaster01-del',repo:'kolav-shop',branch:'main'};
+function ghConfig(){if(window.__GH)return window.__GH;const h=location.hostname;if(!/^https?:$/.test(location.protocol)||/^(localhost|127\.|\[::1\])/.test(h)||/claude|anthropic|usercontent/.test(h))return null;
+  const m=h.match(/^([\w-]+)\.github\.io$/i);if(m){const repo=location.pathname.split('/').filter(Boolean)[0];return {owner:m[1],repo:repo&&!/\.html?$/.test(repo)?repo:m[1]+'.github.io',branch:'main'}}return GH_DEFAULT}
+const b64u=(buf)=>{let s='';const a=new Uint8Array(buf);for(let i=0;i<a.length;i+=0x8000)s+=String.fromCharCode.apply(null,a.subarray(i,i+0x8000));return btoa(s)};
+const unb64=(s)=>Uint8Array.from(atob(s),(c)=>c.charCodeAt(0));
+const utf8b64=(str)=>b64u(new TextEncoder().encode(str));
+async function pwKey(pw,salt){const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:310000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function sealToken(tok,pw){const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},await pwKey(pw,salt),new TextEncoder().encode(tok));return {v:1,salt:b64u(salt),iv:b64u(iv),ct:b64u(ct)}}
+async function openToken(box,pw){const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(box.iv)},await pwKey(pw,unb64(box.salt)),unb64(box.ct));return new TextDecoder().decode(pt)}
+function ghRuntime(cfg){
+  const REPO='https://api.github.com/repos/'+cfg.owner+'/'+cfg.repo,API=REPO+'/contents/';
+  let docs={},sha=null,token=null;const shas={};
+  try{token=sessionStorage.getItem('fs-gh')||localStorage.getItem('fs-gh')||null}catch{}
+  const L=new Set();const fire=()=>L.forEach((f)=>f());
+  const local=new Map(),back=new Map();   // photos saved this session, shown from memory until the site has published them
+  const fwd=(v)=>typeof v==='string'?(local.get(v)||v):Array.isArray(v)?v.map(fwd):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,fwd(x)])):v;
+  const rev=(v)=>typeof v==='string'?(back.get(v)||v):Array.isArray(v)?v.map(rev):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,rev(x)])):v;
+  const hdr=()=>({Accept:'application/vnd.github+json',...(token?{Authorization:'Bearer '+token}:{})});
+  const api=(path,opt={})=>fetch(API+path+(opt.method?'':'?ref='+cfg.branch+'&t='+Date.now()),{...opt,cache:'no-store',headers:{...hdr(),...(opt.headers||{})}});
+  const fail=(r,what)=>{const e=new Error(what+' '+r.status);e.status=r.status;e.code=r.status===401||r.status===403||r.status===404?'not_granted':'gh';return e};
+  async function readPublic(){try{const r=await fetch('data/catalog.json?t='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();if(j&&j.docs&&!sha)docs=j.docs}}catch{}fire()}
+  async function readFresh(){const r=await api('data/catalog.json');if(r.status===404){sha=null;return}if(!r.ok)throw fail(r,'read');const j=await r.json();sha=j.sha;
+    try{docs=(JSON.parse(new TextDecoder().decode(unb64(j.content.replace(/\s/g,''))))||{}).docs||{}}catch{docs={}}fire()}
+  // one save at a time; quick edits in a row are bundled into one commit
+  let chain=Promise.resolve(),timer=null,waiters=[];
+  async function push(){const body={message:'Shop catalogue update',content:utf8b64(JSON.stringify({docs},null,1)),branch:cfg.branch,...(sha?{sha}:{})};
+    let r=await api('data/catalog.json',{method:'PUT',body:JSON.stringify(body)});
+    if(r.status===409||r.status===422){const cur=await api('data/catalog.json');if(cur.ok){sha=(await cur.json()).sha;r=await api('data/catalog.json',{method:'PUT',body:JSON.stringify({...body,sha})})}}
+    if(!r.ok)throw fail(r,'save');sha=(await r.json()).content.sha}
+  function commit(){if(!token)return Promise.reject(Object.assign(new Error('signed out'),{code:'not_granted'}));
+    return new Promise((res,rej)=>{waiters.push({res,rej});clearTimeout(timer);timer=setTimeout(()=>{const ws=waiters;waiters=[];chain=chain.catch(()=>{}).then(push).then(()=>ws.forEach((w)=>w.res()),(e)=>ws.forEach((w)=>w.rej(e)))},300)})}
+  const docRef=(path)=>({
+    set:async(d)=>{docs[path]=rev(JSON.parse(JSON.stringify(d)));fire();await commit()},
+    update:async(d)=>{docs[path]={...(docs[path]||{}),...rev(JSON.parse(JSON.stringify(d)))};fire();await commit()},
+    delete:async()=>{delete docs[path];fire();await commit()},
+    onSnapshot:(cb)=>{const f=()=>{const v=docs[path];cb({exists:!!v,data:()=>fwd(v)})};L.add(f);f();return ()=>L.delete(f)}});
+  const db={doc:docRef,collection:(col)=>({doc:(id)=>docRef(col+'/'+id),onSnapshot:(cb)=>{const f=()=>{const ds=Object.keys(docs).filter((k)=>k.startsWith(col+'/')&&k.split('/').length===2).map((k)=>{const id=k.split('/')[1],v=docs[k];return {id,exists:true,data:()=>fwd(v)}});cb({docs:ds,size:ds.length,empty:!ds.length})};L.add(f);f();return ()=>L.delete(f)}})};
+  const ext=(t)=>({'image/webp':'.webp','image/png':'.png','image/jpeg':'.jpg'})[t]||'.bin';
+  const assets={upload:async(blob)=>{if(!token)throw Object.assign(new Error('signed out'),{code:'not_granted'});const id=Date.now().toString(36)+Math.random().toString(36).slice(2,8),path='img/u/'+id+ext(blob.type);
+    const r=await api(path,{method:'PUT',body:JSON.stringify({message:'Shop photo',content:b64u(await blob.arrayBuffer()),branch:cfg.branch})});if(!r.ok)throw fail(r,'photo');
+    const u=URL.createObjectURL(blob);local.set(path,u);back.set(u,path);return {id,url:u}}};
+  async function adminBox(){try{const r=await fetch('data/admin.json?t='+Date.now(),{cache:'no-store'});if(r.ok)return await r.json()}catch{}
+    try{const r=await fetch(API+'data/admin.json?ref='+cfg.branch,{headers:{Accept:'application/vnd.github.raw+json'},cache:'no-store'});if(r.ok)return await r.json()}catch{}return null}
+  async function canPush(tok){const r=await fetch(REPO,{headers:{Accept:'application/vnd.github+json',Authorization:'Bearer '+tok},cache:'no-store'});if(!r.ok)return false;const j=await r.json();return !!(j.permissions&&(j.permissions.push||j.permissions.admin))}
+  function keep(tok,remember){token=tok;try{sessionStorage.setItem('fs-gh',tok);if(remember)localStorage.setItem('fs-gh',tok);else localStorage.removeItem('fs-gh')}catch{}}
+  const auth={
+    hasSetup:async()=>!!(await adminBox()),
+    signIn:async(pw,remember)=>{const box=await adminBox();if(!box)return 'noSetup';let tok;try{tok=await openToken(box,pw)}catch{return 'badPw'}if(!(await canPush(tok)))return 'tokNoPush';keep(tok,remember);await readFresh();return 'ok'},
+    setup:async(tok,pw,remember)=>{tok=tok.trim();if(!(await canPush(tok)))return 'tokNoPush';const box=await sealToken(tok,pw);
+      let s0=null;const g=await fetch(API+'data/admin.json?ref='+cfg.branch+'&t='+Date.now(),{headers:{Accept:'application/vnd.github+json',Authorization:'Bearer '+tok},cache:'no-store'});if(g.ok)s0=(await g.json()).sha;
+      const r=await fetch(API+'data/admin.json',{method:'PUT',headers:{Accept:'application/vnd.github+json',Authorization:'Bearer '+tok},body:JSON.stringify({message:'Shop admin password',content:utf8b64(JSON.stringify(box)),branch:cfg.branch,...(s0?{sha:s0}:{})})});
+      if(!r.ok)return 'tokNoPush';keep(tok,remember);await readFresh();return 'ok'},
+    signOut:()=>{token=null;try{sessionStorage.removeItem('fs-gh');localStorage.removeItem('fs-gh')}catch{}},
+    signedIn:()=>!!token,
+    check:async()=>{if(!token)return false;if(await canPush(token)){await readFresh().catch(()=>{});return true}auth.signOut();return false}};
+  readPublic();
+  return {db,assets,user:{canEdit:async()=>auth.check()},downloads:null,auth,cfg};
+}
+
 /* ====================== boot ====================== */
 applyLang();layoutRope();
 (window.requestIdleCallback||((f)=>setTimeout(f,2500)))(()=>{setTimeout(()=>{try{loadImg(MODEL_IMG).then((im)=>{const sc=Math.min(1,1100/im.naturalHeight);modelBundle(cv(im.naturalWidth*sc,im.naturalHeight*sc))}).catch(()=>{});loadHuman()}catch{}},1200)});
 (async()=>{
   const use=window.claude?.use?.bind(window.claude);let db,user,assets,downloads;
   if(use)[db,user,assets,downloads]=await Promise.all(['db','user','assets','downloads'].map((n)=>use(n).catch(()=>null)));
-  else{try{const R=localRuntime();({db,user,assets,downloads}=R);S.local=true}catch(e){console.warn(e);return}}
+  else{const G=ghConfig();try{const R=G?ghRuntime(G):localRuntime();({db,user,assets,downloads}=R);if(G)S.gh=R;else S.local=true}catch(e){console.warn(e);return}}
   S.downloads=downloads;S.assets=assets;
-  if(user){try{S.canEdit=!!(await user.canEdit())}catch{}}
+  if(user){if(S.gh)user.canEdit().then((v)=>{S.canEdit=!!v;if(!$('admin').hidden)renderAdmin();rebuild()}).catch(()=>{});else try{S.canEdit=!!(await user.canEdit())}catch{}}
 
   if(db){S.db=db;
     db.collection('items').onSnapshot((snap)=>{S.dbItems=snap.docs.map((d)=>({...d.data(),id:d.id})).filter((x)=>Array.isArray(x.variants)&&x.variants.length&&TYPES[x.type]);rebuild();if(!$('admin').hidden)renderAdmin()},(e)=>console.warn('items',e));
