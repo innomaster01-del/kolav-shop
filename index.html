@@ -68,8 +68,8 @@ a{color:inherit}
 .peg img{display:block;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 18px 18px rgba(20,30,50,.20)) drop-shadow(0 3px 4px rgba(20,30,50,.12))}
 .peg:focus-visible{outline:none}
 .peg:focus-visible img{filter:drop-shadow(0 0 0 2px var(--ink))}
-.pin{position:absolute;width:9px;height:26px;margin-left:-4.5px;transform-origin:50% 50%;z-index:2;border-radius:2px 2px 3px 3px;background:linear-gradient(90deg,var(--wood-dark),var(--wood) 35%,var(--wood) 60%,var(--wood-dark));box-shadow:0 2px 3px rgba(0,0,0,.25);pointer-events:none}
-.pin::before{content:"";position:absolute;left:-1px;right:-1px;top:9px;height:3px;border-radius:2px;background:linear-gradient(#cfd3d8,#7d848c)}
+.pin{position:absolute;width:11px;height:32px;margin-left:-5.5px;transform-origin:50% 72%;z-index:2;border-radius:2px 2px 3px 3px;background:linear-gradient(90deg,var(--wood-dark),var(--wood) 35%,var(--wood) 60%,var(--wood-dark));box-shadow:0 2px 3px rgba(0,0,0,.25);pointer-events:none}
+.pin::before{content:"";position:absolute;left:-1px;right:-1px;top:11px;height:3px;border-radius:2px;background:linear-gradient(#cfd3d8,#7d848c)}
 .pin::after{content:"";position:absolute;left:50%;top:2px;bottom:3px;width:1px;background:rgba(0,0,0,.18)}
 .hero-foot{position:absolute;inset:auto 0 0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:12px;padding-bottom:calc(22px + env(safe-area-inset-bottom,0px));pointer-events:none}
 .hero-foot>*{pointer-events:auto}
@@ -524,7 +524,6 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
           <label class="f"><span data-t="lengthAdj">Adjust length</span><input type="range" id="qfL" min="0.85" max="1.2" step="0.01" value="1"></label>
           <div class="row2"><button class="btn sm" id="qfPts" type="button" aria-pressed="false" data-t="points">Adjust points</button><button class="btn sm" id="qfLock" type="button" aria-pressed="true" data-t="locked">Unlock</button><button class="btn sm" id="qfReset" type="button" data-t="reset">Reset</button><button class="btn sm" id="saveImg" type="button" data-t="save">Save photo</button></div>
           <p class="note" data-t="dragTip">You can drag the garment. While locked to the body it snaps back. Tap "Unlock" and it stays where you leave it.</p>
-          <a class="btn solid" id="fitBuy" target="_blank" rel="noopener" data-t="buyShort">Buy</a>
         </div>
         <div class="step ai-info"><h3><i>✦</i><span data-t="s4">Realistic try-on (AI)</span></h3>
           <p class="note" data-t="aiNote">Re-dresses you with AI: real folds, light and hands. Takes about 30 seconds per garment.</p>
@@ -709,11 +708,12 @@ async function grips(url,type){
     // pins sit symmetrically about the garment's own middle, at the spot it would really be pegged by:
     // tops and jackets at the shoulders, pants and skirts at the two corners of the waistband, dresses at the straps
     const top5=(u)=>{const x0=Math.round(l+(r-l)*u);let y=H;for(let k=-2;k<=2;k++)y=Math.min(y,top(Math.min(W-1,Math.max(0,x0+k))));return y};
-    const SH={tee:.3,shirt:.34,hoodie:.4,jacket:.37};let hw;
+    // like a real line: tops are pegged on the shoulder just beside the neck, dresses and tanks on the straps
+    const SH={tee:.24,shirt:.25,hoodie:.29,jacket:.27};let hw;
     if(type==='pants'||type==='skirt'){const gy=Math.min(...[.3,.4,.5,.6,.7].map(top5));const row=Math.min(H-1,gy+Math.max(2,Math.round(H*.012)));let a=W,b=0;for(let xx=l;xx<=r;xx++)if(d[(row*W+xx)*4+3]>140){if(xx<a)a=xx;if(xx>b)b=xx}
       const c=(l+r)/2,half=Math.max(4,Math.min(c-a,b-c))*.84;hw=half/Math.max(1,r-l)}
     else if(SH[type])hw=SH[type];
-    else{const L0=hang(.06,.46,.3),R0=hang(.54,.94,.7);hw=Math.max(.12,Math.min(.44,(R0.u-L0.u)/2))}
+    else{const L0=hang(.06,.46,.3),R0=hang(.54,.94,.7);hw=Math.max(.1,Math.min(.44,((.5-L0.u)+(R0.u-.5))/2))}
     const L={u:.5-hw,y:top5(.5-hw)},R={u:.5+hw,y:top5(.5+hw)};
     const ix=(u)=>(l+(r-l)*u)/W;   // fractions of the whole picture, which is what the layout uses
     return {ar:im.naturalWidth/im.naturalHeight,u1:ix(L.u),u2:ix(R.u),y1:L.y/H,y2:R.y/H,bc:(l+r)/2/W}}).catch(()=>({ar:.7,u1:.28,u2:.72,y1:0,y2:0,bc:.5}));
@@ -826,7 +826,7 @@ function stepLine(dt){
     if(reduce)p.swing=0;
     const gx1=cx-w/2+w*g.u1,gx2=cx-w/2+w*g.u2,ry=(ropeY(gx1)+ropeY(gx2))/2,top=Math.min(g.y1,g.y2)*h;
     const tilt=Math.atan2(ropeY(gx2)-ropeY(gx1),gx2-gx1),sk=p.swing*.5;   // pinned at two points it can't spin: it follows the rope's slope and only sways below the pins
-    const fold=Math.max(4,h*.028),y=ry-top-fold;
+    const fold=Math.max(1.5,h*.006),y=ry-top-fold;
     p.el.style.width=w+'px';p.el.style.height=h+'px';
     p.el.style.transformOrigin=`50% ${(top+fold)/h*100}%`;
     p.el.style.transform=`translate3d(${cx-w/2}px,${y}px,0) rotate(${tilt}rad) skewX(${sk}rad)`;
@@ -834,7 +834,7 @@ function stepLine(dt){
     p.el.style.opacity=a>2.7?'0':'1';p.el.style.visibility=a>3.2?'hidden':'visible';if(!p.shown){p.shown=true;p.el.animate&&!reduce&&p.el.animate([{opacity:0,translate:'0 -18px'},{opacity:1,translate:'0 0'}],{duration:520,easing:'cubic-bezier(.22,.8,.2,1)'})}
     p.el.style.filter=a>.6?`saturate(${1-Math.min(.25,a*.1)})`:'none';
     const ps=Math.max(.65,sc);
-    const mx=(gx1+gx2)/2;for(const [pin,u] of [[p.p1,g.u1],[p.p2,g.u2]]){const gx=cx-w/2+w*u,dy=(ropeY(gx)-ry-(gx-mx)*Math.tan(tilt))*Math.cos(tilt);pin.style.left=(u*100)+'%';pin.style.top=(top+fold+dy-13*ps)+'px';pin.style.transform=`skewX(${-sk}rad) scale(${ps})`}
+    const mx=(gx1+gx2)/2;for(const [pin,u] of [[p.p1,g.u1],[p.p2,g.u2]]){const gx=cx-w/2+w*u,dy=(ropeY(gx)-ry-(gx-mx)*Math.tan(tilt))*Math.cos(tilt);pin.style.left=(u*100)+'%';pin.style.top=(top+fold+dy-23*ps)+'px';pin.style.transform=`skewX(${-sk}rad) scale(${ps})`}
   }
   // label under the centre piece
   const cur=pegs[S.pos];if(cur&&cur.g){const h=H*TYPES[cur.it.type].h*(phone?.9:1);$('label').style.top=Math.min(H-(phone?150:120),ropeY(geom.W/2)+h+14)+'px'}
@@ -1832,7 +1832,7 @@ async function setPerson(src){
     else{const im=await loadImg(MODEL_IMG);const sc=Math.min(1,1100/im.naturalHeight);c=cv(im.naturalWidth*sc,im.naturalHeight*sc);c.getContext('2d').drawImage(im,0,0,c.width,c.height)}
     if(tok!==Q.token)return;Q.base=c;Q.front=null;Q.demo=!src;Q.kp=null;Q.auto=null;Q.busy=true;renderFit();
     const ck=src?null:'model';let det=null,kp=null,failed=false;
-    if(ck&&!personCache.has(ck)){const pre=await modelBundle(c);if(pre)personCache.set(ck,pre)}
+    if(ck&&!personCache.has(ck)){setStatus('loadingModel');const [pre]=await Promise.all([modelBundle(c),new Promise((r)=>setTimeout(r,1600))]);if(tok!==Q.token)return;if(pre)personCache.set(ck,pre)}
     if(ck&&personCache.has(ck))({det,kp}=personCache.get(ck));
     else{setStatus(humanP?'detecting':'loadingModel');try{det=await detectBody(c);kp=det&&fitFromPose(det,c.width,c.height)}catch(e){failed=true;console.warn('body detection failed',e)}
       if(ck&&kp)personCache.set(ck,{det,kp})}
@@ -1893,7 +1893,7 @@ function renderQfSizes(){const box=$('qfSizes');box.innerHTML='';const it=byId(F
   (it.sizes||[]).forEach((sz)=>{const b=document.createElement('button');b.type='button';b.textContent=sz;b.className=sz===rec?'rec':'';b.setAttribute('aria-pressed',String((S.size[it.id]||'M')===sz));
     b.addEventListener('click',()=>{S.size[it.id]=sz;(S.sizeSet=S.sizeSet||{})[it.id]=true;renderQfSizes();renderFit()});box.appendChild(b)});
   $('qfRec').textContent=rec?t('recFor').replace('%s',rec):'';renderQfFit();
-  $('fitBuy').href=tiktokOf(it)}
+  }
 $('meIn').addEventListener('change',async(e)=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{await createImageBitmap(f);F.src=f;setPerson(f)}catch{toast(t('badFile'))}});
 $('useModel').addEventListener('click',()=>{F.src=null;setPerson(null)});
 $('qfH').value=Q.height;$('qfH').addEventListener('input',(e)=>{const vv=+e.target.value;if(vv>=130&&vv<=200){Q.height=vv;store.set('kolav-height',vv);renderQfSizes();fitDraw()}});
