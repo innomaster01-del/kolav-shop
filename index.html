@@ -68,8 +68,8 @@ html[dir="rtl"] .flipx svg{transform:scaleX(-1)}
 .peg img{display:block;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 18px 18px rgba(20,30,50,.20)) drop-shadow(0 3px 4px rgba(20,30,50,.12))}
 .peg:focus-visible{outline:none}
 .peg:focus-visible img{filter:drop-shadow(0 0 0 2px var(--ink))}
-.pin{position:absolute;width:10px;height:30px;margin-left:-5px;border-radius:2px 2px 3px 3px;background:linear-gradient(90deg,var(--wood-dark),var(--wood) 35%,var(--wood) 60%,var(--wood-dark));box-shadow:0 2px 3px rgba(0,0,0,.25);pointer-events:none}
-.pin::before{content:"";position:absolute;left:-1px;right:-1px;top:11px;height:4px;border-radius:2px;background:linear-gradient(#cfd3d8,#7d848c)}
+.pin{position:absolute;width:8px;height:24px;margin-left:-4px;border-radius:2px 2px 3px 3px;background:linear-gradient(90deg,var(--wood-dark),var(--wood) 35%,var(--wood) 60%,var(--wood-dark));box-shadow:0 2px 3px rgba(0,0,0,.25);pointer-events:none}
+.pin::before{content:"";position:absolute;left:-1px;right:-1px;top:9px;height:3px;border-radius:2px;background:linear-gradient(#cfd3d8,#7d848c)}
 .pin::after{content:"";position:absolute;left:50%;top:2px;bottom:3px;width:1px;background:rgba(0,0,0,.18)}
 .hero-foot{position:absolute;inset:auto 0 0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:12px;padding-bottom:calc(22px + env(safe-area-inset-bottom,0px));pointer-events:none}
 .hero-foot>*{pointer-events:auto}
@@ -123,6 +123,43 @@ html[lang="th"] .sec-h h2{font-family:var(--f-thai);font-weight:600;font-size:2r
 .card .pr{font-weight:700;font-variant-numeric:tabular-nums}
 .card .sw{display:flex;gap:5px}
 .card .sw i{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.perks{list-style:none;margin:clamp(28px,4vw,44px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.perks li{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.perks li:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(20,30,50,.08)}
+.perks svg{width:24px;height:24px;flex:none;color:var(--ink)}.perks div{display:grid;gap:1px;min-width:0}.perks b{font-size:.95rem}.perks span{color:var(--muted);font-size:.84rem}
+.ctiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px}
+.ctile{all:unset;cursor:pointer;display:grid;gap:12px;justify-items:center;text-align:center}
+.ctile .ring{position:relative;width:100%;max-width:190px;aspect-ratio:1;border-radius:50%;background:var(--tile);overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.ctile .ring img{position:absolute;inset:12%;width:76%;height:76%;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(20,30,50,.16));transition:transform .6s var(--ease),opacity .5s var(--ease)}
+.ctile .ring img.b{opacity:0;transform:translateX(30%) rotate(8deg)}
+.ctile:hover .ring,.ctile:focus-visible .ring{transform:translateY(-6px);box-shadow:0 18px 34px rgba(20,30,50,.14)}
+.ctile:hover .ring img.a{opacity:0;transform:translateX(-30%) rotate(-8deg)}.ctile:hover .ring img.b{opacity:1;transform:none}
+.ctile:focus-visible .ring{outline:2px solid var(--ink);outline-offset:4px}
+.ctile b{font-weight:700}.ctile span{color:var(--muted);font-size:.82rem;margin-top:-8px}
+.ctile[aria-pressed="true"] .ring{box-shadow:0 0 0 2px var(--ink)}
+@media (prefers-reduced-motion:no-preference){.ctile .ring img.a{animation:bob 4.8s ease-in-out infinite}.ctile:nth-child(2n) .ring img.a{animation-delay:-1.6s}.ctile:nth-child(3n) .ring img.a{animation-delay:-3.1s}}
+@keyframes bob{0%,100%{translate:0 0;rotate:-1.2deg}50%{translate:0 -5px;rotate:1.2deg}}
+.tabs.chipsbar{gap:8px}.tabs.chipsbar button{border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:var(--card);color:var(--ink);font-size:.86rem;letter-spacing:0}
+.tabs.chipsbar button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.card .sz{color:var(--muted);font-size:.78rem;letter-spacing:.04em}
+.card .ph .quick{position:absolute;bottom:12px;inset-inline:12px;display:flex;justify-content:center;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s var(--ease)}
+.card .ph .quick span{background:var(--card);color:var(--ink);font-weight:700;font-size:.82rem;padding:8px 14px;border-radius:999px;box-shadow:0 6px 16px rgba(20,30,50,.14)}
+.card:hover .ph .quick,.card .ph:focus-visible .quick{opacity:1;transform:none}
+@media (hover:none){.card .ph .quick{opacity:1;transform:none}}
+.card .ph img.bk{opacity:0}.card.has-bk:hover .ph img.prod{opacity:0}.card.has-bk:hover .ph img.bk{opacity:1}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:18px}.sg h3{margin:0 0 8px;font-size:1rem}
+.sg .dims{width:100%;background:var(--card);border-radius:16px;overflow:hidden;border-collapse:collapse}
+.sg .dims th,.sg .dims td{padding:10px 14px;text-align:start;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}.sg .dims th{background:var(--tile);font-size:.8rem;color:var(--muted);font-weight:600}
+.sg .dims tr:last-child td{border-bottom:0}.sg .dims td:first-child{font-weight:700}
+.unsure{margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:18px;align-items:center;background:color-mix(in srgb,var(--like) 10%,var(--card));border-radius:24px;padding:clamp(20px,3vw,32px)}
+.unsure h3{font-family:var(--f-display);font-size:2.2rem;line-height:.9;margin:0 0 6px}.unsure p{margin:0;color:var(--muted)}
+.calc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:10px;align-items:end}.calc output{grid-column:1/-1;font-weight:700;min-height:1.4em}
+.rv{opacity:1}
+@media (prefers-reduced-motion:no-preference){.js-rv .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.js-rv .rv.in{opacity:1;transform:none}
+  .grid .card{animation:cardIn .55s var(--ease) both;animation-delay:calc(var(--i,0)*45ms)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+@media (max-width:860px){.perks{grid-template-columns:1fr 1fr}.sg{grid-template-columns:1fr}.unsure{grid-template-columns:1fr}.calc{grid-template-columns:1fr 1fr 1fr}.calc .btn{grid-column:1/-1}}
+@media (max-width:420px){.perks li{padding:12px}.perks span{display:none}.ctiles{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.ctile span{display:none}}
 .how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:0}
 .how li{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;gap:6px;align-content:start}
 .how b{font-size:1.06rem}.how span{color:var(--muted)}
@@ -138,13 +175,16 @@ html[lang="th"] .sec-h h2{font-family:var(--f-thai);font-weight:600;font-size:2r
 .contact{display:flex;gap:8px;flex-wrap:wrap}
 .cbtn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.88rem;color:#fff}
 .cbtn svg{width:18px;height:18px;flex:none}
+.pd-ask{display:grid;gap:8px;margin:14px 0 4px}.pd-ask .contact-row{display:flex;gap:8px;flex-wrap:wrap}.pd-ask .cbtn{flex:1 1 140px;justify-content:center}
 .cbtn.c-wa{background:#1f9e56}.cbtn.c-line{background:#06a443}
 .float{position:fixed;inset-inline-start:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;display:flex;flex-direction:column;gap:8px}
 .float a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.2);color:#fff}
 .float a svg{width:24px;height:24px}
 .ask{font-size:.86rem;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
-.foot{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;color:var(--muted);font-size:.88rem;padding-block:48px 32px;margin-top:64px;border-top:1px solid var(--line)}
+.foot{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:24px;align-items:start;color:var(--muted);font-size:.88rem;padding-block:48px 32px;margin-top:64px;border-top:1px solid var(--line)}
 .foot b{font-family:var(--f-display);font-size:2rem;color:var(--ink);font-weight:700}
+.fcol{display:grid;gap:8px;justify-items:start}.fcol a,.fcol .linkbtn{color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem}.fcol a:hover,.fcol .linkbtn:hover{text-decoration:underline}
+@media (max-width:600px){.foot{grid-template-columns:1fr 1fr}.fbrand{grid-column:1/-1}}
 .linkbtn{background:none;border:0;padding:4px 0;cursor:pointer;font-weight:600;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
 
 /* ---------- product ---------- */
@@ -301,6 +341,11 @@ html[lang="th"] .dh h2{font-family:var(--f-thai);font-size:1.4rem}
 .ah h2{font-family:var(--f-display);font-weight:700;font-size:2.2rem;margin:0;flex:1;line-height:1}
 html[lang="th"] .ah h2{font-family:var(--f-thai);font-size:1.3rem}
 .as{padding:18px 20px 6px;display:grid;gap:12px}
+.atabs{display:flex;gap:6px;padding:4px 20px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card);z-index:2}
+.atabs button{border:0;background:none;padding:12px 6px;margin-bottom:-1px;font:600 .92rem var(--f-body);color:var(--muted);cursor:pointer;border-bottom:2px solid transparent}
+.atabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.arow{display:flex;justify-content:space-between;align-items:center;gap:12px}.arow h3{margin:0}
+.ai .tag{font-size:.72rem;color:var(--muted)}.ai.demo{opacity:.75;border-style:dashed}
 .as h3{margin:0;font-size:1rem}
 .g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 label.f{display:grid;gap:6px;font-size:.88rem;color:var(--muted);min-width:0}
@@ -361,8 +406,18 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
 
 <main class="gut">
   <div class="wrap">
+    <ul class="perks rv" aria-label="למה לקנות אצלנו">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 4 6l2 4 2-1v12h8V9l2 1 2-4-5-3a3 3 0 0 1-6 0Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><div><b data-t="pk1">מדידה על התמונה שלך</b><span data-t="pk1s">כל בגד, כל מידה</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h11M4 17h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div><b data-t="pk2">המלצת מידה</b><span data-t="pk2s">לפי הגוף שלך</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3-3.46M14 3c.5 2.6 2.4 4.3 5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div><b data-t="pk3">קונים בטיק טוק</b><span data-t="pk3s">תשלום ומשלוח מאובטחים</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><div><b data-t="pk4">שאלות? כתבי לנו</b><span data-t="pk4s">בוואטסאפ או בליין</span></div></li>
+    </ul>
+    <section class="sec" aria-labelledby="catH">
+      <div class="sec-h rv"><div><h2 id="catH" data-t="byCat">קונים לפי קטגוריה</h2></div></div>
+      <div class="ctiles" id="ctiles"></div>
+    </section>
     <section class="sec" id="shop" aria-labelledby="shopH">
-      <div class="sec-h"><div><h2 id="shopH" data-t="collection">הקולקציה</h2><p data-t="collectionSub">כל בגד אפשר למדוד על התמונה שלך, ולקנות בחנות שלנו בטיק טוק.</p></div><div class="tabs" id="tabs" role="group"></div></div>
+      <div class="sec-h rv"><div><h2 id="shopH" data-t="collection">הקולקציה</h2><p data-t="collectionSub">כל בגד אפשר למדוד על התמונה שלך, ולקנות בחנות שלנו בטיק טוק.</p></div><div class="tabs" id="tabs" role="group"></div></div>
       <div class="grid" id="grid"></div>
     </section>
     <section class="sec" aria-labelledby="howH">
@@ -373,12 +428,22 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
         <li><i>3</i><b data-t="how3">קונים בטיק טוק</b><span data-t="how3s">אהבת? הכפתור פותח את הפריט בחנות שלנו בטיק טוק.</span></li>
       </ol>
     </section>
+    <section class="sec" id="sizes" aria-labelledby="sizeH">
+      <div class="sec-h rv"><div><h2 id="sizeH" data-t="sizeGuide">מדריך מידות</h2><p data-t="sizeSub">מידות הגוף בס״מ שכל מידה מתאימה להן. בכל פריט יש גם את המידות שלו עצמו.</p></div></div>
+      <div class="sg rv"><div><h3 data-t="sgTops">חולצות, ז׳קטים ושמלות</h3><table class="dims" id="sgTop"></table></div><div><h3 data-t="sgBottoms">מכנסיים וחצאיות</h3><table class="dims" id="sgBot"></table></div></div>
+      <div class="unsure rv"><div><h3 data-t="unsureH">לא בטוחה במידה?</h3><p data-t="unsureP">מכניסים חזה, מותן וירכיים פעם אחת, ומקבלים את המידה שמתאימה לך.</p></div>
+        <form class="calc" id="calc"><label class="f"><span data-t="mChest">חזה</span><input class="field" id="mChest" type="number" min="60" max="150" inputmode="numeric" placeholder="ס״מ"></label><label class="f"><span data-t="mWaist">מותן</span><input class="field" id="mWaist" type="number" min="45" max="140" inputmode="numeric" placeholder="ס״מ"></label><label class="f"><span data-t="mHips">ירכיים</span><input class="field" id="mHips" type="number" min="60" max="160" inputmode="numeric" placeholder="ס״מ"></label><button class="btn solid" type="submit" data-t="calcBtn">מה המידה שלי?</button><output id="calcOut" aria-live="polite"></output></form></div>
+    </section>
     <section class="sec info" id="info" aria-labelledby="infoH">
       <div class="sec-h"><div><h2 id="infoH" data-t="infoTitle">מידע ושאלות</h2><p data-t="infoSub">כל מה שצריך לדעת לפני שמזמינים. לא מצאת תשובה? כתבי לנו.</p></div>
         <div class="contact" id="contactRow"></div></div>
       <div class="faq" id="faq"></div>
     </section>
-    <footer class="foot"><b id="footBrand">קולב</b><span data-t="foot">כל הפריטים נקנים בחנות שלנו בטיק טוק.</span><button class="linkbtn" id="adminBtn" type="button" hidden data-t="manage">ניהול החנות</button></footer>
+    <footer class="foot">
+      <div class="fcol fbrand"><b id="footBrand">קולב</b><span data-t="foot">כל הפריטים נקנים בחנות שלנו בטיק טוק.</span></div>
+      <nav class="fcol" aria-label="חנות"><span class="eyebrow" data-t="fShop">חנות</span><a href="#shop" data-t="collection">הקולקציה</a><button class="linkbtn" type="button" id="fFit" data-t="fitRoom">חדר מדידה</button><a href="#sizes" data-t="sizeGuide">מדריך מידות</a></nav>
+      <nav class="fcol" aria-label="עזרה"><span class="eyebrow" data-t="fHelp">עזרה</span><a href="#info" data-t="infoTitle">מידע ושאלות</a><button class="linkbtn" id="adminBtn" type="button" data-t="adminIn">כניסה למנהל</button></nav>
+    </footer>
   </div>
 </main>
 
@@ -391,7 +456,7 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
     </div>
     <div class="gen" id="gen" hidden><span><i class="spin"></i><b id="genT"></b></span></div>
     <div class="pd-tools">
-      <div class="seg" role="group"><button type="button" id="vProd" aria-pressed="true" data-t="product">מוצר</button><button type="button" id="vModel" aria-pressed="false" data-t="onModel">על דוגמנית</button></div>
+      <div class="seg" role="group" hidden><button type="button" id="vProd" aria-pressed="true" data-t="product">מוצר</button><button type="button" id="vModel" aria-pressed="false" data-t="onModel">על דוגמנית</button></div>
       <div class="seg" role="group" id="sides"><button type="button" id="sFront" aria-pressed="true" data-t="front">חזית</button><button type="button" id="sBack" aria-pressed="false" data-t="back">גב</button></div>
     </div>
     <div class="pd-nav"><button class="round flipx" id="pdPrev" type="button" aria-label="הקודם"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button><button class="round flipx" id="pdNext" type="button" aria-label="הבא"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button></div>
@@ -406,7 +471,7 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
       <button class="btn like" id="pdLike" type="button" aria-pressed="false" aria-label="אהבתי"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.5 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button>
       <button class="btn wide" id="pdTry" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 4 6l2 4 2-1v12h8V9l2 1 2-4-5-3a3 3 0 0 1-6 0Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span data-t="tryMe">מדידה על התמונה שלי</span></button>
     </div>
-    <a class="ask" id="pdAsk" target="_blank" rel="noopener" hidden></a>
+    <div class="pd-ask" id="pdAskBox" hidden><span class="eyebrow" data-t="askQ">שאלה על הפריט?</span><div class="contact-row" id="pdAskRow"></div></div>
     <p class="note" data-t="buyNote">הקנייה נעשית בחנות בטיק טוק. בחרי שם את אותה מידה ואותו צבע.</p>
     <details class="acc" id="accDesc"><summary data-t="details">פרטים</summary><p id="pdDesc"></p></details>
     <details class="acc"><summary data-t="sizeGuide">מדריך מידות</summary><table class="dims" id="pdDims"></table></details>
@@ -478,7 +543,8 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
   <div class="admin-box">
     <div class="ah"><h2 id="adminH" data-t="manage">ניהול החנות</h2><button class="x" id="adminClose" type="button" aria-label="סגירה">×</button></div>
     <div id="adminBody">
-      <div class="as"><h3 data-t="shopInfo">פרטי החנות</h3>
+      <div class="atabs" role="tablist"><button type="button" role="tab" data-tab="items" aria-selected="true" data-t="aTabItems">הפריטים</button><button type="button" role="tab" data-tab="add" aria-selected="false" data-t="aTabAdd">הוספת בגד</button><button type="button" role="tab" data-tab="shop" aria-selected="false" data-t="aTabShop">פרטי החנות</button></div>
+      <div class="as" data-pane="shop" hidden><h3 data-t="shopInfo">פרטי החנות</h3>
         <div class="g2">
           <label class="f"><span data-t="shopName">שם החנות</span><input class="field" id="aShopName" type="text" autocomplete="off"></label>
           <label class="f"><span data-t="shopLink">קישור לחנות בטיק טוק</span><input class="field" id="aShopLink" type="url" inputmode="url" dir="ltr" placeholder="https://www.tiktok.com/@…"></label>
@@ -492,7 +558,7 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
         <label class="consent"><input type="checkbox" id="aHideDemo"><span data-t="hideDemo">להסתיר את פריטי הדוגמה</span></label>
         <div><button class="btn solid sm" id="aSaveShop" type="button" data-t="saveShop">שמירת פרטי החנות</button></div>
       </div>
-      <div class="as"><h3 id="formH" data-t="addItem">הוספת פריט</h3>
+      <div class="as" data-pane="add" hidden><h3 id="formH" data-t="addItem">הוספת פריט</h3>
         <div class="drops">
           <div class="drop" id="dropF"><span class="tg" data-t="front">חזית</span><span id="dropFT" data-t="dropFront">תמונת חזית של הבגד (חובה). הרקע מוסר אוטומטית.</span><img id="prevF" alt="" hidden><span class="st" id="stF" hidden></span><input type="file" id="aFront" accept="image/jpeg,image/png,image/webp" aria-label="חזית"></div>
           <div class="drop" id="dropB"><span class="tg" data-t="back">גב</span><span id="dropBT" data-t="dropBack">תמונת גב (לא חובה). בלי תמונה נוצר גב חלק באותו צבע.</span><img id="prevB" alt="" hidden><span class="st" id="stB" hidden></span><input type="file" id="aBack" accept="image/jpeg,image/png,image/webp" aria-label="גב"></div>
@@ -521,7 +587,7 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
         <div class="row2"><button class="btn solid" id="aSave" type="button" data-t="addToShop" disabled>הוספה לקולקציה</button><button class="btn" id="aCancel" type="button" hidden data-t="cancelEdit">ביטול עריכה</button></div>
         <p class="note" id="aMsg" aria-live="polite"></p>
       </div>
-      <div class="as" style="padding-bottom:22px"><h3 data-t="items">הפריטים בחנות</h3><div class="alist" id="aList"></div></div>
+      <div class="as" data-pane="items" style="padding-bottom:22px"><div class="arow"><h3 data-t="items">הפריטים בחנות</h3><button class="btn solid sm" type="button" id="aNew">+ <span data-t="aTabAdd">הוספת בגד</span></button></div><div class="alist" id="aList"></div></div>
     </div>
     <p class="note" id="localNote" hidden style="padding:0 20px 18px" data-t="localNote">באתר הזה הקטלוג נשמר בדפדפן הזה בלבד, לבדיקה. בחנות המלאה (Vercel) הוא נשמר בשרת וכולם רואים אותו.</p>
     <div class="lock" id="adminLock" hidden><h3 data-t="manage">ניהול החנות</h3><p data-t="ownerOnly">רק בעלת החנות יכולה לנהל את הקטלוג.</p></div>
@@ -542,7 +608,7 @@ const T={
   foot:'כל הפריטים נקנים בחנות שלנו בטיק טוק.',manage:'ניהול החנות',product:'מוצר',onModel:'על דוגמנית',front:'חזית',back:'גב',color:'צבע',size:'מידה',buy:'לקנייה בחנות בטיק טוק',buyShort:'לקנייה',
   tryMe:'מדידה על התמונה שלי',buyNote:'הקנייה נעשית בחנות בטיק טוק. בחרי שם את אותה מידה ואותו צבע.',details:'פרטים',sizeGuide:'מדריך מידות',like:'אהבתי',savedLike:'נשמר באהבתי',removedLike:'הוסר מאהבתי',
   pickSize:'בחרי מידה',s1:'התמונה שלך',upload:'העלאת תמונה',useModel:'דוגמנית לדוגמה',consent:'אני מסכימה שהתמונה תישלח לשרת המדידה לעיבוד. היא לא נשמרת בחנות.',s2:'מה למדוד',s2n:'עליון ותחתון יחד, או שמלה אחת.',
-  s3:'התאמה',photoTip:'מלפנים, בעמידה, כל הגוף בפריים. לפי הגובה, הגוף והמידות של הבגד נקבעים לבד האורך והרוחב. הזיהוי נעשה כאן בדפדפן.',height:'הגובה שלך (ס״מ)',recFor:'המידה שמתאימה לגוף שלך: %s (מסומנת). הבגד מולבש בה.',lenCm:'אורך הבגד, ס״מ (מידה M): מהכתף עד המכפלת, או מהמותן למטה',flat:'רוחב הבגד בשטוח, ס״מ (מידה M): חזה, או מותן במכנסיים וחצאיות',width:'כוונון רוחב',lengthAdj:'כוונון אורך',points:'כיוון נקודות',reset:'איפוס',dragTip:'אפשר לגרור את הבגד. כשהוא נעול לגוף, הוא חוזר למקום. בלחיצה על "שחרור" הוא נשאר איפה שמשאירים אותו.',locked:'שחרור נעילה',unlocked:'נעילה חזרה לגוף',mixDone:'מוכן. העליון עם AI, התחתון עם ההלבשה המיידית (שרת ה-AI עמוס).',instantDone:'שרתי ה-AI עמוסים כרגע, אז הולבש עם ההלבשה המיידית.',refining:'משפרים את הדיוק ברקע…',pcTitle:'בדיקת התמונה',pcGood:'התמונה מצוינת למדידה.',pcRetake:'צילום חדש',pcFeet:'כפות הרגליים לא נכנסו לתמונה. צלמי מרחוק יותר, כך שכל הגוף ייכנס מהראש ועד הרגליים. בלי זה האורך של מכנסיים ושמלות פחות מדויק.',pcHead:'הראש לא נכנס לתמונה. השאירי קצת מקום מעל הראש.',pcSmall:'את קטנה מדי בתמונה. התקרבי או צלמי בזום, כך שהגוף ימלא את רוב גובה התמונה.',pcSide:'נראה שאת עומדת בצד. עמדי עם הפנים והכתפיים ישר למצלמה.',pcTilt:'התמונה עקומה. החזיקי את הטלפון ישר, בגובה המותן.',pcArmsUp:'הידיים מורמות. השאירי אותן למטה, קצת רחוק מהגוף.',pcArmsIn:'הידיים מסתירות את הגוף. השאירי אותן לצדדים, קצת רחוק מהגוף.',pcDark:'התמונה חשוכה. צלמי ליד חלון או באור חזק.',pcBright:'התמונה בהירה מדי. התרחקי מאור ישיר.',pcBlur:'התמונה מטושטשת. החזיקי את הטלפון יציב או בקשי ממישהו לצלם.',pcBusy:'הרקע עמוס. קיר חלק מאחורייך יעזור להפריד בין הגוף לרקע.',fitTitle:'איך זה יושב עלייך',fChest:'חזה',fWaist:'מותן',fLen:'אורך',fSleeve:'שרוול',fit0:'צמוד מאוד',fit1:'צמוד',fit2:'מדויק',fit3:'נוח',fit4:'אוברסייז',lt0:'קרופ, בטן חשופה',lt1:'עד המותן',lt2:'עד הירך',lt3:'מכסה את הישבן',lt4:'ארוך, כמו מעיל',ll0:'מיני',ll1:'מעל הברך',ll2:'בגובה הברך',ll3:'מידי, מתחת לברך',ll4:'עד הקרסול',ll5:'עד הרצפה',cmpLong:'ארוך מ־%s% מה%c בתמונות של אנשים אמיתיים',cmpShort:'קצר מ־%s% מה%c בתמונות של אנשים אמיתיים',cTop:'חולצות',cShirt:'חולצות מכופתרות',cSweater:'סוודרים',cJacket:'ז׳קטים',cDress:'שמלות',cPants:'מכנסיים',cSkirt:'חצאיות',zoomIn:'הגדלה',zoomOut:'הקטנה',zoomFit:'חזרה לגודל מלא',s4:'מדידה מציאותית (AI)',aiNote:'מלביש מחדש עם בינה מלאכותית: קפלים, אור וידיים אמיתיים. לוקח בערך 30 שניות לבגד.',goAi:'מדידה מציאותית',backQuick:'חזרה להלבשה המיידית',aiOff:'בקישור הזה של claude.ai הדפדפן חוסם את החיבור לשרת ה-AI, ולכן הכפתור כבוי. באתר החנות עצמו (כתובת רגילה) הוא עובד. ההלבשה המיידית למטה עובדת בכל מקום.',loadingModel:'טוען את זיהוי הגוף…',detecting:'מזהה את הגוף ומלביש…',detected:'הבגד הולבש. אפשר לגרור אותו, והוא יחזור לשבת על הגוף.',pickPiece:'בוחרים בגד מהרשימה, והוא מולבש מיד.',noPerson:'לא מצאתי גוף ברור. גררי את הנקודות למקום: כתפיים, מרפקים, מותן, ירכיים, קרסוליים.',modelFail:'זיהוי הגוף לא נטען במכשיר הזה. גררי את הנקודות למקום.',adjustHint:'גררי כל נקודה למקום שלה: כתפיים, מרפקים, מותן, ירכיים, קרסוליים.',go:'להלביש עליי',save:'שמירת התמונה',before:'לפני',after:'אחרי',likesNote:'הרשימה נשמרת בדפדפן הזה. לכל פריט יש קישור לקנייה בחנות בטיק טוק.',likesEmpty:'עוד לא שמרת פריטים. לחצי על הלב ליד פריט כדי לשמור אותו כאן.',
+  s3:'התאמה',photoTip:'מלפנים, בעמידה, כל הגוף בפריים. לפי הגובה, הגוף והמידות של הבגד נקבעים לבד האורך והרוחב. הזיהוי נעשה כאן בדפדפן.',height:'הגובה שלך (ס״מ)',recFor:'המידה שמתאימה לגוף שלך: %s (מסומנת). הבגד מולבש בה.',lenCm:'אורך הבגד, ס״מ (מידה M): מהכתף עד המכפלת, או מהמותן למטה',flat:'רוחב הבגד בשטוח, ס״מ (מידה M): חזה, או מותן במכנסיים וחצאיות',width:'כוונון רוחב',lengthAdj:'כוונון אורך',points:'כיוון נקודות',reset:'איפוס',dragTip:'אפשר לגרור את הבגד. כשהוא נעול לגוף, הוא חוזר למקום. בלחיצה על "שחרור" הוא נשאר איפה שמשאירים אותו.',locked:'שחרור נעילה',unlocked:'נעילה חזרה לגוף',demoTag:'פריט לדוגמה',pk1:'מדידה על התמונה שלך',pk1s:'כל בגד, כל מידה',pk2:'המלצת מידה',pk2s:'לפי הגוף שלך',pk3:'קונים בטיק טוק',pk3s:'תשלום ומשלוח מאובטחים',pk4:'שאלות? כתבי לנו',pk4s:'בוואטסאפ או בליין',byCat:'קונים לפי קטגוריה',sizeSub:'מידות הגוף בס״מ שכל מידה מתאימה להן. בכל פריט יש גם את המידות שלו עצמו.',sgTops:'חולצות, ז׳קטים ושמלות',sgBottoms:'מכנסיים וחצאיות',unsureH:'לא בטוחה במידה?',unsureP:'מכניסים חזה, מותן וירכיים פעם אחת, ומקבלים את המידה שמתאימה לך.',mChest:'חזה',mWaist:'מותן',mHips:'ירכיים',calcBtn:'מה המידה שלי?',calcRes:'עליונים ושמלות: {t} · מכנסיים וחצאיות: {b}',calcNeed:'מלאי לפחות חזה או מותן',fShop:'חנות',fHelp:'עזרה',adminIn:'כניסה למנהל',colSize:'מידה',colChest:'חזה',colLen:'אורך',colWaist:'מותן',colHips:'ירכיים',tryCard:'מדידה',aTabItems:'הפריטים',aTabAdd:'הוספת בגד',aTabShop:'פרטי החנות',pieces:'פריטים',askQ:'שאלה על הפריט? כתבו לנו',mixDone:'מוכן. העליון עם AI, התחתון עם ההלבשה המיידית (שרת ה-AI עמוס).',instantDone:'שרתי ה-AI עמוסים כרגע, אז הולבש עם ההלבשה המיידית.',refining:'משפרים את הדיוק ברקע…',pcTitle:'בדיקת התמונה',pcGood:'התמונה מצוינת למדידה.',pcRetake:'צילום חדש',pcFeet:'כפות הרגליים לא נכנסו לתמונה. צלמי מרחוק יותר, כך שכל הגוף ייכנס מהראש ועד הרגליים. בלי זה האורך של מכנסיים ושמלות פחות מדויק.',pcHead:'הראש לא נכנס לתמונה. השאירי קצת מקום מעל הראש.',pcSmall:'את קטנה מדי בתמונה. התקרבי או צלמי בזום, כך שהגוף ימלא את רוב גובה התמונה.',pcSide:'נראה שאת עומדת בצד. עמדי עם הפנים והכתפיים ישר למצלמה.',pcTilt:'התמונה עקומה. החזיקי את הטלפון ישר, בגובה המותן.',pcArmsUp:'הידיים מורמות. השאירי אותן למטה, קצת רחוק מהגוף.',pcArmsIn:'הידיים מסתירות את הגוף. השאירי אותן לצדדים, קצת רחוק מהגוף.',pcDark:'התמונה חשוכה. צלמי ליד חלון או באור חזק.',pcBright:'התמונה בהירה מדי. התרחקי מאור ישיר.',pcBlur:'התמונה מטושטשת. החזיקי את הטלפון יציב או בקשי ממישהו לצלם.',pcBusy:'הרקע עמוס. קיר חלק מאחורייך יעזור להפריד בין הגוף לרקע.',fitTitle:'איך זה יושב עלייך',fChest:'חזה',fWaist:'מותן',fLen:'אורך',fSleeve:'שרוול',fit0:'צמוד מאוד',fit1:'צמוד',fit2:'מדויק',fit3:'נוח',fit4:'אוברסייז',lt0:'קרופ, בטן חשופה',lt1:'עד המותן',lt2:'עד הירך',lt3:'מכסה את הישבן',lt4:'ארוך, כמו מעיל',ll0:'מיני',ll1:'מעל הברך',ll2:'בגובה הברך',ll3:'מידי, מתחת לברך',ll4:'עד הקרסול',ll5:'עד הרצפה',cmpLong:'ארוך מ־%s% מה%c בתמונות של אנשים אמיתיים',cmpShort:'קצר מ־%s% מה%c בתמונות של אנשים אמיתיים',cTop:'חולצות',cShirt:'חולצות מכופתרות',cSweater:'סוודרים',cJacket:'ז׳קטים',cDress:'שמלות',cPants:'מכנסיים',cSkirt:'חצאיות',zoomIn:'הגדלה',zoomOut:'הקטנה',zoomFit:'חזרה לגודל מלא',s4:'מדידה מציאותית (AI)',aiNote:'מלביש מחדש עם בינה מלאכותית: קפלים, אור וידיים אמיתיים. לוקח בערך 30 שניות לבגד.',goAi:'מדידה מציאותית',backQuick:'חזרה להלבשה המיידית',aiOff:'בקישור הזה של claude.ai הדפדפן חוסם את החיבור לשרת ה-AI, ולכן הכפתור כבוי. באתר החנות עצמו (כתובת רגילה) הוא עובד. ההלבשה המיידית למטה עובדת בכל מקום.',loadingModel:'טוען את זיהוי הגוף…',detecting:'מזהה את הגוף ומלביש…',detected:'הבגד הולבש. אפשר לגרור אותו, והוא יחזור לשבת על הגוף.',pickPiece:'בוחרים בגד מהרשימה, והוא מולבש מיד.',noPerson:'לא מצאתי גוף ברור. גררי את הנקודות למקום: כתפיים, מרפקים, מותן, ירכיים, קרסוליים.',modelFail:'זיהוי הגוף לא נטען במכשיר הזה. גררי את הנקודות למקום.',adjustHint:'גררי כל נקודה למקום שלה: כתפיים, מרפקים, מותן, ירכיים, קרסוליים.',go:'להלביש עליי',save:'שמירת התמונה',before:'לפני',after:'אחרי',likesNote:'הרשימה נשמרת בדפדפן הזה. לכל פריט יש קישור לקנייה בחנות בטיק טוק.',likesEmpty:'עוד לא שמרת פריטים. לחצי על הלב ליד פריט כדי לשמור אותו כאן.',
   remove:'הסרה',all:'הכול',tops:'עליונים',outer:'ז׳קטים',dresses:'שמלות',bottoms:'מכנסיים וחצאיות',items:'פריטים',demo:'דוגמה',
   needConsent:'כדי למדוד צריך לאשר את שליחת התמונה.',needPhoto:'קודם מעלים תמונה, או בוחרים דוגמנית לדוגמה.',needPick:'בוחרים לפחות בגד אחד.',
   dressing:'מלבישים',step:'שלב',of:'מתוך',usual:'בדרך כלל 20 עד 40 שניות לכל בגד.',done:'מוכן. גררי את הפס כדי להשוות לפני ואחרי.',
@@ -561,7 +627,7 @@ const T={
   foot:'ทุกชิ้นสั่งซื้อได้ที่ร้านของเราใน TikTok',manage:'จัดการร้าน',product:'สินค้า',onModel:'บนนางแบบ',front:'ด้านหน้า',back:'ด้านหลัง',color:'สี',size:'ไซซ์',buy:'ซื้อที่ร้าน TikTok',buyShort:'ซื้อ',
   tryMe:'ลองบนรูปของฉัน',buyNote:'ชำระเงินที่ร้านใน TikTok เลือกไซซ์และสีเดียวกันที่นั่น',details:'รายละเอียด',sizeGuide:'ตารางไซซ์',like:'ถูกใจ',savedLike:'บันทึกในรายการที่ถูกใจแล้ว',removedLike:'นำออกจากรายการที่ถูกใจแล้ว',
   pickSize:'เลือกไซซ์',s1:'รูปของคุณ',upload:'อัปโหลดรูป',useModel:'ใช้นางแบบตัวอย่าง',consent:'ฉันยินยอมให้ส่งรูปไปยังเซิร์ฟเวอร์ลองชุดเพื่อประมวลผล ร้านไม่เก็บรูปไว้',s2:'เลือกชุด',s2n:'เสื้อกับกางเกงพร้อมกัน หรือเดรสหนึ่งชุด',
-  s3:'ปรับให้พอดี',photoTip:'ถ่ายด้านหน้า ยืนตรง เห็นเต็มตัว ความยาวและความกว้างคำนวณจากส่วนสูง รูปร่าง และขนาดของชุดโดยอัตโนมัติ',height:'ส่วนสูงของคุณ (ซม.)',recFor:'ไซซ์ที่เหมาะกับคุณ: %s (มีกรอบ) ชุดถูกสวมในไซซ์นี้',lenCm:'ความยาว ซม. (ไซซ์ M): จากไหล่ถึงชายเสื้อ หรือจากเอวลงไป',flat:'ความกว้างวางราบ ซม. (ไซซ์ M): รอบอก หรือเอวสำหรับกางเกงและกระโปรง',width:'ปรับความกว้าง',lengthAdj:'ปรับความยาว',points:'ปรับด้วยจุด',reset:'รีเซ็ต',dragTip:'ลากชุดได้ ถ้าล็อกกับตัว ชุดจะกลับที่เดิม ถ้าปลดล็อก ชุดจะอยู่ตรงที่วาง',locked:'ปลดล็อก',unlocked:'ล็อกกลับเข้าตัว',mixDone:'เสร็จแล้ว ส่วนบนด้วย AI ส่วนล่างด้วยการสวมทันที',instantDone:'เซิร์ฟเวอร์ AI ไม่ว่าง จึงใช้การสวมทันที',refining:'กำลังปรับความแม่นยำ…',pcTitle:'ตรวจรูปถ่าย',pcGood:'รูปนี้เหมาะกับการลองชุดมาก',pcRetake:'ถ่ายใหม่',pcFeet:'เท้าไม่อยู่ในภาพ ถอยห่างอีกนิดให้เห็นทั้งตัวตั้งแต่หัวจรดเท้า ไม่อย่างนั้นความยาวกางเกงและเดรสจะคลาดเคลื่อน',pcHead:'หัวไม่อยู่ในภาพ เว้นที่เหนือหัวอีกนิด',pcSmall:'ตัวเล็กเกินไปในภาพ เข้าใกล้อีกหน่อยให้ตัวเต็มความสูงของภาพ',pcSide:'ดูเหมือนยืนเอียงข้าง หันหน้าและไหล่ตรงเข้ากล้อง',pcTilt:'ภาพเอียง ถือโทรศัพท์ให้ตรง ระดับเอว',pcArmsUp:'ยกแขนอยู่ ปล่อยแขนลงข้างตัว ห่างตัวเล็กน้อย',pcArmsIn:'แขนบังตัว ปล่อยแขนไว้ข้างตัว ห่างตัวเล็กน้อย',pcDark:'ภาพมืด ถ่ายใกล้หน้าต่างหรือในที่สว่าง',pcBright:'ภาพสว่างเกินไป หลีกเลี่ยงแสงส่องตรง',pcBlur:'ภาพเบลอ ถือโทรศัพท์นิ่งๆ หรือให้คนอื่นถ่ายให้',pcBusy:'ฉากหลังรก ผนังเรียบๆ ช่วยแยกตัวออกจากฉากหลัง',fitTitle:'ใส่แล้วเป็นอย่างไร',fChest:'อก',fWaist:'เอว',fLen:'ความยาว',fSleeve:'แขนเสื้อ',fit0:'แน่นมาก',fit1:'พอดีตัว',fit2:'พอดี',fit3:'หลวมสบาย',fit4:'โอเวอร์ไซซ์',lt0:'ครอป เห็นหน้าท้อง',lt1:'ถึงเอว',lt2:'ถึงสะโพก',lt3:'คลุมก้น',lt4:'ยาวแบบโค้ท',ll0:'มินิ',ll1:'เหนือเข่า',ll2:'ระดับเข่า',ll3:'มิดี้ ใต้เข่า',ll4:'ถึงข้อเท้า',ll5:'ยาวถึงพื้น',cmpLong:'ยาวกว่า %s% ของ%cในภาพคนจริง',cmpShort:'สั้นกว่า %s% ของ%cในภาพคนจริง',cTop:'เสื้อ',cShirt:'เชิ้ต',cSweater:'สเวตเตอร์',cJacket:'แจ็กเก็ต',cDress:'เดรส',cPants:'กางเกง',cSkirt:'กระโปรง',zoomIn:'ซูมเข้า',zoomOut:'ซูมออก',zoomFit:'กลับขนาดเต็ม',s4:'ลองชุดสมจริง (AI)',aiNote:'สวมชุดใหม่ด้วย AI พร้อมรอยพับ แสง และมือจริง ใช้เวลาประมาณ 30 วินาทีต่อชิ้น',goAi:'ลองชุดสมจริง',backQuick:'กลับไปที่การสวมแบบทันที',aiOff:'การลองชุดสมจริงใช้ไม่ได้ในหน้านี้ การสวมแบบทันทียังใช้ได้',loadingModel:'กำลังโหลดการหาร่างกาย…',detecting:'กำลังหาร่างกายและสวมชุด…',detected:'สวมชุดแล้ว ลากชุดได้ ปล่อยแล้วจะกลับมาพอดีตัว',pickPiece:'เลือกชุดจากรายการ แล้วจะสวมให้ทันที',noPerson:'ไม่พบร่างกายชัดเจน ลากจุดไปที่ไหล่ ศอก เอว สะโพก และข้อเท้า',modelFail:'โหลดการหาร่างกายบนเครื่องนี้ไม่ได้ ลากจุดไปวางเอง',adjustHint:'ลากแต่ละจุดไปที่ไหล่ ศอก เอว สะโพก และข้อเท้า',go:'สวมบนตัวฉัน',save:'บันทึกรูป',before:'ก่อน',after:'หลัง',likesNote:'รายการนี้บันทึกในเบราว์เซอร์นี้ ทุกชิ้นมีลิงก์ไปซื้อที่ร้าน TikTok',likesEmpty:'ยังไม่มีชิ้นที่ถูกใจ แตะหัวใจที่สินค้าเพื่อบันทึกไว้ที่นี่',
+  s3:'ปรับให้พอดี',photoTip:'ถ่ายด้านหน้า ยืนตรง เห็นเต็มตัว ความยาวและความกว้างคำนวณจากส่วนสูง รูปร่าง และขนาดของชุดโดยอัตโนมัติ',height:'ส่วนสูงของคุณ (ซม.)',recFor:'ไซซ์ที่เหมาะกับคุณ: %s (มีกรอบ) ชุดถูกสวมในไซซ์นี้',lenCm:'ความยาว ซม. (ไซซ์ M): จากไหล่ถึงชายเสื้อ หรือจากเอวลงไป',flat:'ความกว้างวางราบ ซม. (ไซซ์ M): รอบอก หรือเอวสำหรับกางเกงและกระโปรง',width:'ปรับความกว้าง',lengthAdj:'ปรับความยาว',points:'ปรับด้วยจุด',reset:'รีเซ็ต',dragTip:'ลากชุดได้ ถ้าล็อกกับตัว ชุดจะกลับที่เดิม ถ้าปลดล็อก ชุดจะอยู่ตรงที่วาง',locked:'ปลดล็อก',unlocked:'ล็อกกลับเข้าตัว',demoTag:'ตัวอย่าง',pk1:'ลองบนรูปของคุณ',pk1s:'ทุกชิ้น ทุกไซซ์',pk2:'แนะนำไซซ์',pk2s:'ตามรูปร่างของคุณ',pk3:'ซื้อใน TikTok',pk3s:'ชำระและจัดส่งปลอดภัย',pk4:'มีคำถาม? ทักเรา',pk4s:'ทาง WhatsApp หรือ LINE',byCat:'เลือกตามหมวด',sizeSub:'สัดส่วนร่างกาย (ซม.) ที่แต่ละไซซ์เหมาะ แต่ละชิ้นมีขนาดของตัวเองด้วย',sgTops:'เสื้อ แจ็กเก็ต และเดรส',sgBottoms:'กางเกงและกระโปรง',unsureH:'ไม่แน่ใจไซซ์?',unsureP:'ใส่รอบอก เอว สะโพก แล้วรับไซซ์ที่เหมาะกับคุณ',mChest:'รอบอก',mWaist:'รอบเอว',mHips:'รอบสะโพก',calcBtn:'ไซซ์ของฉันคือ?',calcRes:'เสื้อและเดรส: {t} · กางเกงและกระโปรง: {b}',calcNeed:'กรอกอย่างน้อยรอบอกหรือรอบเอว',fShop:'ร้าน',fHelp:'ช่วยเหลือ',adminIn:'เข้าสู่ระบบผู้ดูแล',colSize:'ไซซ์',colChest:'รอบอก',colLen:'ความยาว',colWaist:'รอบเอว',colHips:'รอบสะโพก',tryCard:'ลอง',aTabItems:'สินค้า',aTabAdd:'เพิ่มสินค้า',aTabShop:'ข้อมูลร้าน',pieces:'ชิ้น',askQ:'มีคำถามเกี่ยวกับชิ้นนี้? ทักเราได้',mixDone:'เสร็จแล้ว ส่วนบนด้วย AI ส่วนล่างด้วยการสวมทันที',instantDone:'เซิร์ฟเวอร์ AI ไม่ว่าง จึงใช้การสวมทันที',refining:'กำลังปรับความแม่นยำ…',pcTitle:'ตรวจรูปถ่าย',pcGood:'รูปนี้เหมาะกับการลองชุดมาก',pcRetake:'ถ่ายใหม่',pcFeet:'เท้าไม่อยู่ในภาพ ถอยห่างอีกนิดให้เห็นทั้งตัวตั้งแต่หัวจรดเท้า ไม่อย่างนั้นความยาวกางเกงและเดรสจะคลาดเคลื่อน',pcHead:'หัวไม่อยู่ในภาพ เว้นที่เหนือหัวอีกนิด',pcSmall:'ตัวเล็กเกินไปในภาพ เข้าใกล้อีกหน่อยให้ตัวเต็มความสูงของภาพ',pcSide:'ดูเหมือนยืนเอียงข้าง หันหน้าและไหล่ตรงเข้ากล้อง',pcTilt:'ภาพเอียง ถือโทรศัพท์ให้ตรง ระดับเอว',pcArmsUp:'ยกแขนอยู่ ปล่อยแขนลงข้างตัว ห่างตัวเล็กน้อย',pcArmsIn:'แขนบังตัว ปล่อยแขนไว้ข้างตัว ห่างตัวเล็กน้อย',pcDark:'ภาพมืด ถ่ายใกล้หน้าต่างหรือในที่สว่าง',pcBright:'ภาพสว่างเกินไป หลีกเลี่ยงแสงส่องตรง',pcBlur:'ภาพเบลอ ถือโทรศัพท์นิ่งๆ หรือให้คนอื่นถ่ายให้',pcBusy:'ฉากหลังรก ผนังเรียบๆ ช่วยแยกตัวออกจากฉากหลัง',fitTitle:'ใส่แล้วเป็นอย่างไร',fChest:'อก',fWaist:'เอว',fLen:'ความยาว',fSleeve:'แขนเสื้อ',fit0:'แน่นมาก',fit1:'พอดีตัว',fit2:'พอดี',fit3:'หลวมสบาย',fit4:'โอเวอร์ไซซ์',lt0:'ครอป เห็นหน้าท้อง',lt1:'ถึงเอว',lt2:'ถึงสะโพก',lt3:'คลุมก้น',lt4:'ยาวแบบโค้ท',ll0:'มินิ',ll1:'เหนือเข่า',ll2:'ระดับเข่า',ll3:'มิดี้ ใต้เข่า',ll4:'ถึงข้อเท้า',ll5:'ยาวถึงพื้น',cmpLong:'ยาวกว่า %s% ของ%cในภาพคนจริง',cmpShort:'สั้นกว่า %s% ของ%cในภาพคนจริง',cTop:'เสื้อ',cShirt:'เชิ้ต',cSweater:'สเวตเตอร์',cJacket:'แจ็กเก็ต',cDress:'เดรส',cPants:'กางเกง',cSkirt:'กระโปรง',zoomIn:'ซูมเข้า',zoomOut:'ซูมออก',zoomFit:'กลับขนาดเต็ม',s4:'ลองชุดสมจริง (AI)',aiNote:'สวมชุดใหม่ด้วย AI พร้อมรอยพับ แสง และมือจริง ใช้เวลาประมาณ 30 วินาทีต่อชิ้น',goAi:'ลองชุดสมจริง',backQuick:'กลับไปที่การสวมแบบทันที',aiOff:'การลองชุดสมจริงใช้ไม่ได้ในหน้านี้ การสวมแบบทันทียังใช้ได้',loadingModel:'กำลังโหลดการหาร่างกาย…',detecting:'กำลังหาร่างกายและสวมชุด…',detected:'สวมชุดแล้ว ลากชุดได้ ปล่อยแล้วจะกลับมาพอดีตัว',pickPiece:'เลือกชุดจากรายการ แล้วจะสวมให้ทันที',noPerson:'ไม่พบร่างกายชัดเจน ลากจุดไปที่ไหล่ ศอก เอว สะโพก และข้อเท้า',modelFail:'โหลดการหาร่างกายบนเครื่องนี้ไม่ได้ ลากจุดไปวางเอง',adjustHint:'ลากแต่ละจุดไปที่ไหล่ ศอก เอว สะโพก และข้อเท้า',go:'สวมบนตัวฉัน',save:'บันทึกรูป',before:'ก่อน',after:'หลัง',likesNote:'รายการนี้บันทึกในเบราว์เซอร์นี้ ทุกชิ้นมีลิงก์ไปซื้อที่ร้าน TikTok',likesEmpty:'ยังไม่มีชิ้นที่ถูกใจ แตะหัวใจที่สินค้าเพื่อบันทึกไว้ที่นี่',
   remove:'ลบ',all:'ทั้งหมด',tops:'เสื้อ',outer:'แจ็กเก็ต',dresses:'เดรส',bottoms:'กางเกงและกระโปรง',items:'ชิ้น',demo:'ตัวอย่าง',
   needConsent:'กรุณายินยอมการส่งรูปก่อนลองชุด',needPhoto:'อัปโหลดรูปก่อน หรือเลือกนางแบบตัวอย่าง',needPick:'เลือกอย่างน้อยหนึ่งชิ้น',
   dressing:'กำลังสวมชุด',step:'ขั้นที่',of:'จาก',usual:'ปกติใช้เวลา 20–40 วินาทีต่อชิ้น',done:'เสร็จแล้ว ลากเส้นเพื่อเทียบก่อนและหลัง',
@@ -629,7 +695,7 @@ function rebuild(){
   const own=(S.dbItems||[]).slice().sort((a,b)=>(a.order??0)-(b.order??0));
   S.items=[...own,...(S.shop.hideDemo&&own.length?[]:DEMO)];
   if(S.pos>=vis().length)S.pos=0;
-  renderCats();renderTabs();buildLine();renderGrid();renderLikesN();if(S.detail&&byId(S.detail))renderDetail();else if(S.detail)closeDetail();
+  renderCats();renderTabs();renderTiles();renderSizeGuide();buildLine();renderGrid();renderLikesN();if(S.detail&&byId(S.detail))renderDetail();else if(S.detail)closeDetail();
   $('brandName').textContent=$('footBrand').textContent=S.shop.name||'קולב';renderInfo();
 }
 
@@ -647,8 +713,11 @@ async function grips(url){
     // pin where the garment really hangs from: the highest point on each side (the shoulders, the straps of a dress, the corners of a waistband)
     const top=(x)=>{for(let y=0;y<H;y++)if(d[(y*W+x)*4+3]>90)return y;return H};
     const hang=(a0,a1,pref)=>{let best=null;for(let u=a0;u<=a1;u+=.005){const x=Math.round(l+(r-l)*u),y=top(x);if(!best||y<best.y-1||(Math.abs(y-best.y)<=1&&Math.abs(u-pref)<Math.abs(best.u-pref)))best={u,y}}return best};
-    const L=hang(.06,.46,.28),R=hang(.54,.94,.72);
-    return {ar:im.naturalWidth/im.naturalHeight,u1:L.u,u2:R.u,y1:L.y/H,y2:R.y/H}}).catch(()=>({ar:.7,u1:.28,u2:.72,y1:0,y2:0}));
+    let L=hang(.06,.46,.28),R=hang(.54,.94,.72);
+    // the two pins sit symmetrically about the garment's own middle, so it hangs straight and centred (a flat waistband: same height everywhere)
+    const m=(L.u+R.u)/2;if(Math.abs(L.y-R.y)<=H*.012){const hw=Math.min(m-.04,.96-m,(R.u-L.u)/2);L={u:.5-hw,y:L.y};R={u:.5+hw,y:R.y}}
+    const ix=(u)=>(l+(r-l)*u)/W;   // fractions of the whole picture, which is what the layout uses
+    return {ar:im.naturalWidth/im.naturalHeight,u1:ix(L.u),u2:ix(R.u),y1:L.y/H,y2:R.y/H,bc:(l+r)/2/W}}).catch(()=>({ar:.7,u1:.28,u2:.72,y1:0,y2:0,bc:.5}));
   gripCache.set(url,p);return p;
 }
 
@@ -751,7 +820,7 @@ function stepLine(dt){
     const a=Math.abs(s);
     const sc=a<1?1-a*.32:Math.max(.5,.68-(a-1)*.08);
     const h=H*TYPES[p.it.type].h*(phone?.9:1)*sc,w=h*g.ar;
-    const cx=slotX(s);
+    const cx=slotX(s)-((g.bc??.5)-.5)*w;   // the garment itself (not its transparent margin) is centred on its slot
     // spring swing + soft wind
     const wind=reduce?0:Math.sin(now*.9+p.phase)*.006+Math.sin(now*2.3+p.phase*2)*.003;
     p.swingV+=(-p.swing*14-p.swingV*2.4)*dt+wind*dt*6;p.swing+=p.swingV*dt*10;p.swing=Math.max(-.12,Math.min(.12,p.swing));
@@ -766,7 +835,7 @@ function stepLine(dt){
     p.el.style.opacity=a>2.7?'0':'1';p.el.style.visibility=a>3.2?'hidden':'visible';
     p.el.style.filter=a>.6?`saturate(${1-Math.min(.25,a*.1)})`:'none';
     const ps=Math.max(.65,sc);
-    for(const [pin,u,yy] of [[p.p1,g.u1,g.y1],[p.p2,g.u2,g.y2]]){pin.style.left=(u*100)+'%';pin.style.top=(yy*h-14*ps+h*.018)+'px';pin.style.transform=`scale(${ps})`}
+    for(const [pin,u,yy] of [[p.p1,g.u1,g.y1],[p.p2,g.u2,g.y2]]){pin.style.left=(u*100)+'%';pin.style.top=(yy*h-11*ps+h*.018)+'px';pin.style.transform=`scale(${ps})`}
   }
   // label under the centre piece
   const cur=pegs[S.pos];if(cur&&cur.g){const h=H*TYPES[cur.it.type].h*(phone?.9:1);$('label').style.top=Math.min(H-(phone?150:120),ropeY(geom.W/2)+h+14)+'px'}
@@ -791,18 +860,34 @@ requestAnimationFrame(frame);
 function renderCats(){
   const nav=$('cats');nav.innerHTML='';
   CATS.forEach((c)=>{if(c!=='all'&&!S.items.some((it)=>catOf(it)===c))return;const b=document.createElement('button');b.type='button';b.textContent=t(c);b.setAttribute('aria-pressed',String(S.cat===c));
-    b.addEventListener('click',()=>{S.cat=c;S.pos=0;S.target=0;renderCats();renderTabs();buildLine();renderGrid()});nav.appendChild(b)});
+    b.addEventListener('click',()=>setCat(c));nav.appendChild(b)});
 }
+function setCat(c,scroll){S.cat=c;S.pos=0;S.target=0;renderCats();renderTabs();renderTiles();buildLine();renderGrid();if(scroll)$('shop').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}
+// category tiles: the first piece of each category, turning into the next one on hover
+function renderTiles(){const box=$('ctiles');if(!box)return;box.innerHTML='';
+  CATS.filter((c)=>c!=='all').forEach((c)=>{const its=S.items.filter((it)=>catOf(it)===c);if(!its.length)return;const b=document.createElement('button');b.type='button';b.className='ctile';b.setAttribute('aria-pressed',String(S.cat===c));
+    b.innerHTML='<div class="ring"><img class="a" alt="" loading="lazy"><img class="b" alt="" loading="lazy"></div><b></b><span></span>';
+    b.querySelector('.a').src=its[0].variants[colorOf(its[0])].front;const nx=its[1]||its[0];b.querySelector('.b').src=nx.variants[colorOf(nx)].front;
+    b.querySelector('b').textContent=t(c);b.querySelector('span').textContent=its.length+' '+t('pieces');
+    b.addEventListener('click',()=>setCat(S.cat===c?'all':c,true));box.appendChild(b)})}
+function renderSizeGuide(){const tp=$('sgTop'),bt=$('sgBot');if(!tp)return;
+  tp.innerHTML=`<tr><th>${t('colSize')}</th><th>${t('colChest')}</th><th>${t('colLen')}</th></tr>`+Object.entries(DIMS.top).map(([k,[c,l]])=>`<tr><td>${k}</td><td>${c}</td><td>${l}</td></tr>`).join('');
+  bt.innerHTML=`<tr><th>${t('colSize')}</th><th>${t('colWaist')}</th><th>${t('colHips')}</th><th>${t('colLen')}</th></tr>`+Object.entries(DIMS.bottom).filter(([k])=>/^[A-Z]/.test(k)).map(([k,[w,h,l]])=>`<tr><td>${k}</td><td>${w}</td><td>${h}</td><td>${l}</td></tr>`).join('')}
+$('calc').addEventListener('submit',(e)=>{e.preventDefault();const c=+$('mChest').value,w=+$('mWaist').value,h=+$('mHips').value,o=$('calcOut');if(!c&&!w){o.textContent=t('calcNeed');return}
+  const pick=(tab,fn)=>{const e2=Object.entries(tab);for(const [k,v] of e2)if(fn(v))return k;return e2[e2.length-1][0]};
+  const top=c?pick(DIMS.top,([cc])=>cc>=c):'–',bot=(w||h)?pick(Object.fromEntries(Object.entries(DIMS.bottom).filter(([k])=>/^[A-Z]/.test(k))),([ww,hh])=>(!w||ww>=w)&&(!h||hh>=h)):'–';
+  o.textContent=t('calcRes').replace('{t}',top).replace('{b}',bot)});
 function renderTabs(){
-  const box=$('tabs');box.innerHTML='';
+  const box=$('tabs');box.innerHTML='';box.classList.add('chipsbar');
   CATS.forEach((c)=>{if(c!=='all'&&!S.items.some((it)=>catOf(it)===c))return;const b=document.createElement('button');b.type='button';b.textContent=t(c);b.setAttribute('aria-pressed',String(S.cat===c));
-    b.addEventListener('click',()=>{S.cat=c;S.pos=0;S.target=0;renderCats();renderTabs();buildLine();renderGrid()});box.appendChild(b)});
+    b.addEventListener('click',()=>setCat(c));box.appendChild(b)});
 }
 function renderGrid(){
   const g=$('grid');g.innerHTML='';
-  vis().forEach((it)=>{const vv=it.variants[colorOf(it)],look=lookOf(vv),d=document.createElement('article');d.className='card'+(look?' has-on':'');
-    d.innerHTML=`<button class="ph" type="button"><img class="prod" alt="" loading="lazy"><img class="on" alt="" loading="lazy"></button><div class="meta"><span class="nm"></span><span class="pr"></span><div class="sw"></div></div>`;
-    d.querySelector('.prod').src=vv.front;if(look)d.querySelector('.on').src=look;else d.querySelector('.on').remove();
+  vis().forEach((it,ix)=>{const vv=it.variants[colorOf(it)],look=null,d=document.createElement('article');d.className='card'+(vv.back?' has-bk':'');d.style.setProperty('--i',String(Math.min(ix,12)));
+    d.innerHTML=`<button class="ph" type="button"><img class="prod" alt="" loading="lazy"><img class="bk" alt="" loading="lazy"><span class="quick"><span></span></span></button><div class="meta"><span class="nm"></span><span class="pr"></span><span class="sz"></span><div class="sw"></div></div>`;
+    d.querySelector('.prod').src=vv.front;if(vv.back)d.querySelector('.bk').src=vv.back;else d.querySelector('.bk').remove();d.querySelector('.quick span').textContent=t('tryCard')+' ↗';d.querySelector('.sz').textContent=(it.sizes||[]).join(' · ');
+    d.querySelector('.quick').addEventListener('click',(e)=>{e.stopPropagation();openFit([it.id])});
     d.querySelector('.ph').setAttribute('aria-label',txt(it.name));
     d.querySelector('.nm').textContent=txt(it.name);d.querySelector('.pr').textContent=fmt(it.price);
     const sw=d.querySelector('.sw');if(it.variants.length>1)it.variants.forEach((x)=>{const i=document.createElement('i');i.style.background=x.c;sw.appendChild(i)});
@@ -828,7 +913,7 @@ function renderDetail(){
   const sz=$('pdSizes');sz.innerHTML='';sz.classList.remove('need');
   (it.sizes||[]).forEach((s)=>{const bt=document.createElement('button');bt.type='button';bt.textContent=s;bt.setAttribute('aria-pressed',String(S.size[it.id]===s));bt.addEventListener('click',()=>{S.size[it.id]=s;renderDetail()});sz.appendChild(bt)});
   $('pdSizeHint').textContent=S.size[it.id]?'':t('pickSize');
-  $('pdBuy').href=tiktokOf(it);{const u=askLink(it),a=$('pdAsk');a.hidden=!u;if(u){a.href=u;a.textContent=t('ask')}}
+  $('pdBuy').href=tiktokOf(it);renderAsk(it);
   const liked=S.likes.some((w)=>w.id===it.id);$('pdLike').setAttribute('aria-pressed',String(liked));$('pdLike').setAttribute('aria-label',t('like'));
   const D=DIMS[TYPES[it.type].dims],top=TYPES[it.type].dims==='top';
   $('pdDims').innerHTML=`<thead><tr><th>${t('size')}</th>${top?`<th>${t('chest')}</th><th>${t('length')}</th>`:`<th>${t('waist')}</th><th>${t('hips')}</th><th>${t('length')}</th>`}</tr></thead><tbody>${(it.sizes||[]).filter((s)=>D[s]).map((s)=>`<tr><th>${s}</th>${D[s].map((x)=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody><caption style="caption-side:bottom;text-align:start;color:var(--muted);font-size:.8rem;padding-top:6px">${t('cm')}</caption>`;
@@ -903,6 +988,12 @@ function renderInfo(){
   if(ln){const a=document.createElement('a');a.className='cbtn c-line';a.href=ln;a.target='_blank';a.rel='noopener';a.innerHTML=ICON_LINE+'<span>LINE</span>';row.appendChild(a);const f=a.cloneNode(true);f.className='';f.style.background='#06a443';f.setAttribute('aria-label','LINE');f.querySelector('span').remove();fl.appendChild(f)}
   fl.hidden=!(wa||ln);
 }
+// in the product: ask about this piece on WhatsApp or LINE, with the piece, colour and size already written
+function renderAsk(it){const row=$('pdAskRow'),wa=waNum(),ln=lineUrl();row.innerHTML='';$('pdAskBox').hidden=!(wa||ln);if(!wa&&!ln)return;
+  const vv=it.variants[colorOf(it)],msg=t('askMsg').replace('{n}',txt(it.name)).replace('{c}',txt(vv.n)||'').replace('{s}',S.size[it.id]||'');
+  if(wa){const a=document.createElement('a');a.className='cbtn c-wa';a.href='https://wa.me/'+wa+'?text='+encodeURIComponent(msg);a.target='_blank';a.rel='noopener';a.innerHTML=ICON_WA+'<span>WhatsApp</span>';row.appendChild(a)}
+  if(ln){const id0=String(S.shop.line||'').trim(),oa=/^https:/.test(id0)?'':(id0.startsWith('@')?id0:'@'+id0);const a=document.createElement('a');a.className='cbtn c-line';
+    a.href=oa?'https://line.me/R/oaMessage/'+encodeURIComponent(oa)+'/?'+encodeURIComponent(msg):ln;a.target='_blank';a.rel='noopener';a.innerHTML=ICON_LINE+'<span>LINE</span>';row.appendChild(a)}}
 function askLink(it){const wa=waNum(),ln=lineUrl();const vv=it.variants[colorOf(it)];const msg=t('askMsg').replace('{n}',txt(it.name)).replace('{c}',txt(vv.n)||'').replace('{s}',S.size[it.id]||'');
   if(wa)return 'https://wa.me/'+wa+'?text='+encodeURIComponent(msg);return ln||''}
 
@@ -1936,9 +2027,13 @@ function defringe(c){
 
 /* ====================== shop manager ====================== */
 const A={inside:[],front:null,back:null,backAuto:true,avg:'#888888',type:null,sizes:[],vars:[],edit:null,armed:null,busy:false};
+function adminTab(k){document.querySelectorAll('.atabs [data-tab]').forEach((b)=>b.setAttribute('aria-selected',String(b.dataset.tab===k)));document.querySelectorAll('#adminBody [data-pane]').forEach((p)=>{p.hidden=p.dataset.pane!==k})}
+document.querySelectorAll('.atabs [data-tab]').forEach((b)=>b.addEventListener('click',()=>adminTab(b.dataset.tab)));
 function openAdmin(){renderAdmin();$('admin').hidden=false;document.body.style.overflow='hidden';$('adminClose').focus()}
 function closeAdmin(){$('admin').hidden=true;if($('pd').hidden)document.body.style.overflow=''}
-$('adminBtn').addEventListener('click',openAdmin);$('adminClose').addEventListener('click',closeAdmin);
+$('adminBtn').addEventListener('click',openAdmin);$('fFit').addEventListener('click',()=>openFit());
+// sections slide in as they come into view
+(()=>{if(!('IntersectionObserver' in window))return;document.documentElement.classList.add('js-rv');const io=new IntersectionObserver((es)=>{for(const e of es)if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}},{rootMargin:'0px 0px -8% 0px'});document.querySelectorAll('.rv').forEach((el)=>io.observe(el))})();$('adminClose').addEventListener('click',closeAdmin);
 function renderAdmin(){
   $('adminBody').hidden=!S.canEdit;$('adminLock').hidden=S.canEdit;$('localNote').hidden=!S.local;if(!S.canEdit)return;
   $('aShopName').value=S.shop.name||'';$('aShopLink').value=S.shop.tiktok||'';$('aWa').value=S.shop.wa||'';$('aLine').value=S.shop.line||'';
@@ -1953,6 +2048,9 @@ function renderAdmin(){
   $('aAddVar').disabled=!A.front||A.busy;$('aSave').disabled=A.busy||!A.type||(!A.front&&!A.vars.length);
   $('formH').textContent=A.edit?t('editItem'):t('addItem');$('aSave').textContent=A.edit?t('saveItem'):t('addToShop');$('aCancel').hidden=!A.edit;
   const list=$('aList');list.innerHTML='';
+  // the sample pieces are listed too (read-only), so the owner sees the whole shop; she can hide them in the shop details
+  if(!S.shop.hideDemo)S.items.filter((x)=>x.demo||String(x.id).startsWith('d-')).forEach((it)=>{const d=document.createElement('div');d.className='ai demo';d.innerHTML='<img alt=""><div class="n"></div><span class="tag"></span>';
+    d.querySelector('img').src=it.variants[0].front;d.querySelector('.n').textContent=txt(it.name);d.querySelector('.tag').textContent=t('demoTag')+' · '+fmt(it.price);list.appendChild(d)});
   (S.dbItems||[]).slice().sort((a,b)=>(a.order??0)-(b.order??0)).forEach((it,i,arr)=>{const d=document.createElement('div');d.className='ai';
     d.innerHTML=`<img alt=""><div class="n"></div><div class="r"><button type="button" class="e"></button><button type="button" class="u"></button><button type="button" class="d"></button></div>`;
     d.querySelector('img').src=it.variants[0].front;d.querySelector('.n').textContent=txt(it.name);
@@ -1963,8 +2061,9 @@ function renderAdmin(){
 }
 function resetForm(){A.inside=[];$('markBox').hidden=true;A.front=A.back=null;A.backAuto=true;A.type=null;A.sizes=[];A.vars=[];A.edit=null;for(const f of ['aName','aPrice','aColor','aLink','aDesc','aFlat','aLen'])$(f).value='';
   $('prevF').hidden=$('prevB').hidden=$('stF').hidden=$('stB').hidden=true;$('dropFT').hidden=$('dropBT').hidden=false}
-function startEdit(it){resetForm();A.edit=it.id;A.type=it.type;A.sizes=[...(it.sizes||[])];A.vars=it.variants.map((x)=>({...x}));$('aName').value=txt(it.name);$('aPrice').value=it.price||'';$('aLink').value=it.tiktok||'';$('aDesc').value=txt(it.desc);$('aFlat').value=it.flat||'';$('aLen').value=it.len||'';renderAdmin();$('formH').scrollIntoView({behavior:'smooth'})}
-$('aCancel').addEventListener('click',()=>{resetForm();renderAdmin()});
+function startEdit(it){resetForm();A.edit=it.id;A.type=it.type;A.sizes=[...(it.sizes||[])];A.vars=it.variants.map((x)=>({...x}));$('aName').value=txt(it.name);$('aPrice').value=it.price||'';$('aLink').value=it.tiktok||'';$('aDesc').value=txt(it.desc);$('aFlat').value=it.flat||'';$('aLen').value=it.len||'';renderAdmin();adminTab('add')}
+$('aCancel').addEventListener('click',()=>{resetForm();renderAdmin();adminTab('items')});
+$('aNew').addEventListener('click',()=>{resetForm();renderAdmin();adminTab('add')});
 async function onPhoto(which,file){
   if(!file)return;const st=which==='front'?$('stF'):$('stB'),pv=which==='front'?$('prevF'):$('prevB'),tx=which==='front'?$('dropFT'):$('dropBT');
   A.busy=true;renderAdmin();st.hidden=false;st.textContent=t('cutting');
@@ -1997,7 +2096,7 @@ $('aSave').addEventListener('click',async()=>{
     const name=$('aName').value.trim(),desc=$('aDesc').value.trim(),link=$('aLink').value.trim();
     const it={id,type:A.type,price:Math.max(0,Math.round(+$('aPrice').value||0)),name:{he:name||t(A.type),th:name||T.th[A.type]},desc:{he:desc,th:desc},sizes:A.sizes.length?A.sizes:TYPES[A.type].sizes,
       flat:(+$('aFlat').value>=20&&+$('aFlat').value<=90)?Math.round(+$('aFlat').value):null,len:(+$('aLen').value>=20&&+$('aLen').value<=170)?Math.round(+$('aLen').value):null,tiktok:/^https:\/\//.test(link)?link:'',order:prev?prev.order:-(Date.now()/1000|0),variants:vars};
-    await saveItem(it);$('aMsg').textContent=t('saved');resetForm();S.cat='all';S.pos=0;S.target=0}
+    await saveItem(it);$('aMsg').textContent=t('saved');resetForm();S.cat='all';S.pos=0;S.target=0;setTimeout(()=>adminTab('items'),600)}
   catch(e){console.warn(e);$('aMsg').textContent=e&&e.code==='not_granted'?t('noRight'):t('saveFail')}
   finally{A.busy=false;renderAdmin()}});
 $('aSaveShop').addEventListener('click',async()=>{if(!S.db)return toast(t('noRight'));const link=$('aShopLink').value.trim();
@@ -2045,7 +2144,7 @@ applyLang();layoutRope();
   else{try{const R=localRuntime();({db,user,assets,downloads}=R);S.local=true}catch(e){console.warn(e);return}}
   S.downloads=downloads;S.assets=assets;
   if(user){try{S.canEdit=!!(await user.canEdit())}catch{}}
-  $('adminBtn').hidden=!S.canEdit;
+
   if(db){S.db=db;
     db.collection('items').onSnapshot((snap)=>{S.dbItems=snap.docs.map((d)=>({...d.data(),id:d.id})).filter((x)=>Array.isArray(x.variants)&&x.variants.length&&TYPES[x.type]);rebuild();if(!$('admin').hidden)renderAdmin()},(e)=>console.warn('items',e));
     db.collection('looks').onSnapshot((snap)=>{const m={};snap.docs.forEach((d)=>{const x=d.data();if(x&&x.front&&x.url)m[x.front]=x.url});S.looks=m;renderGrid();if(S.detail)renderDetail()},(e)=>console.warn('looks',e));
