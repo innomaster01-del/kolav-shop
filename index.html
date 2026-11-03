@@ -1,4 +1,4 @@
-<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{box-sizing:border-box}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Kolav</title>
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{box-sizing:border-box}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>FitSpace</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@ a{color:inherit}
 .gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .wrap{max-width:1320px;margin-inline:auto}
 .eyebrow{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
-html[lang="he"] .eyebrow{letter-spacing:.04em}
+
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid var(--line);background:transparent;cursor:pointer;font-weight:600;text-decoration:none;white-space:nowrap;transition:transform .15s,background .2s}
 .btn:active{transform:scale(.98)}
 .btn.solid{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
@@ -42,7 +42,7 @@ html[lang="he"] .eyebrow{letter-spacing:.04em}
 .btn svg{width:18px;height:18px;flex:none}
 .round{width:46px;height:46px;border-radius:50%;border:1px solid var(--glass-line);background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:grid;place-items:center;cursor:pointer;color:var(--ink)}
 .round svg{width:18px;height:18px}
-html[dir="rtl"] .flipx svg{transform:scaleX(-1)}
+
 .x{border:0;background:none;cursor:pointer;color:var(--muted);width:42px;height:42px;border-radius:50%;font-size:1.5rem;line-height:1;flex:none}
 .x:hover{background:var(--tile)}
 
@@ -53,7 +53,7 @@ html[dir="rtl"] .flipx svg{transform:scaleX(-1)}
 .top{position:absolute;inset:0 0 auto;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding-top:calc(16px + env(safe-area-inset-top,0px))}
 .brand{justify-self:center;text-align:center;line-height:.8;text-decoration:none}
 .brand b{display:block;font-family:var(--f-display);font-weight:700;font-size:clamp(2.6rem,5vw,3.6rem);letter-spacing:.02em}
-.brand span{display:block;font-size:.66rem;letter-spacing:.42em;font-weight:700;margin-top:6px;opacity:.8;direction:ltr}
+.brand span{display:block;font-size:.66rem;letter-spacing:.42em;font-weight:700;margin-top:12px;opacity:.8;direction:ltr}
 .cats{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
 .cats button{white-space:nowrap;border:0;background:none;padding:6px 0;min-height:32px;cursor:pointer;font-weight:600;font-size:.8rem;letter-spacing:.04em;opacity:.62;position:relative;transition:opacity .2s}
 .cats button::after{content:"";position:absolute;inset-inline:0;bottom:2px;height:1.5px;background:currentColor;transform:scaleX(0);transition:transform .25s var(--ease)}
@@ -302,6 +302,7 @@ html[dir="rtl"] .ba-bar{left:auto;right:var(--cut,0%);transform:translateX(1px)}
 .step{display:grid;gap:10px}
 .step h3{margin:0;font-size:.95rem;display:flex;gap:8px;align-items:center}
 .step h3 i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:.76rem}
+.ai-card{padding:14px;border:1px solid var(--ink);border-radius:14px;background:linear-gradient(135deg,rgba(0,0,0,.035),rgba(0,0,0,0))}.ai-card #goFit{background:var(--ink);color:var(--paper);border-color:var(--ink)}.ai-card #goFit:disabled{opacity:.45}
 .row2{display:flex;gap:8px;flex-wrap:wrap}
 .row2 .btn{flex:1 1 140px}
 .file{position:relative;overflow:hidden}
@@ -386,68 +387,68 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 
-<header class="hero" id="hero" aria-label="הקולקציה">
+<header class="hero" id="hero" aria-label="Collection">
   <canvas id="sky" aria-hidden="true"></canvas>
   <canvas id="rope" aria-hidden="true"></canvas>
   <div class="top gut">
-    <nav class="cats" id="cats" aria-label="קטגוריות"></nav>
-    <a class="brand" href="#hero" id="brand"><b id="brandName">קולב</b><span>KOLAV</span></a>
+    <nav class="cats" id="cats" aria-label="Categories"></nav>
+    <a class="brand" href="#hero" id="brand"><b id="brandName">FitSpace</b><span>TRY · LOVE · BUY</span></a>
     <div class="tools">
-      <a class="pill" href="#info" data-t="infoShort">מידע</a>
+      <a class="pill" href="#info" data-t="infoShort">Info</a>
       <button class="pill" id="langBtn" type="button">ไทย</button>
-      <button class="pill" id="likesBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.5 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg><span class="t" data-t="liked">אהבתי</span><b id="likesN">0</b></button>
-      <button class="pill" id="fitBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 4 6l2 4 2-1v12h8V9l2 1 2-4-5-3a3 3 0 0 1-6 0Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="t" data-t="fitRoom">חדר מדידה</span></button>
+      <button class="pill" id="likesBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.5 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg><span class="t" data-t="liked">Saved</span><b id="likesN">0</b></button>
+      <button class="pill" id="fitBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 4 6l2 4 2-1v12h8V9l2 1 2-4-5-3a3 3 0 0 1-6 0Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="t" data-t="fitRoom">Fitting room</span></button>
     </div>
   </div>
   <div class="line" id="line"></div>
   <div class="label" id="label"><b id="labelName"></b><span id="labelPrice"></span></div>
-  <div class="hint" id="hint" data-t="hint">גררו את החבל · לחצו על בגד כדי לפתוח אותו</div>
+  <div class="hint" id="hint" data-t="hint">Drag the line · tap a garment to open it</div>
   <div class="hero-foot gut">
     <div class="now"><span class="num" id="num">01</span><div class="meta"><b id="curCat"></b><span id="count"></span></div></div>
     <div class="dots" id="dots"></div>
-    <div class="arrows"><button class="round flipx" id="prev" type="button" aria-label="הקודם"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button><button class="round flipx" id="next" type="button" aria-label="הבא"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button></div>
+    <div class="arrows"><button class="round flipx" id="prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button><button class="round flipx" id="next" type="button" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button></div>
   </div>
 </header>
 
 <main class="gut">
   <div class="wrap">
-    <ul class="perks rv" aria-label="למה לקנות אצלנו">
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 4 6l2 4 2-1v12h8V9l2 1 2-4-5-3a3 3 0 0 1-6 0Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><div><b data-t="pk1">מדידה על התמונה שלך</b><span data-t="pk1s">כל בגד, כל מידה</span></div></li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h11M4 17h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div><b data-t="pk2">המלצת מידה</b><span data-t="pk2s">לפי הגוף שלך</span></div></li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3-3.46M14 3c.5 2.6 2.4 4.3 5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div><b data-t="pk3">קונים בטיק טוק</b><span data-t="pk3s">תשלום ומשלוח מאובטחים</span></div></li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><div><b data-t="pk4">שאלות? כתבי לנו</b><span data-t="pk4s">בוואטסאפ או בליין</span></div></li>
+    <ul class="perks rv" aria-label="Why shop with us">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 4 6l2 4 2-1v12h8V9l2 1 2-4-5-3a3 3 0 0 1-6 0Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><div><b data-t="pk1">Try on your photo</b><span data-t="pk1s">Any garment, any size</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h11M4 17h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div><b data-t="pk2">Size recommendation</b><span data-t="pk2s">Based on your body</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3-3.46M14 3c.5 2.6 2.4 4.3 5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div><b data-t="pk3">Buy on TikTok</b><span data-t="pk3s">Secure payment &amp; shipping</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><div><b data-t="pk4">Questions? Message us</b><span data-t="pk4s">On WhatsApp or LINE</span></div></li>
     </ul>
     <section class="sec" aria-labelledby="catH">
-      <div class="sec-h rv"><div><h2 id="catH" data-t="byCat">קונים לפי קטגוריה</h2></div></div>
+      <div class="sec-h rv"><div><h2 id="catH" data-t="byCat">Shop by category</h2></div></div>
       <div class="ctiles" id="ctiles"></div>
     </section>
     <section class="sec" id="shop" aria-labelledby="shopH">
-      <div class="sec-h rv"><div><h2 id="shopH" data-t="collection">הקולקציה</h2><p data-t="collectionSub">כל בגד אפשר למדוד על התמונה שלך, ולקנות בחנות שלנו בטיק טוק.</p></div><div class="tabs" id="tabs" role="group"></div></div>
+      <div class="sec-h rv"><div><h2 id="shopH" data-t="collection">The collection</h2><p data-t="collectionSub">Try any piece on your own photo, then buy it in our TikTok Shop.</p></div><div class="tabs" id="tabs" role="group"></div></div>
       <div class="grid" id="grid"></div>
     </section>
     <section class="sec" aria-labelledby="howH">
-      <div class="sec-h"><div><h2 id="howH" data-t="howTitle">מודדים לפני שקונים</h2></div><button class="btn solid" type="button" id="howFit" data-t="openFit">לחדר המדידה</button></div>
+      <div class="sec-h"><div><h2 id="howH" data-t="howTitle">Try before you buy</h2></div><button class="btn solid" type="button" id="howFit" data-t="openFit">Open the fitting room</button></div>
       <ol class="how">
-        <li><i>1</i><b data-t="how1">מעלים תמונה</b><span data-t="how1s">מלפנים, בעמידה, כל הגוף בפריים ובאור טוב.</span></li>
-        <li><i>2</i><b data-t="how2">בוחרים בגד</b><span data-t="how2s">אפשר עליון ותחתון יחד. הבגד מולבש על התמונה שלך, עם הקפלים והאור שלה.</span></li>
-        <li><i>3</i><b data-t="how3">קונים בטיק טוק</b><span data-t="how3s">אהבת? הכפתור פותח את הפריט בחנות שלנו בטיק טוק.</span></li>
+        <li><i>1</i><b data-t="how1">Upload a photo</b><span data-t="how1s">Front-facing, standing, full body in frame, good light.</span></li>
+        <li><i>2</i><b data-t="how2">Pick a garment</b><span data-t="how2s">Combine a top and a bottom. It's dressed onto your photo with its folds and light.</span></li>
+        <li><i>3</i><b data-t="how3">Buy on TikTok</b><span data-t="how3s">Love it? The button opens the item in our TikTok Shop.</span></li>
       </ol>
     </section>
     <section class="sec" id="sizes" aria-labelledby="sizeH">
-      <div class="sec-h rv"><div><h2 id="sizeH" data-t="sizeGuide">מדריך מידות</h2><p data-t="sizeSub">מידות הגוף בס״מ שכל מידה מתאימה להן. בכל פריט יש גם את המידות שלו עצמו.</p></div></div>
-      <div class="sg rv"><div><h3 data-t="sgTops">חולצות, ז׳קטים ושמלות</h3><table class="dims" id="sgTop"></table></div><div><h3 data-t="sgBottoms">מכנסיים וחצאיות</h3><table class="dims" id="sgBot"></table></div></div>
-      <div class="unsure rv"><div><h3 data-t="unsureH">לא בטוחה במידה?</h3><p data-t="unsureP">מכניסים חזה, מותן וירכיים פעם אחת, ומקבלים את המידה שמתאימה לך.</p></div>
-        <form class="calc" id="calc"><label class="f"><span data-t="mChest">חזה</span><input class="field" id="mChest" type="number" min="60" max="150" inputmode="numeric" placeholder="ס״מ"></label><label class="f"><span data-t="mWaist">מותן</span><input class="field" id="mWaist" type="number" min="45" max="140" inputmode="numeric" placeholder="ס״מ"></label><label class="f"><span data-t="mHips">ירכיים</span><input class="field" id="mHips" type="number" min="60" max="160" inputmode="numeric" placeholder="ס״מ"></label><button class="btn solid" type="submit" data-t="calcBtn">מה המידה שלי?</button><output id="calcOut" aria-live="polite"></output></form></div>
+      <div class="sec-h rv"><div><h2 id="sizeH" data-t="sizeGuide">Size guide</h2><p data-t="sizeSub">Body measurements in cm that each size fits. Every item also lists its own measurements.</p></div></div>
+      <div class="sg rv"><div><h3 data-t="sgTops">Tops, jackets &amp; dresses</h3><table class="dims" id="sgTop"></table></div><div><h3 data-t="sgBottoms">Pants &amp; skirts</h3><table class="dims" id="sgBot"></table></div></div>
+      <div class="unsure rv"><div><h3 data-t="unsureH">Not sure about your size?</h3><p data-t="unsureP">Enter your chest, waist and hips once and get the size that fits you.</p></div>
+        <form class="calc" id="calc"><label class="f"><span data-t="mChest">Chest</span><input class="field" id="mChest" type="number" min="60" max="150" inputmode="numeric" placeholder="cm"></label><label class="f"><span data-t="mWaist">Waist</span><input class="field" id="mWaist" type="number" min="45" max="140" inputmode="numeric" placeholder="cm"></label><label class="f"><span data-t="mHips">Hips</span><input class="field" id="mHips" type="number" min="60" max="160" inputmode="numeric" placeholder="cm"></label><button class="btn solid" type="submit" data-t="calcBtn">What's my size?</button><output id="calcOut" aria-live="polite"></output></form></div>
     </section>
     <section class="sec info" id="info" aria-labelledby="infoH">
-      <div class="sec-h"><div><h2 id="infoH" data-t="infoTitle">מידע ושאלות</h2><p data-t="infoSub">כל מה שצריך לדעת לפני שמזמינים. לא מצאת תשובה? כתבי לנו.</p></div>
+      <div class="sec-h"><div><h2 id="infoH" data-t="infoTitle">Info &amp; questions</h2><p data-t="infoSub">Everything to know before you order. Can't find an answer? Message us.</p></div>
         <div class="contact" id="contactRow"></div></div>
       <div class="faq" id="faq"></div>
     </section>
     <footer class="foot">
-      <div class="fcol fbrand"><b id="footBrand">קולב</b><span data-t="foot">כל הפריטים נקנים בחנות שלנו בטיק טוק.</span></div>
-      <nav class="fcol" aria-label="חנות"><span class="eyebrow" data-t="fShop">חנות</span><a href="#shop" data-t="collection">הקולקציה</a><button class="linkbtn" type="button" id="fFit" data-t="fitRoom">חדר מדידה</button><a href="#sizes" data-t="sizeGuide">מדריך מידות</a></nav>
-      <nav class="fcol" aria-label="עזרה"><span class="eyebrow" data-t="fHelp">עזרה</span><a href="#info" data-t="infoTitle">מידע ושאלות</a><button class="linkbtn" id="adminBtn" type="button" data-t="adminIn">כניסה למנהל</button></nav>
+      <div class="fcol fbrand"><b id="footBrand">FitSpace</b><span data-t="foot">All items are sold through our TikTok Shop.</span></div>
+      <nav class="fcol" aria-label="Shop"><span class="eyebrow" data-t="fShop">Shop</span><a href="#shop" data-t="collection">The collection</a><button class="linkbtn" type="button" id="fFit" data-t="fitRoom">Fitting room</button><a href="#sizes" data-t="sizeGuide">Size guide</a></nav>
+      <nav class="fcol" aria-label="Help"><span class="eyebrow" data-t="fHelp">Help</span><a href="#info" data-t="infoTitle">Info &amp; questions</a><button class="linkbtn" id="adminBtn" type="button" data-t="adminIn">Admin login</button></nav>
     </footer>
   </div>
 </main>
@@ -461,75 +462,75 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
     </div>
     <div class="gen" id="gen" hidden><span><i class="spin"></i><b id="genT"></b></span></div>
     <div class="pd-tools">
-      <div class="seg" role="group" style="display:none"><button type="button" id="vProd" aria-pressed="true" data-t="product">מוצר</button><button type="button" id="vModel" aria-pressed="false" data-t="onModel">על דוגמנית</button></div>
-      <div class="seg" role="group" id="sides"><button type="button" id="sFront" aria-pressed="true" data-t="front">חזית</button><button type="button" id="sBack" aria-pressed="false" data-t="back">גב</button></div>
+      <div class="seg" role="group" style="display:none"><button type="button" id="vProd" aria-pressed="true" data-t="product">Product</button><button type="button" id="vModel" aria-pressed="false" data-t="onModel">On model</button></div>
+      <div class="seg" role="group" id="sides"><button type="button" id="sFront" aria-pressed="true" data-t="front">Front</button><button type="button" id="sBack" aria-pressed="false" data-t="back">Back</button></div>
     </div>
-    <div class="pd-nav"><button class="round flipx" id="pdPrev" type="button" aria-label="הקודם"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button><button class="round flipx" id="pdNext" type="button" aria-label="הבא"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button></div>
+    <div class="pd-nav"><button class="round flipx" id="pdPrev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button><button class="round flipx" id="pdNext" type="button" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button></div>
   </div>
   <div class="pd-card">
     <div class="pd-head"><div><span class="eyebrow" id="pdCat"></span><h2 class="pd-name" id="pdName"></h2></div><span class="eyebrow" id="pdNum"></span></div>
     <div class="pd-price" id="pdPrice"></div>
-    <div class="opt"><div class="opt-h"><span class="eyebrow" data-t="color">צבע</span><em id="pdColor"></em></div><div class="swatches" id="pdSw" role="group"></div></div>
-    <div class="opt"><div class="opt-h"><span class="eyebrow" data-t="size">מידה</span><em id="pdSizeHint"></em></div><div class="sizes" id="pdSizes" role="group"></div></div>
+    <div class="opt"><div class="opt-h"><span class="eyebrow" data-t="color">Colour</span><em id="pdColor"></em></div><div class="swatches" id="pdSw" role="group"></div></div>
+    <div class="opt"><div class="opt-h"><span class="eyebrow" data-t="size">Size</span><em id="pdSizeHint"></em></div><div class="sizes" id="pdSizes" role="group"></div></div>
     <div class="cta">
-      <a class="btn solid" id="pdBuy" href="https://www.tiktok.com/" target="_blank" rel="noopener"><span data-t="buy">לקנייה בחנות בטיק טוק</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></a>
-      <button class="btn like" id="pdLike" type="button" aria-pressed="false" aria-label="אהבתי"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.5 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button>
-      <button class="btn wide" id="pdTry" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 4 6l2 4 2-1v12h8V9l2 1 2-4-5-3a3 3 0 0 1-6 0Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span data-t="tryMe">מדידה על התמונה שלי</span></button>
+      <a class="btn solid" id="pdBuy" href="https://www.tiktok.com/" target="_blank" rel="noopener"><span data-t="buy">Buy on TikTok Shop</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></a>
+      <button class="btn like" id="pdLike" type="button" aria-pressed="false" aria-label="Save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.5 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button>
+      <button class="btn wide" id="pdTry" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 4 6l2 4 2-1v12h8V9l2 1 2-4-5-3a3 3 0 0 1-6 0Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span data-t="tryMe">Try it on my photo</span></button>
     </div>
-    <div class="pd-ask" id="pdAskBox"><button class="btn wide ask-btn" type="button" id="pdAskBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span data-t="askMore">שאלות ופרטים נוספים</span></button><div class="contact-row" id="pdAskRow" hidden></div></div>
-    <p class="note" data-t="buyNote">הקנייה נעשית בחנות בטיק טוק. בחרי שם את אותה מידה ואותו צבע.</p>
-    <details class="acc" id="accDesc"><summary data-t="details">פרטים</summary><p id="pdDesc"></p></details>
-    <details class="acc"><summary data-t="sizeGuide">מדריך מידות</summary><table class="dims" id="pdDims"></table></details>
+    <div class="pd-ask" id="pdAskBox"><button class="btn wide ask-btn" type="button" id="pdAskBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span data-t="askMore">Questions &amp; more details</span></button><div class="contact-row" id="pdAskRow" hidden></div></div>
+    <p class="note" data-t="buyNote">Checkout happens in our TikTok Shop. Pick the same size and colour there.</p>
+    <details class="acc" id="accDesc"><summary data-t="details">Details</summary><p id="pdDesc"></p></details>
+    <details class="acc"><summary data-t="sizeGuide">Size guide</summary><table class="dims" id="pdDims"></table></details>
   </div>
-  <button class="round pd-close" id="pdClose" type="button" aria-label="סגירה"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button>
+  <button class="round pd-close" id="pdClose" type="button" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button>
 </section>
 
 <!-- fitting room -->
 <div class="fit" id="fit" hidden role="dialog" aria-modal="true" aria-labelledby="fitH">
   <div class="fit-box">
-    <div class="fit-head"><h2 id="fitH" data-t="fitRoom">חדר מדידה</h2><button class="x" id="fitClose" type="button" aria-label="סגירה">×</button></div>
+    <div class="fit-head"><h2 id="fitH" data-t="fitRoom">Fitting room</h2><button class="x" id="fitClose" type="button" aria-label="Close">×</button></div>
     <div class="fit-body">
       <div class="fit-stage" id="fitStage">
-        <canvas id="qf" aria-label="הבגד על התמונה"></canvas>
-        <div class="qf-zoom" id="qfZoom" dir="ltr"><button type="button" id="zOut" data-ta="zoomOut" aria-label="הקטנה">−</button><button type="button" id="zFit" data-ta="zoomFit" aria-label="חזרה לגודל מלא">1×</button><button type="button" id="zIn" data-ta="zoomIn" aria-label="הגדלה">+</button></div>
+        <canvas id="qf" aria-label="Garment on the photo"></canvas>
+        <div class="qf-zoom" id="qfZoom" dir="ltr"><button type="button" id="zOut" data-ta="zoomOut" aria-label="Zoom out">−</button><button type="button" id="zFit" data-ta="zoomFit" aria-label="Back to full size">1×</button><button type="button" id="zIn" data-ta="zoomIn" aria-label="Zoom in">+</button></div>
         <div class="qf-scan" id="qfScan" hidden aria-hidden="true"><i class="ln"></i><i class="gr"></i></div>
         <div class="qf-refine" id="qfRefine" hidden></div>
         <div class="qf-status" id="qfStatus" hidden><span id="qfStatusT"></span></div>
         <div class="ba" id="baWrap" hidden><div class="ba-in" id="baIn">
           <img id="beforeImg" alt="">
           <img id="afterImg" class="after" alt="">
-          <span class="ba-tag" style="inset-inline-start:12px" data-t="before">לפני</span>
-          <span class="ba-tag" style="inset-inline-end:12px" data-t="after">אחרי</span>
+          <span class="ba-tag" style="inset-inline-start:12px" data-t="before">Before</span>
+          <span class="ba-tag" style="inset-inline-end:12px" data-t="after">After</span>
           <div class="ba-bar" id="baBar"></div>
-          <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="לפני ואחרי">
-        </div><button class="btn sm ba-back" id="baBack" type="button" data-t="backQuick">חזרה להלבשה המיידית</button></div>
+          <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Before and after">
+        </div><button class="btn sm ba-back" id="baBack" type="button" data-t="backQuick">Back to the instant fit</button></div>
         <div class="busy" id="busy" hidden><div class="row"><i class="spin"></i><span id="busyT"></span></div><div class="bar"><i id="busyBar"></i></div><small id="busyS"></small></div>
       </div>
       <div class="fit-side">
-        <div class="step"><h3><i>1</i><span data-t="s1">התמונה שלך</span></h3>
-          <div class="row2"><label class="btn solid file" for="meIn"><span data-t="upload">העלאת תמונה</span><input type="file" id="meIn" accept="image/jpeg,image/png,image/webp"></label><button class="btn" id="useModel" type="button" data-t="useModel">דוגמנית לדוגמה</button></div>
-          <label class="f"><span data-t="height">הגובה שלך (ס״מ)</span><input class="field" id="qfH" type="number" min="130" max="200" step="1" inputmode="numeric" value="163"></label>
-          <div class="pcheck" id="photoCheck" hidden></div><p class="note" data-t="photoTip">מלפנים, בעמידה, כל הגוף בפריים. הזיהוי נעשה כאן בדפדפן.</p>
-        </div>
-        <div class="step"><h3><i>2</i><span data-t="s2">מה למדוד</span></h3><p class="note" data-t="s2n">עליון ותחתון יחד, או שמלה אחת.</p><div class="picks" id="picks"></div></div>
-        <div class="step" id="aiStep"><h3><i>3</i><span data-t="s4">מדידה מציאותית (AI)</span></h3>
-          <p class="note" data-t="aiNote">מלביש מחדש עם בינה מלאכותית: קפלים, אור וידיים אמיתיים. לוקח בערך 30 שניות לבגד.</p>
-          <label class="consent" id="consentRow"><input type="checkbox" id="consent"><span data-t="consent">אני מסכימה שהתמונה תישלח לשרת המדידה לעיבוד. היא לא נשמרת בחנות.</span></label>
-          <button class="btn" id="goFit" type="button" data-t="goAi">מדידה מציאותית</button>
+        <div class="step ai-card" id="aiStep"><h3><i>✦</i><span data-t="s4">Realistic try-on (AI)</span></h3>
+          <p class="note" data-t="aiNote">Re-dresses you with AI: real folds, light and hands. Takes about 30 seconds per garment.</p>
+          <label class="consent" id="consentRow"><input type="checkbox" id="consent"><span data-t="consent">I agree the photo is sent to the try-on server for processing. The shop doesn't store it.</span></label>
+          <button class="btn" id="goFit" type="button" data-t="goAi">Realistic try-on</button>
           <p class="err" id="fitErr" hidden></p>
           <p class="note" id="engineNote"></p>
-          <details class="acc" id="tokBox"><summary data-t="more">עוד מדידות ביום (לא חובה)</summary><p data-t="moreT">פותחים חשבון חינמי ב-Hugging Face, יוצרים מפתח מסוג Read ומדביקים כאן. המפתח נשמר רק בדפדפן הזה.</p>
-            <div class="row2" style="margin-top:8px"><input class="field" id="tokIn" type="password" placeholder="hf_..." autocomplete="off" dir="ltr" style="flex:1 1 160px;min-width:0"><button class="btn sm" id="tokSave" type="button" data-t="tokSave">שמירה</button></div>
+          <details class="acc" id="tokBox"><summary data-t="more">More try-ons per day (optional)</summary><p data-t="moreT">Create a free Hugging Face account, make a Read key and paste it here. The key is stored only in this browser.</p>
+            <div class="row2" style="margin-top:8px"><input class="field" id="tokIn" type="password" placeholder="hf_..." autocomplete="off" dir="ltr" style="flex:1 1 160px;min-width:0"><button class="btn sm" id="tokSave" type="button" data-t="tokSave">Save</button></div>
             <p class="note" style="margin-top:6px"><a href="https://huggingface.co/settings/tokens" target="_blank" rel="noopener">huggingface.co/settings/tokens</a></p></details>
-          <div class="step"><h3><i>4</i><span data-t="s3">התאמה</span></h3>
-          <div class="sizes" id="qfSizes" role="group"></div><p class="note" id="qfRec"></p><div class="qf-fit" id="qfFit" hidden></div>
-          <label class="f"><span data-t="width">רוחב</span><input type="range" id="qfW" min="0.85" max="1.15" step="0.01" value="1"></label>
-          <label class="f"><span data-t="lengthAdj">אורך</span><input type="range" id="qfL" min="0.85" max="1.2" step="0.01" value="1"></label>
-          <div class="row2"><button class="btn sm" id="qfPts" type="button" aria-pressed="false" data-t="points">כיוון נקודות</button><button class="btn sm" id="qfLock" type="button" aria-pressed="true" data-t="locked">שחרור נעילה</button><button class="btn sm" id="qfReset" type="button" data-t="reset">איפוס</button><button class="btn sm" id="saveImg" type="button" data-t="save">שמירת התמונה</button></div>
-          <p class="note" data-t="dragTip">אפשר לגרור את הבגד. כשעוזבים, הוא חוזר לשבת על הגוף.</p>
-          <a class="btn solid" id="fitBuy" target="_blank" rel="noopener" data-t="buyShort">לקנייה</a>
         </div>
-      </div>
+        <div class="step"><h3><i>1</i><span data-t="s1">Your photo</span></h3>
+          <div class="row2"><label class="btn solid file" for="meIn"><span data-t="upload">Upload photo</span><input type="file" id="meIn" accept="image/jpeg,image/png,image/webp"></label><button class="btn" id="useModel" type="button" data-t="useModel">Sample model</button></div>
+          <label class="f"><span data-t="height">Your height (cm)</span><input class="field" id="qfH" type="number" min="130" max="200" step="1" inputmode="numeric" value="163"></label>
+          <div class="pcheck" id="photoCheck" hidden></div><p class="note" data-t="photoTip">Front-facing, standing, full body in frame. Length and width are set automatically from your height, body and the garment's measurements. Detection runs right here in your browser.</p>
+        </div>
+        <div class="step"><h3><i>2</i><span data-t="s2">What to try</span></h3><p class="note" data-t="s2n">A top and a bottom together, or one dress.</p><div class="picks" id="picks"></div></div>
+          <div class="step"><h3><i>3</i><span data-t="s3">Fit</span></h3>
+          <div class="sizes" id="qfSizes" role="group"></div><p class="note" id="qfRec"></p><div class="qf-fit" id="qfFit" hidden></div>
+          <label class="f"><span data-t="width">Adjust width</span><input type="range" id="qfW" min="0.85" max="1.15" step="0.01" value="1"></label>
+          <label class="f"><span data-t="lengthAdj">Adjust length</span><input type="range" id="qfL" min="0.85" max="1.2" step="0.01" value="1"></label>
+          <div class="row2"><button class="btn sm" id="qfPts" type="button" aria-pressed="false" data-t="points">Adjust points</button><button class="btn sm" id="qfLock" type="button" aria-pressed="true" data-t="locked">Unlock</button><button class="btn sm" id="qfReset" type="button" data-t="reset">Reset</button><button class="btn sm" id="saveImg" type="button" data-t="save">Save photo</button></div>
+          <p class="note" data-t="dragTip">You can drag the garment. While locked to the body it snaps back. Tap "Unlock" and it stays where you leave it.</p>
+          <a class="btn solid" id="fitBuy" target="_blank" rel="noopener" data-t="buyShort">Buy</a>
+        </div>
       </div>
     </div>
   </div>
@@ -538,66 +539,66 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
 <!-- likes -->
 <div class="drawer" id="likes" hidden role="dialog" aria-modal="true" aria-labelledby="likesH">
   <div class="drawer-box">
-    <div class="dh"><h2 id="likesH" data-t="liked">אהבתי</h2><button class="x" id="likesClose" type="button" aria-label="סגירה">×</button></div>
+    <div class="dh"><h2 id="likesH" data-t="liked">Saved</h2><button class="x" id="likesClose" type="button" aria-label="Close">×</button></div>
     <div class="wl" id="likesList"></div>
-    <div class="df" data-t="likesNote">הרשימה נשמרת בדפדפן הזה. לכל פריט יש קישור לקנייה בחנות בטיק טוק.</div>
+    <div class="df" data-t="likesNote">Your list is saved in this browser. Every item links to buy in our TikTok Shop.</div>
   </div>
 </div>
 
 <!-- shop manager -->
 <div class="admin" id="admin" hidden role="dialog" aria-modal="true" aria-labelledby="adminH">
   <div class="admin-box">
-    <div class="ah"><h2 id="adminH" data-t="manage">ניהול החנות</h2><button class="x" id="adminClose" type="button" aria-label="סגירה">×</button></div>
+    <div class="ah"><h2 id="adminH" data-t="manage">Manage shop</h2><button class="x" id="adminClose" type="button" aria-label="Close">×</button></div>
     <div id="adminBody">
-      <div class="atabs" role="tablist"><button type="button" role="tab" data-tab="items" aria-selected="true" data-t="aTabItems">הפריטים</button><button type="button" role="tab" data-tab="add" aria-selected="false" data-t="aTabAdd">הוספת בגד</button><button type="button" role="tab" data-tab="shop" aria-selected="false" data-t="aTabShop">פרטי החנות</button></div>
-      <div class="as" data-pane="shop" hidden><h3 data-t="shopInfo">פרטי החנות</h3>
+      <div class="atabs" role="tablist"><button type="button" role="tab" data-tab="items" aria-selected="true" data-t="aTabItems">Items</button><button type="button" role="tab" data-tab="add" aria-selected="false" data-t="aTabAdd">Add garment</button><button type="button" role="tab" data-tab="shop" aria-selected="false" data-t="aTabShop">Shop details</button></div>
+      <div class="as" data-pane="shop" hidden><h3 data-t="shopInfo">Shop details</h3>
         <div class="g2">
-          <label class="f"><span data-t="shopName">שם החנות</span><input class="field" id="aShopName" type="text" autocomplete="off"></label>
-          <label class="f"><span data-t="shopLink">קישור לחנות בטיק טוק</span><input class="field" id="aShopLink" type="url" inputmode="url" dir="ltr" placeholder="https://www.tiktok.com/@…"></label>
+          <label class="f"><span data-t="shopName">Shop name</span><input class="field" id="aShopName" type="text" autocomplete="off"></label>
+          <label class="f"><span data-t="shopLink">TikTok Shop link</span><input class="field" id="aShopLink" type="url" inputmode="url" dir="ltr" placeholder="https://www.tiktok.com/@…"></label>
         </div>
         <div class="g2">
-          <label class="f"><span data-t="waNum">מספר וואטסאפ (עם קידומת מדינה)</span><input class="field" id="aWa" type="tel" inputmode="tel" dir="ltr" placeholder="66812345678"></label>
-          <label class="f"><span data-t="lineId">LINE: מזהה (@...) או קישור</span><input class="field" id="aLine" type="text" dir="ltr" placeholder="@kolav"></label>
+          <label class="f"><span data-t="waNum">WhatsApp number (with country code)</span><input class="field" id="aWa" type="tel" inputmode="tel" dir="ltr" placeholder="66812345678"></label>
+          <label class="f"><span data-t="lineId">LINE: ID (@...) or link</span><input class="field" id="aLine" type="text" dir="ltr" placeholder="@fitspace"></label>
         </div>
-        <label class="f"><span data-t="faqEdit">שאלות ותשובות בעברית: שאלה בשורה הראשונה, התשובה מתחת, ושורה ריקה בין שאלה לשאלה</span><textarea class="field" id="aFaqHe" rows="6"></textarea></label>
-        <label class="f"><span data-t="faqEditTh">שאלות ותשובות בתאית, באותה צורה</span><textarea class="field" id="aFaqTh" rows="6" dir="ltr"></textarea></label>
-        <label class="consent"><input type="checkbox" id="aHideDemo"><span data-t="hideDemo">להסתיר את פריטי הדוגמה</span></label>
-        <div><button class="btn solid sm" id="aSaveShop" type="button" data-t="saveShop">שמירת פרטי החנות</button></div>
+        <label class="f"><span data-t="faqEdit">Q&amp;A in English: question on the first line, answer below it, and a blank line between questions</span><textarea class="field" id="aFaqHe" rows="6"></textarea></label>
+        <label class="f"><span data-t="faqEditTh">Q&amp;A in Thai, same format</span><textarea class="field" id="aFaqTh" rows="6" dir="ltr"></textarea></label>
+        <label class="consent"><input type="checkbox" id="aHideDemo"><span data-t="hideDemo">Hide the sample items</span></label>
+        <div><button class="btn solid sm" id="aSaveShop" type="button" data-t="saveShop">Save shop details</button></div>
       </div>
-      <div class="as" data-pane="add" hidden><h3 id="formH" data-t="addItem">הוספת פריט</h3>
+      <div class="as" data-pane="add" hidden><h3 id="formH" data-t="addItem">Add item</h3>
         <div class="drops">
-          <div class="drop" id="dropF"><span class="tg" data-t="front">חזית</span><span id="dropFT" data-t="dropFront">תמונת חזית של הבגד (חובה). הרקע מוסר אוטומטית.</span><img id="prevF" alt="" hidden><span class="st" id="stF" hidden></span><input type="file" id="aFront" accept="image/jpeg,image/png,image/webp" aria-label="חזית"></div>
-          <div class="drop" id="dropB"><span class="tg" data-t="back">גב</span><span id="dropBT" data-t="dropBack">תמונת גב (לא חובה). בלי תמונה נוצר גב חלק באותו צבע.</span><img id="prevB" alt="" hidden><span class="st" id="stB" hidden></span><input type="file" id="aBack" accept="image/jpeg,image/png,image/webp" aria-label="גב"></div>
+          <div class="drop" id="dropF"><span class="tg" data-t="front">Front</span><span id="dropFT" data-t="dropFront">Front photo of the garment (required). The background is removed automatically.</span><img id="prevF" alt="" hidden><span class="st" id="stF" hidden></span><input type="file" id="aFront" accept="image/jpeg,image/png,image/webp" aria-label="Front"></div>
+          <div class="drop" id="dropB"><span class="tg" data-t="back">Back</span><span id="dropBT" data-t="dropBack">Back photo (optional). Without it, a plain back in the same colour is made.</span><img id="prevB" alt="" hidden><span class="st" id="stB" hidden></span><input type="file" id="aBack" accept="image/jpeg,image/png,image/webp" aria-label="Back"></div>
         </div>
-        <label class="f" id="splitBox" hidden><span data-t="splitL">איפה הבגד נגמר (בתמונה על אדם)</span><input type="range" id="aSplit" min="-0.35" max="0.35" step="0.01" value="0"></label>
+        <label class="f" id="splitBox" hidden><span data-t="splitL">Where the garment ends (when photographed on a person)</span><input type="range" id="aSplit" min="-0.35" max="0.35" step="0.01" value="0"></label>
         <div class="markbox" id="markBox" hidden>
-          <b data-t="markH">סימון הפנים של הבגד</b>
-          <p class="note" data-t="markT">בתמונת מוצר רואים דרך הצוואר את הגב של הבגד מבפנים: הבטנה, התווית, הצווארון האחורי. על הגוף המקום הזה מוסתר. לוחצים נקודה אחרי נקודה מסביב לאזור, והוא ייחתך במדידה. לא חובה.</p>
+          <b data-t="markH">Mark the garment's inside</b>
+          <p class="note" data-t="markT">In a product photo you see the inside back of the garment through the neck: the lining, the label, the back collar. On a body that area is hidden. Click point after point around it and it'll be cut out in the try-on. Optional.</p>
           <canvas id="markC"></canvas>
-          <div class="row2"><button class="btn sm" id="markUndo" type="button" data-t="markUndo">ביטול נקודה</button><button class="btn sm" id="markClear" type="button" data-t="markClear">ניקוי</button></div>
+          <div class="row2"><button class="btn sm" id="markUndo" type="button" data-t="markUndo">Undo point</button><button class="btn sm" id="markClear" type="button" data-t="markClear">Clear</button></div>
         </div>
         <div class="g2">
-          <label class="f"><span data-t="colorName">שם הצבע</span><input class="field" id="aColor" type="text" autocomplete="off"></label>
-          <div style="display:flex;align-items:end"><button class="btn sm" id="aAddVar" type="button" data-t="addColor" disabled>+ הוספה כצבע לפריט</button></div>
+          <label class="f"><span data-t="colorName">Colour name</span><input class="field" id="aColor" type="text" autocomplete="off"></label>
+          <div style="display:flex;align-items:end"><button class="btn sm" id="aAddVar" type="button" data-t="addColor" disabled>+ Add as a colour of this item</button></div>
         </div>
         <div class="vars" id="aVars"></div>
-        <div><div class="eyebrow" style="margin-bottom:8px" data-t="whatType">איזה בגד זה?</div><div class="chips" id="aTypes" role="group"></div></div>
+        <div><div class="eyebrow" style="margin-bottom:8px" data-t="whatType">What kind of garment?</div><div class="chips" id="aTypes" role="group"></div></div>
         <div class="g2">
-          <label class="f"><span data-t="itemName">שם הפריט</span><input class="field" id="aName" type="text" autocomplete="off"></label>
-          <label class="f"><span data-t="itemPrice">מחיר (฿)</span><input class="field" id="aPrice" type="number" min="0" inputmode="numeric"></label>
-          <label class="f"><span data-t="flat">רוחב הבגד בשטוח, ס״מ (מידה M): חזה, או מותן במכנסיים וחצאיות</span><input class="field" id="aFlat" type="number" min="20" max="90" inputmode="numeric"></label>
-          <label class="f"><span data-t="lenCm">אורך הבגד, ס״מ (מידה M): מהכתף עד המכפלת, או מהמותן למטה</span><input class="field" id="aLen" type="number" min="20" max="170" inputmode="numeric"></label>
-          <label class="f"><span data-t="itemLink">קישור למוצר בטיק טוק</span><input class="field" id="aLink" type="url" inputmode="url" dir="ltr" placeholder="https://"></label>
+          <label class="f"><span data-t="itemName">Item name</span><input class="field" id="aName" type="text" autocomplete="off"></label>
+          <label class="f"><span data-t="itemPrice">Price (฿)</span><input class="field" id="aPrice" type="number" min="0" inputmode="numeric"></label>
+          <label class="f"><span data-t="flat">Garment flat width, cm (size M): chest, or waist for pants and skirts</span><input class="field" id="aFlat" type="number" min="20" max="90" inputmode="numeric"></label>
+          <label class="f"><span data-t="lenCm">Garment length, cm (size M): shoulder to hem, or waist down</span><input class="field" id="aLen" type="number" min="20" max="170" inputmode="numeric"></label>
+          <label class="f"><span data-t="itemLink">TikTok product link</span><input class="field" id="aLink" type="url" inputmode="url" dir="ltr" placeholder="https://"></label>
         </div>
-        <label class="f"><span data-t="itemDesc">תיאור קצר ובד</span><textarea class="field" id="aDesc"></textarea></label>
-        <div><div class="eyebrow" style="margin-bottom:8px" data-t="size">מידה</div><div class="chips" id="aSizes" role="group"></div></div>
-        <div class="row2"><button class="btn solid" id="aSave" type="button" data-t="addToShop" disabled>הוספה לקולקציה</button><button class="btn" id="aCancel" type="button" hidden data-t="cancelEdit">ביטול עריכה</button></div>
+        <label class="f"><span data-t="itemDesc">Short description &amp; fabric</span><textarea class="field" id="aDesc"></textarea></label>
+        <div><div class="eyebrow" style="margin-bottom:8px" data-t="size">Size</div><div class="chips" id="aSizes" role="group"></div></div>
+        <div class="row2"><button class="btn solid" id="aSave" type="button" data-t="addToShop" disabled>Add to collection</button><button class="btn" id="aCancel" type="button" hidden data-t="cancelEdit">Cancel editing</button></div>
         <p class="note" id="aMsg" aria-live="polite"></p>
       </div>
-      <div class="as" data-pane="items" style="padding-bottom:22px"><div class="arow"><h3 data-t="items">הפריטים בחנות</h3><button class="btn solid sm" type="button" id="aNew">+ <span data-t="aTabAdd">הוספת בגד</span></button></div><div class="alist" id="aList"></div></div>
+      <div class="as" data-pane="items" style="padding-bottom:22px"><div class="arow"><h3 data-t="items">items</h3><button class="btn solid sm" type="button" id="aNew">+ <span data-t="aTabAdd">Add garment</span></button></div><div class="alist" id="aList"></div></div>
     </div>
-    <p class="note" id="localNote" hidden style="padding:0 20px 18px" data-t="localNote">באתר הזה הקטלוג נשמר בדפדפן הזה בלבד, לבדיקה. בחנות המלאה (Vercel) הוא נשמר בשרת וכולם רואים אותו.</p>
-    <div class="lock" id="adminLock" hidden><h3 data-t="manage">ניהול החנות</h3><p data-t="ownerOnly">רק בעלת החנות יכולה לנהל את הקטלוג.</p></div>
+    <p class="note" id="localNote" hidden style="padding:0 20px 18px" data-t="localNote">On this site the catalogue is saved in this browser only, for testing. In the full shop it's saved on the server and everyone sees it.</p>
+    <div class="lock" id="adminLock" hidden><h3 data-t="manage">Manage shop</h3><p data-t="ownerOnly">Only the shop owner can manage the catalogue.</p></div>
   </div>
 </div>
 
@@ -605,31 +606,13 @@ textarea.field{min-height:70px;padding:10px 14px;resize:vertical}
 <div class="toast" id="toast" hidden><span id="toastT"></span></div>
 
 <script>
-(function(){var l='he';try{l=localStorage.getItem('kolav-lang')||'he'}catch(e){}document.documentElement.lang=l;document.documentElement.dir=l==='he'?'rtl':'ltr'})();
+(function(){var l='en';try{l=localStorage.getItem('fitspace-lang')==='th'?'th':'en'}catch(e){}document.documentElement.lang=l;document.documentElement.dir='ltr'})();
 </script>
 <script type="module">
 /* ====================== copy ====================== */
 const T={
- he:{other:'ไทย',liked:'אהבתי',infoTitle:'מידע ושאלות',infoShort:'מידע',infoSub:'כל מה שצריך לדעת לפני שמזמינים. לא מצאת תשובה? כתבי לנו.',ask:'שאלה על הפריט ↗',askMsg:'שלום, יש לי שאלה על {n} {c} {s}',waNum:'מספר וואטסאפ (עם קידומת מדינה)',lineId:'LINE: מזהה (@...) או קישור',faqEdit:'שאלות ותשובות בעברית: שאלה בשורה הראשונה, התשובה מתחת, ושורה ריקה בין שאלה לשאלה',faqEditTh:'שאלות ותשובות בתאית, באותה צורה',fitRoom:'חדר מדידה',hint:'גררו את החבל · לחצו על בגד כדי לפתוח אותו',collection:'הקולקציה',collectionSub:'כל בגד אפשר למדוד על התמונה שלך, ולקנות בחנות שלנו בטיק טוק.',
-  howTitle:'מודדים לפני שקונים',openFit:'לחדר המדידה',how1:'מעלים תמונה',how1s:'מלפנים, בעמידה, כל הגוף בפריים ובאור טוב.',how2:'בוחרים בגד',how2s:'אפשר עליון ותחתון יחד. הבגד מולבש על התמונה שלך, עם הקפלים והאור שלה.',how3:'קונים בטיק טוק',how3s:'אהבת? הכפתור פותח את הפריט בחנות שלנו בטיק טוק.',
-  foot:'כל הפריטים נקנים בחנות שלנו בטיק טוק.',manage:'ניהול החנות',product:'מוצר',onModel:'על דוגמנית',front:'חזית',back:'גב',color:'צבע',size:'מידה',buy:'לקנייה בחנות בטיק טוק',buyShort:'לקנייה',
-  tryMe:'מדידה על התמונה שלי',buyNote:'הקנייה נעשית בחנות בטיק טוק. בחרי שם את אותה מידה ואותו צבע.',details:'פרטים',sizeGuide:'מדריך מידות',like:'אהבתי',savedLike:'נשמר באהבתי',removedLike:'הוסר מאהבתי',
-  pickSize:'בחרי מידה',s1:'התמונה שלך',upload:'העלאת תמונה',useModel:'דוגמנית לדוגמה',consent:'אני מסכימה שהתמונה תישלח לשרת המדידה לעיבוד. היא לא נשמרת בחנות.',s2:'מה למדוד',s2n:'עליון ותחתון יחד, או שמלה אחת.',
-  s3:'התאמה',photoTip:'מלפנים, בעמידה, כל הגוף בפריים. לפי הגובה, הגוף והמידות של הבגד נקבעים לבד האורך והרוחב. הזיהוי נעשה כאן בדפדפן.',height:'הגובה שלך (ס״מ)',recFor:'המידה שמתאימה לגוף שלך: %s (מסומנת). הבגד מולבש בה.',lenCm:'אורך הבגד, ס״מ (מידה M): מהכתף עד המכפלת, או מהמותן למטה',flat:'רוחב הבגד בשטוח, ס״מ (מידה M): חזה, או מותן במכנסיים וחצאיות',width:'כוונון רוחב',lengthAdj:'כוונון אורך',points:'כיוון נקודות',reset:'איפוס',dragTip:'אפשר לגרור את הבגד. כשהוא נעול לגוף, הוא חוזר למקום. בלחיצה על "שחרור" הוא נשאר איפה שמשאירים אותו.',locked:'שחרור נעילה',unlocked:'נעילה חזרה לגוף',askMore:'שאלות ופרטים נוספים',splitL:'איפה הבגד נגמר (כשהבגד צולם על אדם)',cutPerson:'הבגד צולם על אדם: השארנו רק את הבגד. בחרי למטה איזה בגד זה, והחיתוך יתעדכן. מקום שהיד מכסה בבגד יישאר חסר, צילום על קולב או משטח נותן חיתוך מלא.',demoTag:'פריט לדוגמה',pk1:'מדידה על התמונה שלך',pk1s:'כל בגד, כל מידה',pk2:'המלצת מידה',pk2s:'לפי הגוף שלך',pk3:'קונים בטיק טוק',pk3s:'תשלום ומשלוח מאובטחים',pk4:'שאלות? כתבי לנו',pk4s:'בוואטסאפ או בליין',byCat:'קונים לפי קטגוריה',sizeSub:'מידות הגוף בס״מ שכל מידה מתאימה להן. בכל פריט יש גם את המידות שלו עצמו.',sgTops:'חולצות, ז׳קטים ושמלות',sgBottoms:'מכנסיים וחצאיות',unsureH:'לא בטוחה במידה?',unsureP:'מכניסים חזה, מותן וירכיים פעם אחת, ומקבלים את המידה שמתאימה לך.',mChest:'חזה',mWaist:'מותן',mHips:'ירכיים',calcBtn:'מה המידה שלי?',calcRes:'עליונים ושמלות: {t} · מכנסיים וחצאיות: {b}',calcNeed:'מלאי לפחות חזה או מותן',fShop:'חנות',fHelp:'עזרה',adminIn:'כניסה למנהל',colSize:'מידה',colChest:'חזה',colLen:'אורך',colWaist:'מותן',colHips:'ירכיים',tryCard:'מדידה',aTabItems:'הפריטים',aTabAdd:'הוספת בגד',aTabShop:'פרטי החנות',pieces:'פריטים',askQ:'שאלה על הפריט? כתבו לנו',mixDone:'מוכן. העליון עם AI, התחתון עם ההלבשה המיידית (שרת ה-AI עמוס).',instantDone:'שרתי ה-AI עמוסים כרגע, אז הולבש עם ההלבשה המיידית.',refining:'משפרים את הדיוק ברקע…',pcTitle:'בדיקת התמונה',pcGood:'התמונה מצוינת למדידה.',pcRetake:'צילום חדש',pcFeet:'כפות הרגליים לא נכנסו לתמונה. צלמי מרחוק יותר, כך שכל הגוף ייכנס מהראש ועד הרגליים. בלי זה האורך של מכנסיים ושמלות פחות מדויק.',pcHead:'הראש לא נכנס לתמונה. השאירי קצת מקום מעל הראש.',pcSmall:'את קטנה מדי בתמונה. התקרבי או צלמי בזום, כך שהגוף ימלא את רוב גובה התמונה.',pcSide:'נראה שאת עומדת בצד. עמדי עם הפנים והכתפיים ישר למצלמה.',pcTilt:'התמונה עקומה. החזיקי את הטלפון ישר, בגובה המותן.',pcArmsUp:'הידיים מורמות. השאירי אותן למטה, קצת רחוק מהגוף.',pcArmsIn:'הידיים מסתירות את הגוף. השאירי אותן לצדדים, קצת רחוק מהגוף.',pcDark:'התמונה חשוכה. צלמי ליד חלון או באור חזק.',pcBright:'התמונה בהירה מדי. התרחקי מאור ישיר.',pcBlur:'התמונה מטושטשת. החזיקי את הטלפון יציב או בקשי ממישהו לצלם.',pcBusy:'הרקע עמוס. קיר חלק מאחורייך יעזור להפריד בין הגוף לרקע.',fitTitle:'איך זה יושב עלייך',fChest:'חזה',fWaist:'מותן',fLen:'אורך',fSleeve:'שרוול',fit0:'צמוד מאוד',fit1:'צמוד',fit2:'מדויק',fit3:'נוח',fit4:'אוברסייז',lt0:'קרופ, בטן חשופה',lt1:'עד המותן',lt2:'עד הירך',lt3:'מכסה את הישבן',lt4:'ארוך, כמו מעיל',ll0:'מיני',ll1:'מעל הברך',ll2:'בגובה הברך',ll3:'מידי, מתחת לברך',ll4:'עד הקרסול',ll5:'עד הרצפה',cmpLong:'ארוך מ־%s% מה%c בתמונות של אנשים אמיתיים',cmpShort:'קצר מ־%s% מה%c בתמונות של אנשים אמיתיים',cTop:'חולצות',cShirt:'חולצות מכופתרות',cSweater:'סוודרים',cJacket:'ז׳קטים',cDress:'שמלות',cPants:'מכנסיים',cSkirt:'חצאיות',zoomIn:'הגדלה',zoomOut:'הקטנה',zoomFit:'חזרה לגודל מלא',s4:'מדידה מציאותית (AI)',aiNote:'מלביש מחדש עם בינה מלאכותית: קפלים, אור וידיים אמיתיים. לוקח בערך 30 שניות לבגד.',goAi:'מדידה מציאותית',backQuick:'חזרה להלבשה המיידית',aiOff:'בקישור הזה של claude.ai הדפדפן חוסם את החיבור לשרת ה-AI, ולכן הכפתור כבוי. באתר החנות עצמו (כתובת רגילה) הוא עובד. ההלבשה המיידית למטה עובדת בכל מקום.',loadingModel:'סורקים את הגוף… זה לוקח כמה שניות',detecting:'מזהים כתפיים, מותן וידיים… עוד כמה שניות',detected:'הבגד הולבש. אפשר לגרור אותו, והוא יחזור לשבת על הגוף.',pickPiece:'בוחרים בגד מהרשימה, והוא מולבש מיד.',noPerson:'לא מצאתי גוף ברור. גררי את הנקודות למקום: כתפיים, מרפקים, מותן, ירכיים, קרסוליים.',modelFail:'זיהוי הגוף לא נטען במכשיר הזה. גררי את הנקודות למקום.',adjustHint:'גררי כל נקודה למקום שלה: כתפיים, מרפקים, מותן, ירכיים, קרסוליים.',go:'להלביש עליי',save:'שמירת התמונה',before:'לפני',after:'אחרי',likesNote:'הרשימה נשמרת בדפדפן הזה. לכל פריט יש קישור לקנייה בחנות בטיק טוק.',likesEmpty:'עוד לא שמרת פריטים. לחצי על הלב ליד פריט כדי לשמור אותו כאן.',
-  remove:'הסרה',all:'הכול',tops:'עליונים',outer:'ז׳קטים',dresses:'שמלות',bottoms:'מכנסיים וחצאיות',pants:'מכנסיים',skirts:'חצאיות',sets:'סטים',set:'סט',items:'פריטים',demo:'דוגמה',
-  needConsent:'כדי למדוד צריך לאשר את שליחת התמונה.',needPhoto:'קודם מעלים תמונה, או בוחרים דוגמנית לדוגמה.',needPick:'בוחרים לפחות בגד אחד.',
-  dressing:'מלבישים',step:'שלב',of:'מתוך',usual:'בדרך כלל 20 עד 40 שניות לכל בגד.',done:'מוכן. גררי את הפס כדי להשוות לפני ואחרי.',
-  quota:'שני שרתי ה-AI החינמיים עמוסים או שהמכסה היומית נגמרה. ההלבשה המיידית למטה ממשיכה לעבוד. אפשר לנסות שוב בעוד כמה דקות, או להוסיף מפתח חינמי של Hugging Face ולקבל עוד מדידות.',quotaTok:'גם המכסה של המפתח נגמרה להיום. נסי שוב מאוחר יותר.',more:'עוד מדידות ביום (לא חובה)',moreT:'פותחים חשבון חינמי ב-Hugging Face, יוצרים מפתח מסוג Read ומדביקים כאן. המפתח נשמר רק בדפדפן הזה.',tokSave:'שמירה',tokSaved:'המפתח נשמר',tokBad:'המפתח צריך להתחיל ב-hf_',queue:'בתור',sec:'שנ׳',netFail:'לא הצלחתי להגיע לשרת המדידה. בדקי חיבור ונסי שוב.',failed:'המדידה לא הצליחה. נסי תמונה אחרת: מלפנים, בעמידה, באור טוב.',
-  badFile:'לא הצלחתי לפתוח את הקובץ. נסי JPG או PNG.',savedImg:'התמונה נשמרה',saveNo:'השמירה לא אושרה',engineFree:'המדידה רצה על FASHN VTON 1.5 בשרת חינמי. באתר המלא היא מהירה יותר.',engineFast:'המדידה רצה על השרת של החנות (FASHN).',
-  makingModel:'מלבישים את הבגד על דוגמנית. בפעם הראשונה זה לוקח עד דקה…',modelFail:'לא הצלחתי להכין תמונה על דוגמנית כרגע.',
-  shopInfo:'פרטי החנות',shopName:'שם החנות',shopLink:'קישור לחנות בטיק טוק',hideDemo:'להסתיר את פריטי הדוגמה',saveShop:'שמירת פרטי החנות',addItem:'הוספת פריט',editItem:'עריכת פריט',
-  dropFront:'תמונת חזית של הבגד (חובה). הרקע מוסר אוטומטית.',dropBack:'תמונת גב (לא חובה). בלי תמונה נוצר גב חלק באותו צבע.',colorName:'שם הצבע',addColor:'+ הוספה כצבע לפריט',whatType:'איזה בגד זה?',
-  itemName:'שם הפריט',itemPrice:'מחיר (฿)',itemLink:'קישור למוצר בטיק טוק',itemDesc:'תיאור קצר ובד',addToShop:'הוספה לקולקציה',saveItem:'שמירת השינויים',cancelEdit:'ביטול עריכה',
-  ownerOnly:'רק בעלת החנות יכולה לנהל את הקטלוג.',markH:'סימון הפנים של הבגד',markT:'בתמונת מוצר רואים דרך הצוואר את הגב של הבגד מבפנים: הבטנה, התווית, הצווארון האחורי. על הגוף המקום הזה מוסתר. לוחצים נקודה אחרי נקודה מסביב לאזור, והוא ייחתך במדידה. לא חובה.',markUndo:'ביטול נקודה',markClear:'ניקוי',localNote:'באתר הזה הקטלוג נשמר בדפדפן הזה בלבד, לבדיקה. בחנות המלאה (Vercel) הוא נשמר בשרת וכולם רואים אותו.',cutting:'מסירים את הרקע…',cutDone:'הרקע הוסר',cutLocal:'הרקע הוסר (שיטה פשוטה, בדקי את הקצוות)',cutFail:'לא הצלחתי להסיר את הרקע. נסי צילום על רקע חלק.',
-  autoBack:'גב חלק ייווצר אוטומטית',backMade:'גב אוטומטי',saving:'שומרים…',saved:'נשמר. כל מי שפותח את החנות רואה את השינוי.',saveFail:'השמירה לא הצליחה. נסי שוב.',noRight:'רק בעלת החנות יכולה לשמור.',
-  edit:'עריכה',del:'מחיקה',sure:'בטוח?',up:'הקדמה',genModel:'על דוגמנית',deleted:'הפריט נמחק',needType:'בוחרים סוג בגד',varAdded:'הצבע נוסף. אפשר להעלות עוד צבע או לשמור.',
-  chest:'חזה',length:'אורך',waist:'מותן',hips:'ירכיים',cm:'ס״מ, בגד בשטוח',tee:'טי',shirt:'חולצה ארוכה',hoodie:'קפוצ׳ון',jacket:'ז׳קט',dress:'שמלה',pants:'מכנסיים',skirt:'חצאית'},
- th:{other:'עברית',liked:'ถูกใจ',infoTitle:'ข้อมูลและคำถาม',infoShort:'ข้อมูล',infoSub:'ทุกอย่างที่ควรรู้ก่อนสั่งซื้อ ไม่เจอคำตอบ ทักเราได้เลย',ask:'ถามเกี่ยวกับสินค้านี้ ↗',askMsg:'สวัสดีค่ะ มีคำถามเกี่ยวกับ {n} {c} {s}',waNum:'เบอร์ WhatsApp (มีรหัสประเทศ)',lineId:'LINE: ไอดี (@...) หรือลิงก์',faqEdit:'คำถามภาษาฮีบรู',faqEditTh:'คำถามภาษาไทย: บรรทัดแรกคือคำถาม ตามด้วยคำตอบ เว้นบรรทัดระหว่างคำถาม',fitRoom:'ห้องลองชุด',hint:'ลากราวเพื่อเลื่อน · แตะเสื้อผ้าเพื่อเปิด',collection:'คอลเลกชัน',collectionSub:'ลองทุกชิ้นบนรูปของคุณได้ แล้วสั่งซื้อที่ร้านของเราใน TikTok',
+ en:{"other": "ไทย", "liked": "Saved", "infoTitle": "Info & questions", "infoShort": "Info", "infoSub": "Everything to know before you order. Can't find an answer? Message us.", "ask": "Ask about this item ↗", "askMsg": "Hi, I have a question about {n} {c} {s}", "waNum": "WhatsApp number (with country code)", "lineId": "LINE: ID (@...) or link", "faqEdit": "Q&A in English: question on the first line, answer below it, and a blank line between questions", "faqEditTh": "Q&A in Thai, same format", "fitRoom": "Fitting room", "hint": "Drag the line · tap a garment to open it", "collection": "The collection", "collectionSub": "Try any piece on your own photo, then buy it in our TikTok Shop.", "howTitle": "Try before you buy", "openFit": "Open the fitting room", "how1": "Upload a photo", "how1s": "Front-facing, standing, full body in frame, good light.", "how2": "Pick a garment", "how2s": "Combine a top and a bottom. It's dressed onto your photo with its folds and light.", "how3": "Buy on TikTok", "how3s": "Love it? The button opens the item in our TikTok Shop.", "foot": "All items are sold through our TikTok Shop.", "manage": "Manage shop", "product": "Product", "onModel": "On model", "front": "Front", "back": "Back", "color": "Colour", "size": "Size", "buy": "Buy on TikTok Shop", "buyShort": "Buy", "tryMe": "Try it on my photo", "buyNote": "Checkout happens in our TikTok Shop. Pick the same size and colour there.", "details": "Details", "sizeGuide": "Size guide", "like": "Save", "savedLike": "Saved to favourites", "removedLike": "Removed from favourites", "pickSize": "Pick a size", "s1": "Your photo", "upload": "Upload photo", "useModel": "Sample model", "consent": "I agree the photo is sent to the try-on server for processing. The shop doesn't store it.", "s2": "What to try", "s2n": "A top and a bottom together, or one dress.", "s3": "Fit", "photoTip": "Front-facing, standing, full body in frame. Length and width are set automatically from your height, body and the garment's measurements. Detection runs right here in your browser.", "height": "Your height (cm)", "recFor": "The size that fits your body: %s (selected). The garment is dressed in it.", "lenCm": "Garment length, cm (size M): shoulder to hem, or waist down", "flat": "Garment flat width, cm (size M): chest, or waist for pants and skirts", "width": "Adjust width", "lengthAdj": "Adjust length", "points": "Adjust points", "reset": "Reset", "dragTip": "You can drag the garment. While locked to the body it snaps back. Tap \"Unlock\" and it stays where you leave it.", "locked": "Unlock", "unlocked": "Lock back to body", "askMore": "Questions & more details", "splitL": "Where the garment ends (when photographed on a person)", "cutPerson": "This garment was photographed on a person, so we kept only the garment. Pick its type below and the cutout updates. Areas covered by a hand stay missing; a photo on a hanger or flat surface gives a full cutout.", "demoTag": "Sample item", "pk1": "Try on your photo", "pk1s": "Any garment, any size", "pk2": "Size recommendation", "pk2s": "Based on your body", "pk3": "Buy on TikTok", "pk3s": "Secure payment & shipping", "pk4": "Questions? Message us", "pk4s": "On WhatsApp or LINE", "byCat": "Shop by category", "sizeSub": "Body measurements in cm that each size fits. Every item also lists its own measurements.", "sgTops": "Tops, jackets & dresses", "sgBottoms": "Pants & skirts", "unsureH": "Not sure about your size?", "unsureP": "Enter your chest, waist and hips once and get the size that fits you.", "mChest": "Chest", "mWaist": "Waist", "mHips": "Hips", "calcBtn": "What's my size?", "calcRes": "Tops & dresses: {t} · Pants & skirts: {b}", "calcNeed": "Enter at least chest or waist", "fShop": "Shop", "fHelp": "Help", "adminIn": "Admin login", "colSize": "Size", "colChest": "Chest", "colLen": "Length", "colWaist": "Waist", "colHips": "Hips", "tryCard": "Try on", "aTabItems": "Items", "aTabAdd": "Add garment", "aTabShop": "Shop details", "pieces": "items", "askQ": "Question about this item? Message us", "mixDone": "Done. The top with AI, the bottom with the instant fit (the AI server is busy).", "instantDone": "The AI servers are busy right now, so we used the instant fit.", "refining": "Refining accuracy in the background…", "pcTitle": "Photo check", "pcGood": "Great photo for trying on.", "pcRetake": "Retake", "pcFeet": "Your feet are out of the frame. Step back so your whole body fits, head to toe. Without that, pants and dress lengths are less accurate.", "pcHead": "Your head is out of the frame. Leave a little space above it.", "pcSmall": "You're too small in the photo. Move closer or zoom so your body fills most of the frame height.", "pcSide": "Looks like you're standing sideways. Face the camera with your shoulders square.", "pcTilt": "The photo is tilted. Hold the phone straight, at waist height.", "pcArmsUp": "Your arms are raised. Keep them down, a little away from your body.", "pcArmsIn": "Your arms are covering your body. Keep them at your sides, a little away from your body.", "pcDark": "The photo is dark. Shoot near a window or in strong light.", "pcBright": "The photo is too bright. Move away from direct light.", "pcBlur": "The photo is blurry. Hold the phone steady or ask someone to take it.", "pcBusy": "The background is busy. A plain wall behind you helps separate you from it.", "fitTitle": "How it fits you", "fChest": "Chest", "fWaist": "Waist", "fLen": "Length", "fSleeve": "Sleeve", "fit0": "Very tight", "fit1": "Snug", "fit2": "True to size", "fit3": "Relaxed", "fit4": "Oversized", "lt0": "Cropped, midriff showing", "lt1": "To the waist", "lt2": "To the hip", "lt3": "Covers the seat", "lt4": "Long, coat-like", "ll0": "Mini", "ll1": "Above the knee", "ll2": "Knee length", "ll3": "Midi, below the knee", "ll4": "Ankle length", "ll5": "Floor length", "cmpLong": "Longer than %s% of %c in photos of real people", "cmpShort": "Shorter than %s% of %c in photos of real people", "cTop": "tops", "cShirt": "button-up shirts", "cSweater": "sweaters", "cJacket": "jackets", "cDress": "dresses", "cPants": "pants", "cSkirt": "skirts", "zoomIn": "Zoom in", "zoomOut": "Zoom out", "zoomFit": "Back to full size", "s4": "Realistic try-on (AI)", "aiNote": "Re-dresses you with AI: real folds, light and hands. Takes about 30 seconds per garment.", "goAi": "Realistic try-on", "backQuick": "Back to the instant fit", "aiOff": "In this claude.ai link the browser blocks the connection to the AI server, so the button is off. On the shop site itself (a normal address) it works. The instant fit below works everywhere.", "loadingModel": "Scanning your body… this takes a few seconds", "detecting": "Finding shoulders, waist and hands… a few more seconds", "detected": "Garment on. You can drag it and it'll snap back onto your body.", "pickPiece": "Pick a garment from the list and it's dressed on right away.", "noPerson": "I couldn't find a clear body. Drag the points into place: shoulders, elbows, waist, hips, ankles.", "modelFail": "Couldn't make an on-model photo right now.", "adjustHint": "Drag each point into place: shoulders, elbows, waist, hips, ankles.", "go": "Dress me", "save": "Save photo", "before": "Before", "after": "After", "likesNote": "Your list is saved in this browser. Every item links to buy in our TikTok Shop.", "likesEmpty": "No saved items yet. Tap the heart on an item to save it here.", "remove": "Remove", "all": "All", "tops": "Tops", "outer": "Jackets", "dresses": "Dresses", "bottoms": "Pants & skirts", "pants": "Pants", "skirts": "Skirts", "sets": "Sets", "set": "Set", "items": "items", "demo": "Sample", "needConsent": "To try on, please agree to send the photo.", "needPhoto": "First upload a photo, or pick the sample model.", "needPick": "Pick at least one garment.", "dressing": "Dressing", "step": "Step", "of": "of", "usual": "Usually 20 to 40 seconds per garment.", "done": "Done. Drag the bar to compare before and after.", "quota": "Both free AI servers are busy or the daily quota ran out. The instant fit below keeps working. Try again in a few minutes, or add a free Hugging Face key for more try-ons.", "quotaTok": "Your key's quota is also used up for today. Try again later.", "more": "More try-ons per day (optional)", "moreT": "Create a free Hugging Face account, make a Read key and paste it here. The key is stored only in this browser.", "tokSave": "Save", "tokSaved": "Key saved", "tokBad": "The key must start with hf_", "queue": "In queue", "sec": "s", "netFail": "Couldn't reach the try-on server. Check your connection and try again.", "failed": "The try-on didn't work. Try another photo: front-facing, standing, good light.", "badFile": "Couldn't open the file. Try a JPG or PNG.", "savedImg": "Photo saved", "saveNo": "Saving wasn't allowed", "engineFree": "Try-on runs on FASHN VTON 1.5 on a free server. It's faster on the full site.", "engineFast": "Try-on runs on the shop's server (FASHN).", "makingModel": "Dressing the garment on a model. The first time takes up to a minute…", "shopInfo": "Shop details", "shopName": "Shop name", "shopLink": "TikTok Shop link", "hideDemo": "Hide the sample items", "saveShop": "Save shop details", "addItem": "Add item", "editItem": "Edit item", "dropFront": "Front photo of the garment (required). The background is removed automatically.", "dropBack": "Back photo (optional). Without it, a plain back in the same colour is made.", "colorName": "Colour name", "addColor": "+ Add as a colour of this item", "whatType": "What kind of garment?", "itemName": "Item name", "itemPrice": "Price (฿)", "itemLink": "TikTok product link", "itemDesc": "Short description & fabric", "addToShop": "Add to collection", "saveItem": "Save changes", "cancelEdit": "Cancel editing", "ownerOnly": "Only the shop owner can manage the catalogue.", "markH": "Mark the garment's inside", "markT": "In a product photo you see the inside back of the garment through the neck: the lining, the label, the back collar. On a body that area is hidden. Click point after point around it and it'll be cut out in the try-on. Optional.", "markUndo": "Undo point", "markClear": "Clear", "localNote": "On this site the catalogue is saved in this browser only, for testing. In the full shop it's saved on the server and everyone sees it.", "cutting": "Removing the background…", "cutDone": "Background removed", "cutLocal": "Background removed (simple method, check the edges)", "cutFail": "Couldn't remove the background. Try a photo on a plain background.", "autoBack": "A plain back will be made automatically", "backMade": "Auto back", "saving": "Saving…", "saved": "Saved. Everyone who opens the shop sees the change.", "saveFail": "Saving failed. Try again.", "noRight": "Only the shop owner can save.", "edit": "Edit", "del": "Delete", "sure": "Sure?", "up": "Move up", "genModel": "On model", "deleted": "Item deleted", "needType": "Pick a garment type", "varAdded": "Colour added. Upload another colour or save.", "chest": "Chest", "length": "Length", "waist": "Waist", "hips": "Hips", "cm": "cm, garment flat", "tee": "Tee", "shirt": "Long-sleeve top", "hoodie": "Hoodie", "jacket": "Jacket", "dress": "Dress", "skirt": "Skirt"},
+ th:{other:'English',liked:'ถูกใจ',infoTitle:'ข้อมูลและคำถาม',infoShort:'ข้อมูล',infoSub:'ทุกอย่างที่ควรรู้ก่อนสั่งซื้อ ไม่เจอคำตอบ ทักเราได้เลย',ask:'ถามเกี่ยวกับสินค้านี้ ↗',askMsg:'สวัสดีค่ะ มีคำถามเกี่ยวกับ {n} {c} {s}',waNum:'เบอร์ WhatsApp (มีรหัสประเทศ)',lineId:'LINE: ไอดี (@...) หรือลิงก์',faqEdit:'คำถามภาษาฮีบรู',faqEditTh:'คำถามภาษาไทย: บรรทัดแรกคือคำถาม ตามด้วยคำตอบ เว้นบรรทัดระหว่างคำถาม',fitRoom:'ห้องลองชุด',hint:'ลากราวเพื่อเลื่อน · แตะเสื้อผ้าเพื่อเปิด',collection:'คอลเลกชัน',collectionSub:'ลองทุกชิ้นบนรูปของคุณได้ แล้วสั่งซื้อที่ร้านของเราใน TikTok',
   howTitle:'ลองก่อนซื้อ',openFit:'ไปห้องลองชุด',how1:'อัปโหลดรูป',how1s:'ถ่ายด้านหน้า ยืนตรง เห็นเต็มตัว แสงดี',how2:'เลือกเสื้อผ้า',how2s:'เลือกเสื้อกับกางเกงพร้อมกันได้ ชุดจะถูกสวมบนรูปของคุณพร้อมรอยพับและแสง',how3:'ซื้อใน TikTok',how3s:'ชอบไหม ปุ่มจะเปิดสินค้าในร้าน TikTok ของเรา',
   foot:'ทุกชิ้นสั่งซื้อได้ที่ร้านของเราใน TikTok',manage:'จัดการร้าน',product:'สินค้า',onModel:'บนนางแบบ',front:'ด้านหน้า',back:'ด้านหลัง',color:'สี',size:'ไซซ์',buy:'ซื้อที่ร้าน TikTok',buyShort:'ซื้อ',
   tryMe:'ลองบนรูปของฉัน',buyNote:'ชำระเงินที่ร้านใน TikTok เลือกไซซ์และสีเดียวกันที่นั่น',details:'รายละเอียด',sizeGuide:'ตารางไซซ์',like:'ถูกใจ',savedLike:'บันทึกในรายการที่ถูกใจแล้ว',removedLike:'นำออกจากรายการที่ถูกใจแล้ว',
@@ -649,10 +632,10 @@ const T={
   edit:'แก้ไข',del:'ลบ',sure:'แน่ใจ?',up:'เลื่อนขึ้น',genModel:'บนนางแบบ',deleted:'ลบสินค้าแล้ว',needType:'เลือกประเภทเสื้อผ้า',varAdded:'เพิ่มสีแล้ว อัปโหลดสีอื่นต่อหรือบันทึกได้',
   chest:'รอบอก',length:'ความยาว',waist:'รอบเอว',hips:'สะโพก',cm:'ซม. วัดแบบวางราบ',tee:'เสื้อยืด',shirt:'เสื้อแขนยาว',hoodie:'ฮู้ดดี้',jacket:'แจ็กเก็ต',dress:'เดรส',pants:'กางเกง',skirt:'กระโปรง'}
 };
-let lang=document.documentElement.lang==='th'?'th':'he';
-const t=(k)=>T[lang][k]??T.he[k]??k;
+let lang=document.documentElement.lang==='th'?'th':'en';
+const t=(k)=>T[lang][k]??T.en[k]??k;
 const $=(id)=>document.getElementById(id);
-const txt=(o)=>(o&&(typeof o==='string'?o:(o[lang]||o.he||o.th)))||'';
+const txt=(o)=>(o&&(typeof o==='string'?o:(o[lang]||o.en||o.he||o.th)))||'';
 const fmt=(n)=>n?'฿'+Number(n).toLocaleString('en-US'):'';
 const pad=(n)=>String(n).padStart(2,'0');
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -674,18 +657,18 @@ const TYPES={
 };
 const CATS=['all','tops','outer','dresses','pants','skirts','sets'];
 const DIMS={top:{XS:[84,58],S:[88,60],M:[94,62],L:[100,64],XL:[106,66]},bottom:{XS:[62,88,100],S:[66,92,101],M:[70,96,102],L:[76,102,103],XL:[82,108,104],'26':[66,90,102],'27':[68,92,102],'28':[71,95,103],'29':[73,97,103],'30':[76,100,104],'31':[78,102,104],'32':[81,105,105]}};
-const v=(c,he,th,front,back)=>({c,n:{he,th},front,back:back||null,model:null});
+const v=(c,en,th,front,back)=>({c,n:{en,th},front,back:back||null,model:null});
 const DEMO=[
- {id:'d-hood',len:64,flat:58,inside:[[.39,.06],[.5,.03],[.61,.06],[.6,.13],[.5,.16],[.4,.13]],type:'hoodie',price:890,name:{he:'קפוצ׳ון אוברסייז',th:'ฮู้ดดี้โอเวอร์ไซซ์'},desc:{he:'כותנה כבדה 380 גרם, גזרה רחבה עם כתף נמוכה, כיס קנגורו.',th:'ผ้าฝ้ายหนา 380 แกรม ทรงหลวม ไหล่ตก กระเป๋าหน้า'},variants:[v('#1d1d1f','שחור','ดำ','img/g06.webp'),v('#8e8f90','אפור מלאנז׳','เทา','img/g06-grey.webp')]},
- {id:'d-tee',len:58,flat:46,inside:[[.265,-.01],[.735,-.01],[.715,.028],[.675,.07],[.63,.115],[.57,.15],[.5,.162],[.43,.15],[.37,.115],[.325,.07],[.285,.028]],type:'tee',price:290,name:{he:'טי ריב לבן',th:'เสื้อยืดผ้าร่องสีขาว'},desc:{he:'כותנה ריב נמתחת, גזרה צמודה, צווארון עגול.',th:'ผ้าฝ้ายร่องยืด ทรงพอดีตัว คอกลม'},variants:[v('#f2f1ee','לבן','ขาว','img/g01.webp')]},
- {id:'d-blazer',len:70,flat:51,inside:[[.335,-.01],[.655,-.01],[.64,.13],[.6,.3],[.56,.42],[.52,.52],[.49,.55],[.45,.45],[.41,.32],[.375,.15],[.35,.06]],type:'jacket',price:1290,name:{he:'בלייזר מחויט',th:'เบลเซอร์ทรงสวย'},desc:{he:'אריג קרפ עם בטנה, כפתור אחד, כיסי פתח.',th:'ผ้าเครปมีซับใน กระดุมเม็ดเดียว'},variants:[v('#cdbfae','בז׳','เบจ','img/g05.webp'),v('#26304a','נייבי','กรมท่า','img/g05-navy.webp'),v('#6f7a55','זית','เขียวมะกอก','img/g05-olive.webp')]},
- {id:'d-slip',len:122,flat:37,type:'dress',price:990,name:{he:'שמלת סאטן',th:'เดรสผ้าซาติน'},desc:{he:'סאטן משי רך, צווארון נשפך, כתפיות דקות, אורך מידי.',th:'ผ้าซาตินนุ่ม คอถ่วง สายเดี่ยว ยาวครึ่งแข้ง'},variants:[v('#b98b87','ורוד עתיק','ชมพูหม่น','img/g09.webp'),v('#d9c49a','שמפניה','แชมเปญ','img/g09-champagne.webp'),v('#1f5a3e','אמרלד','เขียวมรกต','img/g09-emerald.webp')]},
- {id:'d-jeans',len:106,flat:37,inside:[[.24,.0],[.78,.0],[.775,.013],[.68,.021],[.6,.026],[.5,.031],[.4,.027],[.32,.021],[.255,.014]],type:'pants',price:690,name:{he:'ג׳ינס רחב',th:'ยีนส์ขากว้าง'},desc:{he:'דנים 100% כותנה, מותן גבוה, רגל רחבה וישרה.',th:'เดนิมผ้าฝ้าย 100% เอวสูง ขากว้างตรง'},variants:[v('#8fb0d3','כחול בהיר','ฟ้าอ่อน','img/g02.webp')]},
- {id:'d-cardi',len:46,flat:46,inside:[[.27,-.01],[.74,-.01],[.73,.03],[.695,.1],[.635,.19],[.56,.27],[.5,.31],[.445,.27],[.375,.19],[.32,.1],[.285,.03]],type:'shirt',price:650,name:{he:'קרדיגן ריב',th:'คาร์ดิแกนผ้าร่อง'},desc:{he:'סריג ריב רך, צווארון V, כפתורי עץ.',th:'ผ้าถักร่องนุ่ม คอวี กระดุมไม้'},variants:[v('#eeebe4','שמנת','ครีม','img/g07.webp')]},
- {id:'d-midi',len:124,flat:35,type:'dress',price:790,name:{he:'שמלת מידי שחורה',th:'เดรสมิดี้สีดำ'},desc:{he:'ג׳רסי נמתח עם כיווצים, כתפיות, שסע בצד.',th:'ผ้าเจอร์ซีย์ยืดจับย่น สายเดี่ยว ผ่าข้าง'},variants:[v('#151515','שחור','ดำ','img/g04.webp')]},
- {id:'d-skirt',len:92,flat:36,type:'skirt',price:590,name:{he:'חצאית מקסי שכבות',th:'กระโปรงยาวระบาย'},desc:{he:'כותנה קלה בשכבות, מותן גומי.',th:'ผ้าฝ้ายบางเป็นชั้น เอวยางยืด'},variants:[v('#e6dccb','שמנת','ครีม','img/g03.webp')]},
- {id:'d-denim',len:54,flat:53,inside:[[.36,-.01],[.65,-.01],[.645,.08],[.615,.165],[.56,.195],[.5,.2],[.445,.195],[.405,.165],[.37,.08]],type:'jacket',price:1090,name:{he:'ז׳קט ג׳ינס',th:'แจ็กเก็ตยีนส์'},desc:{he:'דנים שטוף, כיסי חזה, כפתורי מתכת.',th:'เดนิมฟอก กระเป๋าอก กระดุมโลหะ'},variants:[v('#5a7aa3','כחול שטוף','น้ำเงินฟอก','img/g10.webp')]},
- {id:'d-cargo',len:104,flat:40,inside:[[.28,0],[.69,0],[.665,.012],[.5,.0145],[.335,.012]],type:'pants',price:750,name:{he:'מכנסי דגמ״ח',th:'กางเกงคาร์โก้'},desc:{he:'טוויל כותנה, כיסים בצד, גזרה רחבה.',th:'ผ้าทวิลฝ้าย กระเป๋าข้าง ทรงหลวม'},variants:[v('#5e6146','זית','เขียวมะกอก','img/g08.webp')]},
+ {id:'d-hood',len:64,flat:58,inside:[[.39,.06],[.5,.03],[.61,.06],[.6,.13],[.5,.16],[.4,.13]],type:'hoodie',price:890,name:{en:'Oversized hoodie',th:'ฮู้ดดี้โอเวอร์ไซซ์'},desc:{en:'Heavy 380 g cotton, relaxed fit with dropped shoulders, kangaroo pocket.',th:'ผ้าฝ้ายหนา 380 แกรม ทรงหลวม ไหล่ตก กระเป๋าหน้า'},variants:[v('#1d1d1f','Black','ดำ','img/g06.webp'),v('#8e8f90','Grey melange','เทา','img/g06-grey.webp')]},
+ {id:'d-tee',len:58,flat:46,inside:[[.265,-.01],[.735,-.01],[.715,.028],[.675,.07],[.63,.115],[.57,.15],[.5,.162],[.43,.15],[.37,.115],[.325,.07],[.285,.028]],type:'tee',price:290,name:{en:'White rib tee',th:'เสื้อยืดผ้าร่องสีขาว'},desc:{en:'Stretch rib cotton, slim fit, crew neck.',th:'ผ้าฝ้ายร่องยืด ทรงพอดีตัว คอกลม'},variants:[v('#f2f1ee','White','ขาว','img/g01.webp')]},
+ {id:'d-blazer',len:70,flat:51,inside:[[.335,-.01],[.655,-.01],[.64,.13],[.6,.3],[.56,.42],[.52,.52],[.49,.55],[.45,.45],[.41,.32],[.375,.15],[.35,.06]],type:'jacket',price:1290,name:{en:'Tailored blazer',th:'เบลเซอร์ทรงสวย'},desc:{en:'Lined crepe weave, single button, slit pockets.',th:'ผ้าเครปมีซับใน กระดุมเม็ดเดียว'},variants:[v('#cdbfae','Beige','เบจ','img/g05.webp'),v('#26304a','Navy','กรมท่า','img/g05-navy.webp'),v('#6f7a55','Olive','เขียวมะกอก','img/g05-olive.webp')]},
+ {id:'d-slip',len:122,flat:37,type:'dress',price:990,name:{en:'Satin slip dress',th:'เดรสผ้าซาติน'},desc:{en:'Soft silky satin, cowl neck, thin straps, midi length.',th:'ผ้าซาตินนุ่ม คอถ่วง สายเดี่ยว ยาวครึ่งแข้ง'},variants:[v('#b98b87','Dusty rose','ชมพูหม่น','img/g09.webp'),v('#d9c49a','Champagne','แชมเปญ','img/g09-champagne.webp'),v('#1f5a3e','Emerald','เขียวมรกต','img/g09-emerald.webp')]},
+ {id:'d-jeans',len:106,flat:37,inside:[[.24,.0],[.78,.0],[.775,.013],[.68,.021],[.6,.026],[.5,.031],[.4,.027],[.32,.021],[.255,.014]],type:'pants',price:690,name:{en:'Wide-leg jeans',th:'ยีนส์ขากว้าง'},desc:{en:'100% cotton denim, high waist, wide straight leg.',th:'เดนิมผ้าฝ้าย 100% เอวสูง ขากว้างตรง'},variants:[v('#8fb0d3','Light blue','ฟ้าอ่อน','img/g02.webp')]},
+ {id:'d-cardi',len:46,flat:46,inside:[[.27,-.01],[.74,-.01],[.73,.03],[.695,.1],[.635,.19],[.56,.27],[.5,.31],[.445,.27],[.375,.19],[.32,.1],[.285,.03]],type:'shirt',price:650,name:{en:'Rib cardigan',th:'คาร์ดิแกนผ้าร่อง'},desc:{en:'Soft rib knit, V-neck, wooden buttons.',th:'ผ้าถักร่องนุ่ม คอวี กระดุมไม้'},variants:[v('#eeebe4','Cream','ครีม','img/g07.webp')]},
+ {id:'d-midi',len:124,flat:35,type:'dress',price:790,name:{en:'Black midi dress',th:'เดรสมิดี้สีดำ'},desc:{en:'Ruched stretch jersey, straps, side slit.',th:'ผ้าเจอร์ซีย์ยืดจับย่น สายเดี่ยว ผ่าข้าง'},variants:[v('#151515','Black','ดำ','img/g04.webp')]},
+ {id:'d-skirt',len:92,flat:36,type:'skirt',price:590,name:{en:'Tiered maxi skirt',th:'กระโปรงยาวระบาย'},desc:{en:'Light tiered cotton, elastic waist.',th:'ผ้าฝ้ายบางเป็นชั้น เอวยางยืด'},variants:[v('#e6dccb','Cream','ครีม','img/g03.webp')]},
+ {id:'d-denim',len:54,flat:53,inside:[[.36,-.01],[.65,-.01],[.645,.08],[.615,.165],[.56,.195],[.5,.2],[.445,.195],[.405,.165],[.37,.08]],type:'jacket',price:1090,name:{en:'Denim jacket',th:'แจ็กเก็ตยีนส์'},desc:{en:'Washed denim, chest pockets, metal buttons.',th:'เดนิมฟอก กระเป๋าอก กระดุมโลหะ'},variants:[v('#5a7aa3','Washed blue','น้ำเงินฟอก','img/g10.webp')]},
+ {id:'d-cargo',len:104,flat:40,inside:[[.28,0],[.69,0],[.665,.012],[.5,.0145],[.335,.012]],type:'pants',price:750,name:{en:'Cargo pants',th:'กางเกงคาร์โก้'},desc:{en:'Cotton twill, side pockets, relaxed fit.',th:'ผ้าทวิลฝ้าย กระเป๋าข้าง ทรงหลวม'},variants:[v('#5e6146','Olive','เขียวมะกอก','img/g08.webp')]},
 ];
 DEMO.forEach((it,i)=>{it.demo=true;it.order=i;it.sizes=TYPES[it.type].sizes});
 const MODEL_IMG='img/model.webp';
@@ -704,14 +687,14 @@ function rebuild(){
   S.items=[...own,...(S.shop.hideDemo&&own.length?[]:DEMO)];
   if(S.pos>=vis().length)S.pos=0;
   renderCats();renderTabs();renderTiles();renderSizeGuide();buildLine();renderGrid();renderLikesN();if(S.detail&&byId(S.detail))renderDetail();else if(S.detail)closeDetail();
-  $('brandName').textContent=$('footBrand').textContent=S.shop.name||'קולב';renderInfo();
+  $('brandName').textContent=$('footBrand').textContent=S.shop.name||'FitSpace';renderInfo();
 }
 
 /* ====================== images ====================== */
 const imgCache=new Map();
 function loadImg(url){if(!imgCache.has(url))imgCache.set(url,new Promise((res,rej)=>{const im=new Image();im.decoding='async';im.crossOrigin='anonymous';im.onload=()=>res(im);im.onerror=()=>{imgCache.delete(url);rej(new Error('img'))};im.src=url}));return imgCache.get(url)}
 const cv=(w,h)=>{const c=document.createElement('canvas');c.width=Math.max(1,Math.round(w));c.height=Math.max(1,Math.round(h));return c};
-// where the clothespins grip: first opaque row at 30% / 70% of the garment width
+// where the clothespins grip, per garment type
 const gripCache=new Map();
 async function grips(url,type){
   const ck=url+'|'+(type||'');if(gripCache.has(ck))return gripCache.get(ck);
@@ -721,9 +704,15 @@ async function grips(url,type){
     // pin where the garment really hangs from: the highest point on each side (the shoulders, the straps of a dress, the corners of a waistband)
     const top=(x)=>{for(let y=0;y<H;y++)if(d[(y*W+x)*4+3]>90)return y;return H};
     const hang=(a0,a1,pref)=>{let best=null;for(let u=a0;u<=a1;u+=.005){const x=Math.round(l+(r-l)*u),y=top(x);if(!best||y<best.y-1||(Math.abs(y-best.y)<=1&&Math.abs(u-pref)<Math.abs(best.u-pref)))best={u,y}}return best};
-    let L=type==='hoodie'?hang(.06,.3,.2):hang(.06,.46,.28),R=type==='hoodie'?hang(.7,.94,.8):hang(.54,.94,.72);
-    // the two pins sit symmetrically about the garment's own middle, so it hangs straight and centred (a flat waistband: same height everywhere)
-    const m=(L.u+R.u)/2;if(Math.abs(L.y-R.y)<=H*.012){const hw=Math.min(m-.04,.96-m,(R.u-L.u)/2);L={u:.5-hw,y:L.y};R={u:.5+hw,y:R.y}}
+    // pins sit symmetrically about the garment's own middle, at the spot it would really be pegged by:
+    // tops and jackets at the shoulders, pants and skirts at the two corners of the waistband, dresses at the straps
+    const top5=(u)=>{const x0=Math.round(l+(r-l)*u);let y=H;for(let k=-2;k<=2;k++)y=Math.min(y,top(Math.min(W-1,Math.max(0,x0+k))));return y};
+    const SH={tee:.3,shirt:.33,hoodie:.33,jacket:.36};let hw;
+    if(type==='pants'||type==='skirt'){const gy=Math.min(...[.3,.4,.5,.6,.7].map(top5));const row=Math.min(H-1,gy+Math.max(2,Math.round(H*.012)));let a=W,b=0;for(let xx=l;xx<=r;xx++)if(d[(row*W+xx)*4+3]>140){if(xx<a)a=xx;if(xx>b)b=xx}
+      const c=(l+r)/2,half=Math.max(4,Math.min(c-a,b-c))*.84;hw=half/Math.max(1,r-l)}
+    else if(SH[type])hw=SH[type];
+    else{const L0=hang(.06,.46,.3),R0=hang(.54,.94,.7);hw=Math.max(.12,Math.min(.44,(R0.u-L0.u)/2))}
+    const L={u:.5-hw,y:top5(.5-hw)},R={u:.5+hw,y:top5(.5+hw)};
     const ix=(u)=>(l+(r-l)*u)/W;   // fractions of the whole picture, which is what the layout uses
     return {ar:im.naturalWidth/im.naturalHeight,u1:ix(L.u),u2:ix(R.u),y1:L.y/H,y2:R.y/H,bc:(l+r)/2/W}}).catch(()=>({ar:.7,u1:.28,u2:.72,y1:0,y2:0,bc:.5}));
   gripCache.set(ck,p);return p;
@@ -970,12 +959,12 @@ $('pdBuy').addEventListener('click',(e)=>{const it=byId(S.detail);if((it.sizes||
 $('pdTry').addEventListener('click',()=>{const it=byId(S.detail);openFit([it.id])});
 
 /* ====================== info, questions, contact ====================== */
-const FAQ_DEF={he:[['איך קונים?','לוחצים "לקנייה בחנות בטיק טוק" ליד הפריט. שם בוחרים את אותה מידה ואותו צבע, ומשלמים בטיק טוק.'],
-  ['איך יודעים איזו מידה?','בכל פריט יש מדריך מידות בס״מ. בחדר המדידה מכניסים גובה ובוחרים מידה, והבגד מולבש על התמונה שלך בגודל של המידה.'],
-  ['כמה זמן לוקח משלוח?','זמן המשלוח וההגעה מופיעים בעמוד המוצר בטיק טוק, לפי הכתובת שלך.'],
-  ['אפשר להחליף או להחזיר?','כן, לפי מדיניות ההחזרות של TikTok Shop. פותחים בקשה מתוך ההזמנה באפליקציה.'],
-  ['מה קורה עם התמונה שאני מעלה?','ההלבשה המיידית נעשית בדפדפן שלך והתמונה לא יוצאת מהמכשיר. במדידה המציאותית התמונה נשלחת לעיבוד, רק אחרי שאישרת, ולא נשמרת בחנות.'],
-  ['יש לי שאלה על פריט','כתבי לנו בוואטסאפ או ב-LINE. בכל פריט יש קישור "שאלה על הפריט".']],
+const FAQ_DEF={en:[['How do I buy?','Tap "Buy on TikTok Shop" on the item. Pick the same size and colour there, and pay on TikTok.'],
+  ['How do I know my size?','Every item has a size guide in cm. In the fitting room you enter your height and pick a size, and the garment is dressed on your photo at that size.'],
+  ['How long does shipping take?','Shipping and delivery times are shown on the product page in TikTok, based on your address.'],
+  ['Can I exchange or return?','Yes, under TikTok Shop\'s return policy. Open a request from the order in the app.'],
+  ['What happens to the photo I upload?','The instant fit runs in your browser and the photo never leaves your device. For the realistic try-on the photo is sent for processing, only after you agree, and the shop doesn\'t store it.'],
+  ['I have a question about an item','Message us on WhatsApp or LINE. Every item has a "Questions & more details" button.']],
  th:[['สั่งซื้ออย่างไร','กด "ซื้อที่ร้าน TikTok" ที่สินค้า เลือกไซซ์และสีเดียวกัน แล้วชำระเงินใน TikTok'],
   ['รู้ได้อย่างไรว่าไซซ์ไหน','ทุกชิ้นมีตารางไซซ์เป็นซม. ในห้องลองชุดใส่ส่วนสูงและเลือกไซซ์ ชุดจะถูกสวมบนรูปของคุณตามขนาดจริง'],
   ['จัดส่งนานแค่ไหน','ระยะเวลาจัดส่งแสดงในหน้าสินค้าใน TikTok ตามที่อยู่ของคุณ'],
@@ -1939,8 +1928,8 @@ qf.addEventListener('pointerup',zUp,true);qf.addEventListener('pointercancel',zU
 new ResizeObserver(()=>zApply()).observe(qf);
 async function fitBlob(){if(F.result&&!$('baWrap').hidden)return F.result;renderFit(false);const b=await toBlob(qf,'image/jpeg',.92);renderFit();return b}
 $('saveImg').addEventListener('click',async()=>{const blob=await fitBlob();
-  if(!S.downloads){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='kolav-fit.jpg';document.body.appendChild(a);a.click();a.remove();return}
-  try{await S.downloads.save({filename:'kolav-fit.jpg',data:blob});toast(t('savedImg'))}catch{toast(t('saveNo'))}});
+  if(!S.downloads){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='fitspace-fit.jpg';document.body.appendChild(a);a.click();a.remove();return}
+  try{await S.downloads.save({filename:'fitspace-fit.jpg',data:blob});toast(t('savedImg'))}catch{toast(t('saveNo'))}});
 
 /* realistic (AI) try-on, when this page can reach the try-on server */
 let aiP=null;
@@ -2086,7 +2075,7 @@ $('adminBtn').addEventListener('click',openAdmin);$('fFit').addEventListener('cl
 function renderAdmin(){
   $('adminBody').hidden=!S.canEdit;$('adminLock').hidden=S.canEdit;$('localNote').hidden=!S.local;if(!S.canEdit)return;
   $('aShopName').value=S.shop.name||'';$('aShopLink').value=S.shop.tiktok||'';$('aWa').value=S.shop.wa||'';$('aLine').value=S.shop.line||'';
-  if(document.activeElement!==$('aFaqHe'))$('aFaqHe').value=faqText((S.shop.faq&&S.shop.faq.he&&S.shop.faq.he.length?S.shop.faq.he:FAQ_DEF.he));if(document.activeElement!==$('aFaqTh'))$('aFaqTh').value=faqText((S.shop.faq&&S.shop.faq.th&&S.shop.faq.th.length?S.shop.faq.th:FAQ_DEF.th));$('aHideDemo').checked=!!S.shop.hideDemo;
+  if(document.activeElement!==$('aFaqHe'))$('aFaqHe').value=faqText((S.shop.faq&&S.shop.faq.en&&S.shop.faq.en.length?S.shop.faq.en:FAQ_DEF.en));if(document.activeElement!==$('aFaqTh'))$('aFaqTh').value=faqText((S.shop.faq&&S.shop.faq.th&&S.shop.faq.th.length?S.shop.faq.th:FAQ_DEF.th));$('aHideDemo').checked=!!S.shop.hideDemo;
   const ty=$('aTypes');ty.innerHTML='';Object.keys(TYPES).forEach((k)=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t(k);b.setAttribute('aria-pressed',String(A.type===k));
     b.addEventListener('click',()=>{if(A.type!==k){A.type=k;A.sizes=[...TYPES[k].sizes];if(A.frontRaw&&A.frontRaw.person){const g=isolateGarment(A.frontRaw,k,+$('aSplit').value);if(g){A.front=g;A.avg=avgColor(g);$('prevF').src=g.toDataURL('image/png');A.inside=[];drawMark()}}}renderAdmin()});ty.appendChild(b)});
   const sz=$('aSizes');sz.innerHTML='';const all=A.type?[...new Set([...TYPES[A.type].sizes,'XXL','One size'])]:[];
@@ -2129,7 +2118,7 @@ async function upload(canvas){const b=await toBlob(canvas,'image/webp',.92);cons
 async function pendingVariant(){
   if(!A.front)return null;const name=$('aColor').value.trim();
   const front=await upload(A.front);const back=A.back?await upload(A.back):null;
-  return {c:A.avg,n:{he:name,th:name},front,back,model:null,frontUrl:front,...(A.inside.length>=3?{inside:A.inside.map(([x,y])=>[+x.toFixed(4),+y.toFixed(4)])}:{})}}
+  return {c:A.avg,n:{en:name,th:name},front,back,model:null,frontUrl:front,...(A.inside.length>=3?{inside:A.inside.map(([x,y])=>[+x.toFixed(4),+y.toFixed(4)])}:{})}}
 function drawMark(){const c=$('markC'),src=A.front;if(!src)return;const k=Math.min(420/src.width,460/src.height,1);c.width=Math.round(src.width*k);c.height=Math.round(src.height*k);const x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);x.drawImage(src,0,0,c.width,c.height);
   if(A.inside.length){x.beginPath();A.inside.forEach(([u,w],i)=>i?x.lineTo(u*c.width,w*c.height):x.moveTo(u*c.width,w*c.height));if(A.inside.length>2){x.closePath();x.fillStyle='rgba(210,58,85,.35)';x.fill()}x.strokeStyle='#d23a55';x.lineWidth=2;x.stroke();for(const [u,w] of A.inside){x.beginPath();x.arc(u*c.width,w*c.height,4,0,7);x.fillStyle='#fff';x.fill();x.stroke()}}}
 $('markC').addEventListener('click',(e)=>{const r=$('markC').getBoundingClientRect();A.inside.push([(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height]);drawMark()});
@@ -2144,23 +2133,23 @@ $('aSave').addEventListener('click',async()=>{
   try{const vv=await pendingVariant();const vars=[...A.vars.map(({frontUrl,...x})=>x),...(vv?[(({frontUrl,...x})=>x)(vv)]:[])];
     const id=A.edit||('i'+Date.now().toString(36));const prev=(S.dbItems||[]).find((x)=>x.id===id);
     const name=$('aName').value.trim(),desc=$('aDesc').value.trim(),link=$('aLink').value.trim();
-    const it={id,type:A.type,price:Math.max(0,Math.round(+$('aPrice').value||0)),name:{he:name||t(A.type),th:name||T.th[A.type]},desc:{he:desc,th:desc},sizes:A.sizes.length?A.sizes:TYPES[A.type].sizes,
+    const it={id,type:A.type,price:Math.max(0,Math.round(+$('aPrice').value||0)),name:{en:name||T.en[A.type],th:name||T.th[A.type]},desc:{en:desc,th:desc},sizes:A.sizes.length?A.sizes:TYPES[A.type].sizes,
       flat:(+$('aFlat').value>=20&&+$('aFlat').value<=90)?Math.round(+$('aFlat').value):null,len:(+$('aLen').value>=20&&+$('aLen').value<=170)?Math.round(+$('aLen').value):null,tiktok:/^https:\/\//.test(link)?link:'',order:prev?prev.order:-(Date.now()/1000|0),variants:vars};
     await saveItem(it);$('aMsg').textContent=t('saved');resetForm();S.cat='all';S.pos=0;S.target=0;setTimeout(()=>adminTab('items'),600)}
   catch(e){console.warn(e);$('aMsg').textContent=e&&e.code==='not_granted'?t('noRight'):t('saveFail')}
   finally{A.busy=false;renderAdmin()}});
 $('aSaveShop').addEventListener('click',async()=>{if(!S.db)return toast(t('noRight'));const link=$('aShopLink').value.trim();
-  const ln=$('aLine').value.trim();const shop={name:$('aShopName').value.trim(),tiktok:/^https:\/\//.test(link)?link:'',hideDemo:$('aHideDemo').checked,wa:$('aWa').value.replace(/\D/g,'').slice(0,16),line:/^(https:\/\/|@?[\w.\-]{2,40}$)/.test(ln)?ln:'',faq:{he:parseFaq($('aFaqHe').value),th:parseFaq($('aFaqTh').value)}};
+  const ln=$('aLine').value.trim();const shop={name:$('aShopName').value.trim(),tiktok:/^https:\/\//.test(link)?link:'',hideDemo:$('aHideDemo').checked,wa:$('aWa').value.replace(/\D/g,'').slice(0,16),line:/^(https:\/\/|@?[\w.\-]{2,40}$)/.test(ln)?ln:'',faq:{en:parseFaq($('aFaqHe').value),th:parseFaq($('aFaqTh').value)}};
   try{await S.db.doc('settings/shop').set(shop);toast(t('saved'))}catch{toast(t('saveFail'))}});
 
 /* ====================== language + keys ====================== */
 function applyLang(){
-  document.documentElement.lang=lang;document.documentElement.dir=lang==='he'?'rtl':'ltr';try{localStorage.setItem('kolav-lang',lang)}catch{}
+  document.documentElement.lang=lang;document.documentElement.dir='ltr';try{localStorage.setItem('fitspace-lang',lang)}catch{}
   document.querySelectorAll('[data-t]').forEach((el)=>{const k=el.dataset.t;if(typeof T[lang][k]==='string')el.textContent=T[lang][k]});document.querySelectorAll('[data-ta]').forEach((el)=>{const k=el.dataset.ta;if(typeof T[lang][k]==='string'){el.setAttribute('aria-label',T[lang][k]);el.title=T[lang][k]}});
   $('langBtn').textContent=t('other');
   rebuild();if(!$('fit').hidden)renderPicks();if(!$('likes').hidden)renderLikes();if(!$('admin').hidden)renderAdmin();layoutRope();
 }
-$('langBtn').addEventListener('click',()=>{lang=lang==='he'?'th':'he';applyLang()});
+$('langBtn').addEventListener('click',()=>{lang=lang==='en'?'th':'en';applyLang()});
 addEventListener('keydown',(e)=>{if(e.key!=='Escape')return;if(!$('admin').hidden)return closeAdmin();if(!$('fit').hidden)return closeFit();if(!$('likes').hidden)return closeLikes();if(S.detail)return closeDetail()});
 addEventListener('keydown',(e)=>{if(!S.detail||!$('fit').hidden)return;const f=isRtl()?'ArrowLeft':'ArrowRight',b=isRtl()?'ArrowRight':'ArrowLeft';if(e.key===f)stepDetail(1);if(e.key===b)stepDetail(-1)});
 
@@ -2204,4 +2193,5 @@ applyLang();layoutRope();
 })();
 window.__kolav={isolateGarment,INP,photoCheck,fitReport,cutHoles,S,F,Q,recSize,byId,refreshPieces,renderFit,setPerson,adjustedP,dress,cutout,plainBack,defringe,floodCut,loadImg,go,openDetail,openFit,gradio,makeMapper,placeSpec,KP_KEYS};
 </script>
+
 </body></html>
